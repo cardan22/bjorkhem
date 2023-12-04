@@ -29,9 +29,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-cardan22-bjorkhem-s2kqg3k6ddb.ws-eu106.gitpod.io',
-                'bjorkhem-8b5ef3ef81a6.herokuapp.com']
-
+ALLOWED_HOSTS = [
+    '8000-cardan22-bjorkhem-s2kqg3k6ddb.ws-eu106.gitpod.io',
+    'bjorkhem-8b5ef3ef81a6.herokuapp.com'
+]
 
 # Application definition
 
@@ -67,7 +68,10 @@ ROOT_URLCONF = 'bjorkhem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
