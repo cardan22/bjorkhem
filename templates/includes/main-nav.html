@@ -1,0 +1,63 @@
+<!-- Main Navigation (Visible on Larger Screens) -->
+<nav class="navbar navbar-expand-lg d-none d-md-flex">
+    <a class="navbar-brand order-lg-first" href="#">
+        <img src="your-logo.png" alt="Björkhem" height="40">
+    </a>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+            <!-- Your main navigation links go here -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Details</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#">Textile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Kitchen</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Lights</a>
+            </li>
+        </ul>
+    </div>
+    <!-- Navbar icons -->
+    <div class="ml-auto">
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#toggle-search" role="button" aria-expanded="false" aria-controls="collapse">
+                    <span class="material-symbols-outlined">search</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">favorite</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="material-symbols-outlined">person</span>
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <a href="#" class="dropdown-item">Product Management</a>
+                        {% endif %}
+                        <a href="#" class="dropdown-item">My Profile</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                    {% else %}
+                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                    {% endif %}
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
