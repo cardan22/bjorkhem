@@ -18,6 +18,8 @@ body {
     font-family: "Inter", sans-serif;
     height: calc(100vh - 164px);
     color: #44342C;
+    background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 a {
@@ -30,6 +32,10 @@ a:active,
 a:focus {
     text-decoration: none;
     color: inherit;
+}
+
+.material-symbols-outlined {
+    vertical-align: bottom;
 }
 
 /* Container */
@@ -56,6 +62,15 @@ a:focus {
 .nav-link:active,
 .nav-link:focus {
     color: #687D64;
+}
+
+.card-body {
+    border: 0;
+    border-bottom: solid 1px #ced4da;
+}
+
+.border-top {
+    border-color:#D9D9D9 !important;
 }
 
 /* Button */
@@ -85,5 +100,14 @@ a:focus {
     
     .display-4  {
         font-size: 2rem;
+    }
+
+    .card-body {
+        padding: 0.1rem;
+        border: none;
+    }
+
+    .navbar-toggler {
+        padding-left: 0;
     }
 }
