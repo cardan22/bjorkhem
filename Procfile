@@ -1,1 +1,1 @@
-web: gunicorn bjorkhem.wsgi:application
+web: gunicorn bjorkhem.wsgi
