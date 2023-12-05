@@ -73,6 +73,10 @@ a:focus {
     border-color:#D9D9D9 !important;
 }
 
+.dropdown-item {
+    color:#44342C;
+}
+
 /* Button */
 
 .btn {
@@ -97,17 +101,30 @@ a:focus {
     .navbar {
         padding: 0.5rem;
     }
+
+    .navbar-brand {
+        margin: 0;
+        font-size: small;
+    }
     
     .display-4  {
         font-size: 2rem;
     }
 
     .card-body {
-        padding: 0.1rem;
         border: none;
+        padding: 0.5rem;
     }
 
     .navbar-toggler {
         padding-left: 0;
+    }
+
+    .dropdown-menu {
+        background-color: inherit;
+    }
+
+    .form-control {
+        width: 75% !important;
     }
 }
