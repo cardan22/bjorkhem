@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: "Inter", sans-serif;
-    height: calc(100vh - 164px);
+    min-height: 100%;
     color: #44342C;
     background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -49,6 +49,10 @@ a:focus {
 }
 
 /* Container */
+
+.content-container {
+    flex: 1;
+}
 
 .container-fluid {
     padding: 0;
@@ -116,10 +120,6 @@ a:focus {
 /* Footer */
 
 footer {
-    flex-shrink: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: #545E56;
     color: #fff;
     padding: 10px;
@@ -136,16 +136,50 @@ footer {
 }
 
 /* Products */
+
 .products {
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 600;
 }
 
-.card-img-top {
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.image-card {
+    position: relative;
+    z-index: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+}
+
+.image-card img {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
+    transition: opacity .25s;
+}
+
+.card-details {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-card {
+    font-weight: 600;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -159,6 +193,10 @@ footer {
 
     body {
         height: calc(100vh - 116px);
+    }
+
+    .container-products {
+        max-width: 100%;
     }
 }
 
@@ -192,5 +230,9 @@ footer {
 
     .form-control {
         width: 75% !important;
+    }
+
+    .header-container {
+        padding-top: 80px;
     }
 }
