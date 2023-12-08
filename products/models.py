@@ -50,8 +50,8 @@ class Product(models.Model):
     image = models.ImageField()
     image_url = models.URLField(max_length=254, null=True, blank=True)
     image_alt = models.CharField(max_length=254)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    discount = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
+    price = models.DecimalField(max_digits=6, decimal_places=0)
+    discount = models.DecimalField(max_digits=8, decimal_places=0, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         """
