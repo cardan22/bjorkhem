@@ -107,7 +107,7 @@ a:focus {
     background-color: #687D64;
     color: #fff;
     font-weight: 500;
-    border: solid 0.1rem;
+    border: solid #687D64 0.1rem;
 }
 
 .btn:hover,
@@ -115,6 +115,21 @@ a:focus {
 .btn:focus {
     background-color: #FFFEF8;
     color: #687D64;
+    border: solid 0.1rem;
+}
+
+.btn-secondary {
+    background-color: #FFFEF8;
+    color: #687D64;
+    font-weight: 500;
+    border: solid 0.1rem;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+    background-color: #687D64;
+    color: #fff;
     border: solid 0.1rem;
 }
 
@@ -220,6 +235,16 @@ footer {
     background-color: #eaece3;
 }
 
+/* Login/Logout/Signup */
+
+.allauth-form-inner-content input {
+    border-color: #545E56;
+    border-radius: 0;
+}
+
+.form-header {
+    font-size: 2rem !important;
+}
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
@@ -304,5 +329,13 @@ footer {
 
     .image-container{
         margin-bottom: 0 !important;
+    }
+
+    .form-control {
+        width: 100% !important;
+    }
+
+    .form-header {
+        font-size: 1.5rem !important;
     }
 }

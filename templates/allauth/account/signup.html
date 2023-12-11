@@ -1,24 +1,22 @@
 {% extends "account/base.html" %}
-
 {% load i18n %}
-
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-
 {% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Sign Up" %}</h2>
-<hr>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="btn btn-outline-black rounded-0" href="{% url 'account_login' %}">Back to Login</a>
-  <button type="submit">{% trans "Sign Up" %}</button>
-</form>
+  <!-- Sign Up Header -->
+  <h1 class="form-header p-2 text-center text-xs">{% trans "Sign Up" %}</h1>
+  <!-- Sign Up Form -->
+  <form class="signup p-2 w-100" id="signup_form" method="POST" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" class="w-100">
+    {% endif %}
+    <!-- Sign Up Button -->
+    <button type="submit" class="btn btn-primary p-2 mb-3 rounded-0" style="width: 100%">Sign Up</button>
+    <!-- Login Button -->
+    {% trans "Login" as login_text %}
+    <a class="btn btn-secondary p-2 mb-2 rounded-0" href="{% url 'account_login' %}" style="width: 100%">{{ login_text }}</a>
+  </form>
 
 {% endblock %}
