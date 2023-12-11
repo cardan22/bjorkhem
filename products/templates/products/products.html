@@ -18,7 +18,7 @@
         <div class="row pb-4">
             <div class="col">
                 <!-- Subheading for products in the main content block -->
-                <h2 class="products">Products</h2>
+                <h1 class="products">Products</h1>
             </div>    
         </div>
         <div class="row pb-3">
@@ -31,11 +31,17 @@
                         <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
                     </a>
                     <div class="card-details">
-                        <h3 class="header-card pt-3">{{ product.name }}</h3>
-                        <p>{{ product.price }} KR</p>
-                        {% if product.discount %}
-                            <p>{{ product.discount }} KR</p>
-                        {% endif %}
+                        <h2 class="header-card pt-3">{{ product.name }}</h2>
+
+                    {% if product.discount %}
+                        <!-- Display Regular Price with Strikethrough and Discounted Price -->
+                        <p class="product-price">
+                            <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
+                        </p>
+                    {% else %}
+                        <!-- Display Regular Price without Strikethrough if there is no discount -->
+                        <p class="product-price">{{ product.price }} KR</p>
+                    {% endif %}
                     </div>
                 </div>
             </div>
