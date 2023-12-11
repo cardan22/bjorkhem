@@ -21,21 +21,20 @@
                 <h2 class="products">Products</h2>
             </div>    
         </div>
-        
         <div class="row pb-3">
             <!-- Loop through products to display in cards -->
             {% for product in products %}
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <!-- Product card with image, name, price, and discount if applicable -->
                 <div class="product-card">
-                    <a href="{ # }" class="image-card">
+                    <a href="{% url 'product_detail' product.id %}" class="image-card">
                         <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
                     </a>
                     <div class="card-details">
                         <h3 class="header-card pt-3">{{ product.name }}</h3>
                         <p>{{ product.price }} KR</p>
                         {% if product.discount %}
-                            <p>{{ product.price }} KR</p>
+                            <p>{{ product.discount }} KR</p>
                         {% endif %}
                     </div>
                 </div>

@@ -182,6 +182,16 @@ footer {
     text-overflow: ellipsis;
 }
 
+/* Product details */
+
+.product-details-container p {
+    font-size: 0.9rem;
+}
+
+.product-price {
+    font-size: 1.1rem !important;
+}
+
 
 /* Media Queries */
 
