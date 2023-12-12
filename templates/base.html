@@ -53,22 +53,22 @@
             </div>
         </div>
     </header>
+    <main>
+        <!-- Display messages container -->
+        {% if messages %}
+            <div class="message-container"></div>
+        {% endif %}
 
-    <!-- Display messages container -->
-    {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
+        <!-- Page header block -->
+        {% block page_header %}
+        {% endblock %}
 
-    <!-- Page header block -->
-    {% block page_header %}
-    {% endblock %}
-
-    <!-- Main content block -->
-    {% block content %}
-    <div class="content-container">
-    </div>
-    {% endblock %}
-
+        <!-- Main content block -->
+        {% block content %}
+        <div class="content-container">
+        </div>
+        {% endblock %}
+    </main>
     <!-- Footer -->
     <footer class="text-white text-center pt-4">
         <div class="container">

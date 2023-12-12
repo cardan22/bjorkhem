@@ -6,20 +6,20 @@
     text-decoration: none;
 }
 
-html {
-    height: 100%;
-}
-
 /* Body */
 
 body {
     display: flex;
     flex-direction: column;
     font-family: "Inter", sans-serif;
-    min-height: 100%;
+    min-height: 100vh;
     color: #44342C;
     background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center fixed;
     background-size: cover;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 a {
@@ -51,7 +51,12 @@ a:focus {
 /* Container */
 
 .content-container {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 4rem !important;
 }
 
 .container-fluid {
@@ -125,9 +130,9 @@ a:focus {
     border: solid 0.1rem;
 }
 
-.btn:hover,
-.btn:active,
-.btn:focus {
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
     background-color: #687D64;
     color: #fff;
     border: solid 0.1rem;
@@ -136,6 +141,7 @@ a:focus {
 /* Footer */
 
 footer {
+    flex-shrink: 0;
     background-color: #545E56;
     color: #fff;
     padding: 10px;
@@ -266,7 +272,6 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-
     .product-img {
         padding: 0 !important;
     }
