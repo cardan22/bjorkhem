@@ -23,4 +23,16 @@ def product_detail(request, product_id):
         'product': product,
     }
 
-    return render(request, 'products/product_detail.html', context)    
+    return render(request, 'products/product_detail.html', context)
+
+
+def favorite_products(request):
+    """ A view to show favorite products """
+
+    favorite_products = request.user.favorite_products.all()
+
+    context = {
+        'products': favorite_products,
+    }
+
+    return render(request, 'products/favorite_products.html', context)   

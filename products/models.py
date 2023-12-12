@@ -41,7 +41,7 @@ class Product(models.Model):
     """
     Model representing a product.
     """
-    sku = models.CharField(max_length=254, unique=True, editable=True, default=generate_sku())
+    sku = models.CharField(max_length=254, unique=True, editable=True, default=generate_sku)
     name = models.CharField(max_length=254)
     category_id = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     color = models.CharField(max_length=254, null=True, blank=True)
@@ -52,6 +52,8 @@ class Product(models.Model):
     image_alt = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=0)
     discount = models.DecimalField(max_digits=8, decimal_places=0, null=True, blank=True)
+    favorites = models.ManyToManyField('auth.User', related_name='favorite_products', blank=True)
+
 
     def save(self, *args, **kwargs):
         """

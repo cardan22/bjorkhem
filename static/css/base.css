@@ -251,6 +251,11 @@ footer {
     background-color: #eaece3;
 }
 
+.favorite-icon {
+    position: absolute;
+    right: 1rem;
+}
+
 /* Allauth form formatting */
 
 .allauth-form-inner-content input {
@@ -265,10 +270,6 @@ footer {
 
 .allauth-form-inner-content input::placeholder {
     color: #44342C;
-}
-
-.allauth-form-inner-content h2, p {
-    text-align: center;
 }
 
 .form-header {
@@ -409,5 +410,12 @@ label[for="id_gdpr_consent"] {
 
     .form-header {
         font-size: 1.5rem !important;
+    }
+
+    .favorite-icon {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
     }
 }

@@ -18,9 +18,15 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 
-                <!-- Link to go back with a chevron icon -->
-                <a href="#" onclick="history.back();"> <span class="material-symbols-outlined">chevron_left</span>back</a>
-                
+                <div class="d-flex justify-content-between">
+                    <!-- Link to go back with a chevron icon -->
+                    <a href="#" onclick="history.back();">
+                        <span class="material-symbols-outlined">chevron_left</span>back
+                    </a>
+                    <!-- Favorite icon for small screens -->
+                    <span class="material-symbols-outlined d-md-none">favorite</span>
+                </div>
+
                 <!--Image container -->
                 <div class="image-container mt-4 mb-5 mb-sm-0 mb-xs-0 pb-5 pb-xs-0">
                     <a href="{{ product.image.url }}" target="_blank">
@@ -32,6 +38,11 @@
             <!-- Container for the product details, including name, price, description  -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-description-container my-5 mt-xs-0">
+                    <!-- Favorite icon for large screens -->
+                    <div class="d-none d-md-block">
+                        <span class="material-symbols-outlined favorite-icon">favorite</span>
+                    </div>
+                    <!-- Product name -->
                     <h1 class="header-card pb-2">{{ product.name }}</h1>
                     
                     {% if product.discount %}
