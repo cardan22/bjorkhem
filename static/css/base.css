@@ -138,6 +138,16 @@ a:focus {
     border: solid 0.1rem;
 }
 
+/* Search bar */
+
+.card {
+    background-color: #EEEAE7;
+}
+
+input[name='q']::placeholder {
+    color: #44342C;
+}
+
 /* Footer */
 
 footer {
@@ -241,15 +251,72 @@ footer {
     background-color: #eaece3;
 }
 
-/* Login/Logout/Signup */
+/* Allauth form formatting */
 
 .allauth-form-inner-content input {
     border-color: #545E56;
     border-radius: 0;
+    background-color: #FFFEF8;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #44342C;
+}
+
+.allauth-form-inner-content h2, p {
+    text-align: center;
 }
 
 .form-header {
     font-size: 2rem !important;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #687D64;
+    border: 1px solid #687D64;;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+
+    /* standard bootstrap btn transitions */
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {	
+	color: #545E56;
+    background-color: #FFFEF8;
+    border-color: #545E56;
+}
+
+.user-form ::placeholder {
+    color: #44342C;
+}
+
+.user-form input {
+    border-color: #545E56;
+    border-radius: 0;
+    background-color: #FFFEF8;
+}
+
+label[for="id_gdpr_consent"] {
+    font-size: 0.8rem;
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
