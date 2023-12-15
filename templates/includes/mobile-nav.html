@@ -34,22 +34,22 @@
         <ul class="navbar-nav">
             <!-- Your mobile navigation links go here -->
             <li class="nav-item active border-top">
-                <a class="nav-link" href="#">News</a>
+                <a class="nav-link" href="{% url 'products' %}?category=news">News</a>
             </li>
             <li class="nav-item border-top">
-                <a class="nav-link" href="#">Details</a>
+                <a class="nav-link" href="{% url 'products' %}?category=details">Details</a>
             </li>
             <li class="nav-item dropdown border-top">
-                <a class="nav-link" href="#">Textile</a>
+                <a class="nav-link" href="{% url 'products' %}?category=textile">Textile</a>
             </li>
             <li class="nav-item border-top">
-                <a class="nav-link" href="#">Kitchen</a>
+                <a class="nav-link" href="{% url 'products' %}?category=kitchen">Kitchen</a>
             </li>
             <li class="nav-item border-top">
-                <a class="nav-link" href="#">Lights</a>
+                <a class="nav-link" href="{% url 'products' %}?category=lights">Lights</a>
             </li>
             <li class="nav-item border-top">
-                <a class="nav-link" href="#">Sale</a>
+                <a class="nav-link" href="{% url 'products' %}?category=sale">Sale</a>
             </li>
             <li class="nav-item border-top dropdown">
                 <a class="nav-link" href="#" id="user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

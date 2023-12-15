@@ -3,16 +3,36 @@ from django.views import View
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from .models import Product
+from django.db.models import Q
+from .models import Product, Category
 
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
+    query = None
+    categories = None
+
+    if request.GET:
+        if 'category' in request.GET:
+            category_names = request.GET.getlist('category')
+            products = products.filter(category_id__name__in=category_names)
+            categories = Category.objects.filter(name__in=category_names)
+
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You didn't enter any search criteria!")
+                return redirect('products')
+
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
 
     context = {
         'products': products,
+        'search_term': query,
+        'current_categories': categories,
     }
 
     return render(request, 'products/products.html', context)

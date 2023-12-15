@@ -6,23 +6,23 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
             <!-- Your main navigation links go here -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#">News</a>
+            <li class="nav-item active border-top">
+                <a class="nav-link" href="{% url 'products' %}?category=news">News</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Details</a>
+            <li class="nav-item border-top">
+                <a class="nav-link" href="{% url 'products' %}?category=details">Details</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">Textile</a>
+            <li class="nav-item dropdown border-top">
+                <a class="nav-link" href="{% url 'products' %}?category=textile">Textile</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Kitchen</a>
+            <li class="nav-item border-top">
+                <a class="nav-link" href="{% url 'products' %}?category=kitchen">Kitchen</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Lights</a>
+            <li class="nav-item border-top">
+                <a class="nav-link" href="{% url 'products' %}?category=lights">Lights</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sale</a>
+            <li class="nav-item border-top">
+                <a class="nav-link" href="{% url 'products' %}?category=sale">Sale</a>
             </li>
         </ul>
     </div>
