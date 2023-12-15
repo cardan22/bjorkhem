@@ -18,42 +18,42 @@
         <div class="row pb-4">
             <div class="col">
                 <!-- Subheading for products in the main content block -->
-                <h1 class="text-center">Favorites</h1>
+                <h1 class="products">Favorites</h1>
             </div>    
         </div>
         <div class="row pb-3">
             
-            <!-- Loop through favorie products -->
-            {% if favorite_items %}
-            {% for favorite_item in favorite_items %}
+        <!-- Loop through favoriete products -->
+        {% if favorite_products %}
+            {% for favorite_product in favorite_products %}
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <!-- Product card with image, name, price, and discount if applicable -->
                     <div class="product-card">
-                        <a href="{% url 'product_detail' favorite_item.product.id %}" class="image-card">
-                            <img src="{{ favorite_item.product.image.url }}" alt="{{ favorite_item.product.image_alt }}">
+                        <a href="{% url 'product_detail' favorite_product.id %}" class="image-card">
+                            <img src="{{ favorite_product.image.url }}" alt="{{ favorite_product.image_alt }}">
                         </a>
                         <div class="card-details">
-                            <h2 class="header-card pt-3">{{ favorite_item.product.name }}</h2>
+                            <h2 class="header-card pt-3">{{ favorite_product.name }}</h2>
 
-                            {% if favorite_item.product.discount %}
+                            {% if favorite_product.discount %}
                                 <!-- Display Regular Price with Strikethrough and Discounted Price -->
                                 <p class="product-price">
-                                    <del>{{ favorite_item.product.price }} KR</del> <span class="text-danger">{{ favorite_item.product.discount }} KR</span>
+                                    <del>{{ favorite_product.price }} KR</del> <span class="text-danger">{{ favorite_product.discount }} KR</span>
                                 </p>
                             {% else %}
                                 <!-- Display Regular Price without Strikethrough if there is no discount -->
-                                <p class="product-price">{{ favorite_item.product.price }} KR</p>
+                                <p class="product-price">{{ favorite_product.price }} KR</p>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             {% endfor %}
         {% else %}
-        <!-- Display message when no favorite items are available -->
-        <div class="col-md-12 text-center">
-            <h2>No favorite items yet?</h2>
-            <p>Mark your favorite items using the heart icon <span class="material-symbols-outlined">favorite</span></p>
-        </div>
+            <!-- Display message when no favorite items are available -->
+            <div class="col-md-12 text-center">
+                <h2>No favorite items yet?</h2>
+                <p>Mark your favorite items using the heart icon <span class="material-symbols-outlined">favorite</span></p>
+            </div>
         {% endif %}
         </div>
     </div>

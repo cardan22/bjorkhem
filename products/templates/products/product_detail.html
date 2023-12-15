@@ -23,8 +23,21 @@
                     <a href="#" onclick="history.back();">
                         <span class="material-symbols-outlined">chevron_left</span>back
                     </a>
+
                     <!-- Favorite icon for small screens -->
-                    <span class="material-symbols-outlined d-md-none">favorite</span>
+                    {% if user.is_authenticated %}
+                        {% if favorite %}
+                        <!-- Remove from Favorites Button -->
+                        <a class="btn-like" href="{% url 'add_favorite_product' product.id %}" aria-label="Remove from Favorites">
+                            <span class="material-symbols-outlined d-md-none" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        </a>
+                        {% else %}
+                        <!-- Add to Favorites Button -->
+                        <a class="btn-like" href="{% url 'add_favorite_product' product.id %}" aria-label="Add to Favorites">
+                            <span class="material-symbols-outlined d-md-none">favorite</span>
+                        </a>
+                        {% endif %}
+                    {% endif %}
                 </div>
 
                 <!--Image container -->
@@ -38,10 +51,24 @@
             <!-- Container for the product details, including name, price, description  -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-description-container my-5 mt-xs-0">
+                    
                     <!-- Favorite icon for large screens -->
                     <div class="d-none d-md-block">
-                        <span class="material-symbols-outlined favorite-icon">favorite</span>
+                        {% if user.is_authenticated %}
+                            {% if favorite %}
+                                <!-- Remove from Favorites Button -->
+                                <a class="btn-like" href="{% url 'add_favorite_product' product.id %}" aria-label="Remove from Favorites">
+                                    <span class="material-symbols-outlined favorite-icon" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </a>
+                            {% else %}
+                                <!-- Add to Favorites Button -->
+                                <a class="btn-like" href="{% url 'add_favorite_product' product.id %}" aria-label="Add to Favorites">
+                                    <span class="material-symbols-outlined favorite-icon" style="fill: 1;">favorite</span>
+                                </a>
+                            {% endif %}
+                        {% endif %}
                     </div>
+                    
                     <!-- Product name -->
                     <h1 class="header-card pb-2">{{ product.name }}</h1>
                     

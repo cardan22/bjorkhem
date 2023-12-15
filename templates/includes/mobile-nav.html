@@ -16,11 +16,13 @@
                 <span class="material-symbols-outlined pr-3">search</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'favorite_products' %}">
-                <span class="material-symbols-outlined pr-3">favorite</span>
-            </a>
-        </li>
+        {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'favorite_products' %}">
+                    <span class="material-symbols-outlined pr-3">favorite</span>
+                </a>
+            </li>
+        {% endif %}
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <span class="material-symbols-outlined">shopping_bag</span>
