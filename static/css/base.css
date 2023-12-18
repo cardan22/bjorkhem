@@ -218,6 +218,21 @@ footer {
     text-decoration: line-through;
 }
 
+.dropdown-menu {
+    background-color: #FFFEF8 !important;
+    min-width: auto;
+}
+
+.show>.btn-secondary.dropdown-toggle {
+    background-color: #687D64 !important;
+    border-color: #687D64;
+}
+
+.dropdown-menu.show {
+    border-radius: 0;
+    transform: translate3d(-40px, 39px, 0px) !important;
+}
+
 /* Product details */
 
 .image-container {
