@@ -28,16 +28,16 @@
 
                 <!-- Sort dropdown -->
                 <div class="dropdown sort-dropdown">
-                    <button class="btn btn-secondary rounded-0 dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="material-symbols-outlined">sort</span> Sort
+                    <button class="btn btn-secondary px-4 dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="material-symbols-outlined">sort</span> <span class="d-none d-sm-inline">Sort</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="sortDropdown">
-                        <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Lowest Price</a>
-                        <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Highest Price</a>
-                        <a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=asc">Name A-Ö</a>
-                        <a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=desc">Name Ö-A</a>
+                    <div class="dropdown-menu w-100 sort-dropdown-menu" data-bs-display="static" aria-labelledby="sortDropdown">
+                        <a class="dropdown-item {% if current_sorting == 'price_asc' %}active{% endif %}" href="{% url 'products' %}?sort=price&direction=asc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Lowest Price</a>
+                        <a class="dropdown-item {% if current_sorting == 'price_desc' %}active{% endif %}" href="{% url 'products' %}?sort=price&direction=desc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Highest Price</a>
+                        <a class="dropdown-item {% if current_sorting == 'name_asc' %}active{% endif %}" href="{% url 'products' %}?sort=name&direction=asc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Name A-Z</a>
+                        <a class="dropdown-item {% if current_sorting == 'name_desc' %}active{% endif %}" href="{% url 'products' %}?sort=name&direction=desc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Name Z-A</a>
                     </div>
-                </div>        
+                </div>       
             </div>    
         </div>
         <div class="row pb-3">

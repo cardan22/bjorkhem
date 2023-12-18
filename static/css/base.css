@@ -113,6 +113,7 @@ a:focus {
     color: #fff;
     font-weight: 500;
     border: solid #687D64 0.1rem;
+    border-radius: 0!important;
 }
 
 .btn:hover,
@@ -229,8 +230,18 @@ footer {
 }
 
 .dropdown-menu.show {
-    border-radius: 0;
+    border-radius: 0 !important;
     transform: translate3d(-40px, 39px, 0px) !important;
+}
+
+.dropdown-item {
+    padding: 0.4 0.8rem;
+}
+
+.dropdown-item.active,
+.dropdown-item.hover
+.dropdown-item.focus {
+    background-color: #687D64;
 }
 
 /* Product details */
@@ -394,7 +405,7 @@ label[for="id_gdpr_consent"] {
     }
 
     .dropdown-menu {
-        background-color: inherit;
+        background-color: #EEEAE7;
     }
 
     .form-control {
@@ -433,4 +444,9 @@ label[for="id_gdpr_consent"] {
         margin: 0 auto;
         margin-bottom: 10px;
     }
+
+    .btn-secondary.dropdown-toggle {
+        padding: 0.2rem !important;
+    }
+    
 }
