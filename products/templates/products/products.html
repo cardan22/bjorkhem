@@ -18,34 +18,47 @@
         <div class="row pb-4">
             <div class="col">
                 <!-- Subheading for products in the main content block -->
-                <h1 class="products">Products</h1>
+                <h1 class="products">
+                    {% if current_categories %}
+                        {{ current_categories.0.name }}
+                    {% else %}
+                        Products
+                    {% endif %}
+                </h1>
             </div>    
         </div>
         <div class="row pb-3">
-            <!-- Loop through products to display in cards -->
-            {% for product in products %}
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <!-- Product card with image, name, price, and discount if applicable -->
-                <div class="product-card">
-                    <a href="{% url 'product_detail' product.id %}" class="image-card">
-                        <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
-                    </a>
-                    <div class="card-details">
-                        <h2 class="header-card pt-3">{{ product.name }}</h2>
+            {% if products %}
+                <!-- Loop through products to display in cards -->
+                {% for product in products %}
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <!-- Product card with image, name, price, and discount if applicable -->
+                        <div class="product-card">
+                            <a href="{% url 'product_detail' product.id %}" class="image-card">
+                                <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
+                            </a>
+                            <div class="card-details">
+                                <h2 class="header-card pt-3">{{ product.name }}</h2>
 
-                    {% if product.discount %}
-                        <!-- Display Regular Price with Strikethrough and Discounted Price -->
-                        <p class="product-price">
-                            <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
-                        </p>
-                    {% else %}
-                        <!-- Display Regular Price without Strikethrough if there is no discount -->
-                        <p class="product-price">{{ product.price }} KR</p>
-                    {% endif %}
+                            {% if product.discount %}
+                                <!-- Display Regular Price with Strikethrough and Discounted Price -->
+                                <p class="product-price">
+                                    <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
+                                </p>
+                            {% else %}
+                                <!-- Display Regular Price without Strikethrough if there is no discount -->
+                                <p class="product-price">{{ product.price }} KR</p>
+                            {% endif %}
+                            </div>
+                        </div>
                     </div>
+                {% endfor %}
+            {% else %}
+                <!-- Display a message if there are no products in the category -->
+                <div class="col">
+                    <p>No products in this category.</p>
                 </div>
-            </div>
-            {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

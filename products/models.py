@@ -8,6 +8,7 @@ def generate_sku():
     """
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
+
 class Category(models.Model):
     """
     Model representing a product category.
@@ -43,7 +44,7 @@ class Product(models.Model):
     """
     sku = models.CharField(max_length=254, unique=True, editable=True, default=generate_sku)
     name = models.CharField(max_length=254)
-    category_id = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     color = models.CharField(max_length=254, null=True, blank=True)
     size = models.CharField(max_length=254, null=True, blank=True)
     description = models.TextField()

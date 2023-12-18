@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views import View
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -9,16 +9,16 @@ from .models import Product, Category
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
-
+    
     products = Product.objects.all()
     query = None
     categories = None
 
     if request.GET:
         if 'category' in request.GET:
-            category_names = request.GET.getlist('category')
-            products = products.filter(category_id__name__in=category_names)
-            categories = Category.objects.filter(name__in=category_names)
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -82,6 +82,7 @@ class add_favorite_product(LoginRequiredMixin, View):
 
 class favorite_products(LoginRequiredMixin, ListView):
     """ A view to show favorite products """
+    
     model = Product
     template_name = 'products/favorite_products.html'
     context_object_name = 'favorite_products'
