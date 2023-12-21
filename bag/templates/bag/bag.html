@@ -8,50 +8,46 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="container px-5 px-xs-0">
+    <div class="container container-bag px-5 px-xs-0 pb-5">
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Your basket</h1>
             </div> 
         </div>
         
-        <div class="container mt-5">
+        <div class="container mt-md-5">
             <div class="row">
             <!-- Column 1: Bag Items -->
             <div class="col-lg-8">
                 {% if bag_items %}
-                <h2>Your order</h2>
+                <p><strong>Your order</strong></p>
 
                 {% for item in bag_items %}
                     <div class="row mb-3">
-                        <div class="col-md-2">
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                        <div class="col-md-3">
+                            <div class="img-container">
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid">
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h5>{{ product.name }}</h5>
-                                {% if product.discount %}
-                                    <!-- Display Regular Price with Strikethrough and Discounted Price -->
-                                    <p class="product-price">
-                                        <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
-                                    </p>
-                                {% else %}
-                                    <!-- Display Regular Price without Strikethrough if there is no discount -->
-                                    <p class="product-price">{{ product.price }} KR</p>
-                                {% endif %}
-                        </div>
-                        <div class="col-md-2">
-                            <p>Quantity: {{ product.quantity }}</p>
-                            <button class="btn btn-sm btn-danger">Remove</button>
+                        <div class="col-md-9 mt-2">
+                            <div class="d-flex justify-content-between">
+                                <span class="material-symbols-outlined delete-icon"> delete</span>
+                                <p><strong>{{ item.product.name }}</strong></p>
+                            </div>
+                            {% if product.discount %}
+                                <!-- Display Regular Price with Strikethrough and Discounted Price -->
+                                <p class="product-price">
+                                    <del>{{ item.product.price }} KR</del> <span class="text-danger">{{ item.product.discount }} KR</span>
+                                </p>
+                            {% else %}
+                                <!-- Display Regular Price without Strikethrough if there is no discount -->
+                                <p class="product-price">{{ item.product.price }} KR</p>
+                            {% endif %}
+                            <p>Quantity: {{ item.quantity }}</p>
+                            <hr>
                         </div>
                     </div>
                 {% endfor %}
-
-                <!-- Add/Remove Quantity -->
-                <div class="row mt-3">
-                    <div class="col-md-2">
-                    <button class="btn btn-success">Add Item</button>
-                    </div>
-                </div>
             </div>
             {% else %}
             <div class="container">
@@ -64,20 +60,33 @@
             <!-- Column 2: Summary -->
             {% if bag_items %}
                 <div class="col-lg-4">
-                    <h2>Summary</h2>
+                    <p><strong>Summary</strong></p>
 
                     <!-- Bag Total, Discounts, Grand Total -->
-                    <p>Bag Total: ... SEK</p>
-                    <p>Discounts: ... SEK</p>
-                    <p>Grand Total: ... SEK</p>
+                    <div class="bag-prices">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Bag Total:</p>
+                                <p>Discounts:</p>
+                                <p>Delivery:</p>
+                                <p class="pt-2"><b>Grand Total:</b></p>
+                            </div>
+                            <div class="col-6 text-right">
+                                <p>{{ item.product.price }} KR</p>
+                                <p>{{ item.product.discount }} KR</p>
+                                <p>KR</p>
+                                <p class="pt-2"><b>{{ grand_total|floatformat:2 }} KR</b></p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Free Shipping Message -->
                     <div class="green-container mt-3 p-3">
-                        <p>If you shop for XX SEK more, you will get free shipping.</p>
+                        <p>If you shop for <b>XX KR</b> more, you will get free shipping.</p>
                     </div>
 
                     <!-- Go to Checkout Button -->
-                    <button class="btn btn-primary mt-3">Go to Checkout</button>
+                    <button class="btn btn-primary mt-3 w-100">Go to Checkout</button>
                 </div>
             {% endif %}
         </div>

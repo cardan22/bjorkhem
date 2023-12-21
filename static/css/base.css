@@ -349,6 +349,37 @@ label[for="id_gdpr_consent"] {
     font-size: 0.8rem;
 }
 
+/* Shopping bag */
+
+.delete-icon {
+    position: absolute;
+    right: 1rem;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 19vh;
+    width: 100%;
+    overflow: hidden; 
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .bag-prices p {
+    line-height: 0.7rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .form-row > btn {
+    border-radius: 0;
+  }
+
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
@@ -380,6 +411,10 @@ label[for="id_gdpr_consent"] {
     .product-description-container {
         margin-top: 0 !important;
         padding-top: 0 !important;
+    }
+
+    .img-container {
+        height: 40vh;
     }
 }    
 
@@ -459,5 +494,12 @@ label[for="id_gdpr_consent"] {
         padding: 0.2rem !important;
     }
 
+    .container-bag {
+        padding: 0rem 0rem 2rem 0rem !important;
+    }
+
+    .container-bag h1 {
+        font-size: 1.5rem;
+    }
 }
     
