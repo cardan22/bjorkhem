@@ -15,7 +15,7 @@
     <!-- Main content block in the template -->
     <div class="overlay"></div>
     <div class="container-fluid container-products px-4">
-        <div class="row pb-4">
+        <div class="row pb-3">
             <div class="col d-flex justify-content-between align-items-center">
                 <!-- Subheading for products in the main content block -->
                 <h1 class="products">
@@ -32,46 +32,54 @@
                         <span class="material-symbols-outlined">sort</span> <span class="d-none d-sm-inline">Sort</span>
                     </button>
                     <div class="dropdown-menu w-100 sort-dropdown-menu" data-bs-display="static" aria-labelledby="sortDropdown">
+                        <div></div>
                         <a class="dropdown-item {% if current_sorting == 'price_asc' %}active{% endif %}" href="{% url 'products' %}?sort=price&direction=asc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Lowest Price</a>
                         <a class="dropdown-item {% if current_sorting == 'price_desc' %}active{% endif %}" href="{% url 'products' %}?sort=price&direction=desc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Highest Price</a>
                         <a class="dropdown-item {% if current_sorting == 'name_asc' %}active{% endif %}" href="{% url 'products' %}?sort=name&direction=asc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Name A-Z</a>
                         <a class="dropdown-item {% if current_sorting == 'name_desc' %}active{% endif %}" href="{% url 'products' %}?sort=name&direction=desc{% if current_categories %}&category={{ current_categories.0.name }}{% endif %}">Name Z-A</a>
                     </div>
-                </div>       
-            </div>    
+                </div>      
+            </div>
         </div>
-        <div class="row pb-3">
-            {% if products %}
-                <!-- Loop through products to display in cards -->
-                {% for product in products %}
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <!-- Product card with image, name, price, and discount if applicable -->
-                        <div class="product-card">
-                            <a href="{% url 'product_detail' product.id %}" class="image-card">
-                                <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
-                            </a>
-                            <div class="card-details">
-                                <h2 class="header-card pt-3">{{ product.name }}</h2>
+        <!-- Display product count and search term with link to "All Products" page. -->
+        <div class="row">
+            <div class="col">
+                <p class="text-muted mt-3 text-md-left">
+                    {% if search_term or current_categories or current_sorting != 'None_None' %}
+                        {% if current_categories %}
+                            <span class="small"><a href="{% url 'products' %}">
+                                <span class="material-symbols-outlined">chevron_left</span>All Products</a> &nbsp; | &nbsp;</span>
+                        {% endif %}
+                    {% endif %}
+                    {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                </p> 
+            </div>
+        </div>
+        <div class="row pb-3"> 
+            <!-- Loop through products to display in cards -->
+            {% for product in products %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <!-- Product card with image, name, price, and discount if applicable -->
+                    <div class="product-card">
+                        <a href="{% url 'product_detail' product.id %}" class="image-card">
+                            <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
+                        </a>
+                        <div class="card-details">
+                            <h2 class="header-card pt-3">{{ product.name }}</h2>
 
-                            {% if product.discount %}
-                                <!-- Display Regular Price with Strikethrough and Discounted Price -->
-                                <p class="product-price">
-                                    <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
-                                </p>
-                            {% else %}
-                                <!-- Display Regular Price without Strikethrough if there is no discount -->
-                                <p class="product-price">{{ product.price }} KR</p>
-                            {% endif %}
-                            </div>
+                        {% if product.discount %}
+                            <!-- Display Regular Price with Strikethrough and Discounted Price -->
+                            <p class="product-price">
+                                <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
+                            </p>
+                        {% else %}
+                            <!-- Display Regular Price without Strikethrough if there is no discount -->
+                            <p class="product-price">{{ product.price }} KR</p>
+                        {% endif %}
                         </div>
                     </div>
-                {% endfor %}
-            {% else %}
-                <!-- Display a message if there are no products in the category -->
-                <div class="col">
-                    <p>No products in this category.</p>
                 </div>
-            {% endif %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
