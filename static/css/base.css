@@ -475,10 +475,6 @@ label[for="id_gdpr_consent"] {
         margin-bottom: 0 !important;
     }
 
-    .form-control {
-        width: 100% !important;
-    }
-
     .form-header {
         font-size: 1.5rem !important;
     }
