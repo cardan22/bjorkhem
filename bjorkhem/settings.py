@@ -29,8 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-cardan22-bjorkhem-s2kqg3k6ddb.ws-eu107.gitpod.io',
-    '8000-cardan22-bjorkhem-s2kqg3k6ddb.ws-eu106.gitpod.io',
+    '8000-cardan22-bjorkhem-wcr7bo57lxe.ws-eu107.gitpod.io',
     'bjorkhem-8b5ef3ef81a6.herokuapp.com'
 ]
 
@@ -207,6 +206,5 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-cardan22-bjorkhem-s2kqg3k6ddb.ws-eu106.gitpod.io/*',
-    'https://8000-cardan22-bjorkhem-s2kqg3k6ddb.ws-eu107.gitpod.io/*'
+    'https://8000-cardan22-bjorkhem-wcr7bo57lxe.ws-eu107.gitpod.io/*'
 ]  
