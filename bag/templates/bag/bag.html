@@ -6,6 +6,7 @@
     </div>
 {% endblock %}
 
+
 {% block content %}
     <div class="overlay"></div>
     <div class="container container-bag px-5 px-xs-0 pb-5">
@@ -34,7 +35,7 @@
                                 <span class="material-symbols-outlined delete-icon"> delete</span>
                                 <p><strong>{{ item.product.name }}</strong></p>
                             </div>
-                            {% if product.discount %}
+                            {% if item.product.discount %}
                                 <!-- Display Regular Price with Strikethrough and Discounted Price -->
                                 <p class="product-price">
                                     <del>{{ item.product.price }} KR</del> <span class="text-danger">{{ item.product.discount }} KR</span>
@@ -43,7 +44,45 @@
                                 <!-- Display Regular Price without Strikethrough if there is no discount -->
                                 <p class="product-price">{{ item.product.price }} KR</p>
                             {% endif %}
-                            <p>Quantity: {{ item.quantity }}</p>
+
+                            <!-- Quantity form -->
+                            <form class="form update-form" method="POST" action="#">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-xs">
+                                        <div class="form-group">
+                                            <div class="input-group d-flex flex-nowrap">
+                                                <div class="input-group-prepend">
+                                                    <button class="ecrement-qty btn btn-sm rounded-0" 
+                                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                        <span class="material-symbols-outlined">
+                                                            remove
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <input class="form-control form-control-sm qty_input text-center" type="number"
+                                                    name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                    data-item_id="{{ item.item_id }}"
+                                                    id="id_qty_{{ item.item_id }}">
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty btn btn-sm rounded-0"
+                                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                        <span class="material-symbols-outlined">
+                                                            add
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                                <button class="update-link btn btn-sm rounded-0 ml-2">
+                                                    <span class="material-symbols-outlined">
+                                                        sync
+                                                    </span>
+                                                </button>   
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </form>
                             <hr>
                         </div>
                     </div>
@@ -72,18 +111,20 @@
                                 <p class="pt-2"><b>Grand Total:</b></p>
                             </div>
                             <div class="col-6 text-right">
-                                <p>{{ item.product.price }} KR</p>
-                                <p>{{ item.product.discount }} KR</p>
-                                <p>KR</p>
+                                <p>{{ total|floatformat:2 }} KR</p>
+                                <p>-{{ total_discount|floatformat:2 }} KR</p>
+                                <p>{{ delivery|floatformat:2 }} KR</p>
                                 <p class="pt-2"><b>{{ grand_total|floatformat:2 }} KR</b></p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Free Shipping Message -->
-                    <div class="green-container mt-3 p-3">
-                        <p>If you shop for <b>XX KR</b> more, you will get free shipping.</p>
+                    {% if free_delivery_delta > 0 %}
+                    <div class="green-container mt-3 p-3 text-center"> 
+                        <p>If you shop for <strong>{{ free_delivery_delta }} KR</strong> more, you will get free shipping.</p>  
                     </div>
+                    {% endif %}
 
                     <!-- Go to Checkout Button -->
                     <button class="btn btn-primary mt-3 w-100">Go to Checkout</button>
@@ -93,3 +134,4 @@
     </div>
 </div>
 {% endblock %}
+
