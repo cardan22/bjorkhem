@@ -118,6 +118,7 @@ a:focus {
     font-weight: 500;
     border: solid #687D64 0.1rem;
     border-radius: 0!important;
+    text-transform: uppercase;
 }
 
 .btn:hover,
@@ -390,6 +391,10 @@ label[for="id_gdpr_consent"] {
 
   .form-row > btn {
     border-radius: 0;
+  }
+
+  .remove-item {
+    cursor: pointer;
   }
 
 /* pad the top a bit when navbar is collapsed on mobile */
