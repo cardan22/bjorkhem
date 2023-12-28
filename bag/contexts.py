@@ -18,9 +18,12 @@ def bag_contents(request):
 
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
+
+        if product.discount is not None:
+            total_discount += (product.price - product.discount) * quantity
+
         regular_price = product.price * quantity
-        total_discount = (product.price - product.discount) * quantity
-        total = regular_price
+        total += regular_price
         product_count += quantity
         bag_items.append({
             'item_id': item_id,
@@ -35,7 +38,7 @@ def bag_contents(request):
         delivery = 0
         free_delivery_delta = 0
     
-    grand_total = total + total_discount + delivery
+    grand_total = total - total_discount + delivery
     
     context = {
         'bag_items': bag_items,
