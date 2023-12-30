@@ -200,8 +200,12 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
+# Stripe
 FREE_DELIVERY_THRESHOLD = 499
-STANDARD_DELIVERY_PERCENTAGE = 10    
+STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_CURRENCY = 'sek'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -210,4 +214,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-cardan22-bjorkhem-wcr7bo57lxe.ws-eu107.gitpod.io/*'
-]  
+]
