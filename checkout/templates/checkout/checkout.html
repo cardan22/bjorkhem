@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container container-bag px-5 px-xs-0 pb-5">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Checkout</h1>
+            </div> 
+        </div>
+        
+        <div class="container mt-md-5">
+            <div class="row">
+            <!-- Column 1: Bag Items -->
+            <div class="col-12 col-lg-6">
+                <p><strong>Your order</strong></p>
+
+                {% for item in bag_items %}
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <div class="img-container">
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-md-9 mt-2">
+                            <div class="d-flex justify-content-between">
+                                <p><strong>{{ item.product.name }}</strong></p>
+                            </div>
+                            {% if item.product.discount %}
+                                <!-- Display Regular Price with Strikethrough and Discounted Price -->
+                                <p class="product-price">
+                                    <del>{{ item.product.price }} KR</del> <span class="text-danger">{{ item.product.discount }} KR</span>
+                                </p>
+                            {% else %}
+                                <!-- Display Regular Price without Strikethrough if there is no discount -->
+                                <p class="product-price">{{ item.product.price }} KR</p>
+                            {% endif %}
+
+                            <!-- Quantity form -->
+                            
+                            <hr>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Column 2: Summary -->
+                <div class="col-12 col-lg-6">
+                    <p><strong>Order Summary</strong></p>
+
+                    <!-- Bag Total, Discounts, Grand Total -->
+                    <div class="bag-prices">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Bag Total:</p>
+                                <p>Discounts:</p>
+                                <p>Delivery:</p>
+                                <p class="pt-2"><b>Grand Total:</b></p>
+                            </div>
+                            <div class="col-6 text-right">
+                                <p>{{ total|floatformat:2 }} KR</p>
+                                <p>-{{ total_discount|floatformat:2 }} KR</p>
+                                <p>{{ delivery|floatformat:2 }} KR</p>
+                                <p class="pt-2"><b>{{ grand_total|floatformat:2 }} KR</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Checkout form -->
+            <div class="col-12 col-lg-6">
+                <form class="user-form" action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="mb-5">
+                        <p><b>Shipping details</b></p>
+                        {{ order_form.full_name | as_crispy_field }}
+                        {{ order_form.email | as_crispy_field }}
+                        {{ order_form.phone_number | as_crispy_field }}
+                        {{ order_form.address1 | as_crispy_field }}
+                        {{ order_form.address2 | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
+                        {{ order_form.city | as_crispy_field }}
+                        <div class="form-check form-check-inline mr-0">
+							{% if user.is_authenticated %}
+                                <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
+                                <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+							{% else %}
+								<label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+							{% endif %}
+						</div>
+                    </fieldset>
+                    <fieldset>
+                        <p><b>Payment</b></p>
+                        <!-- A Stripe card element will go here -->
+                        <div class="mb-3" id="card-element"></div>
+
+                        <!-- Used to display form errors -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    </fieldset>
+
+                    <div class="submit-button text-center mt-5 mb-2">                    
+						<button id="submit-button" class="btn btn-primary mt-3 w-100">
+							Complete Order
+						</button>
+                        <div class="green-container mt-3 p-3 text-center">
+                            <p class="small my-0">
+                                <span class="material-symbols-outlined">
+                                    info
+                                </span>
+                                <span>Your card will be charged <strong>{{ grand_total|floatformat:2 }} KR</strong></span>
+                            </p>
+                        </div>
+					</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
