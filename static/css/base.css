@@ -379,7 +379,7 @@ label[for="id_gdpr_consent"] {
 
 .img-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -539,10 +539,6 @@ label[for="id_gdpr_consent"] {
         transform: none !important;
         top: 8rem !important;
         border: 0;
-    }
-
-    .form-control {
-        width: 75% !important;
     }
 
     .header-container {
