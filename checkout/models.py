@@ -1,4 +1,5 @@
 import uuid
+from decimal import Decimal
 
 from django.db import models
 from django.db.models import Sum
@@ -36,10 +37,10 @@ class Order(models.Model):
         self.discount_total = 0
 
         for line_item in self.lineitems.all():
-            product_discount = line_item.product.discount or 0
+            product_discount = Decimal(line_item.product.discount or 0)
             self.discount_total += product_discount * line_item.quantity
 
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
