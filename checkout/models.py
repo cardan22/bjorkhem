@@ -34,19 +34,25 @@ class Order(models.Model):
         accounting for delivery costs.
         """
 
-        self.discount_total = 0
-
-        for line_item in self.lineitems.all():
-            product_discount = Decimal(line_item.product.discount or 0)
-            self.discount_total += product_discount * line_item.quantity
-
+        # Calculate the total discount
+        discount_total = sum((lineitem.product.price - lineitem.product.discount) * lineitem.quantity for lineitem in self.lineitems.all() if lineitem.product.discount is not None)
+        
+        # Calculate the order total without discounts
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+
+        # Calculate delivery cost
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
-        self.grand_total = self.order_total + self.delivery_cost - self.discount_total
+
+        # Calculate grand total including delivery cost and subtract discount
+        self.grand_total = self.order_total + self.delivery_cost - discount_total
+
+        self.discount_total = discount_total
+
         self.save()
+
 
     def save(self, *args, **kwargs):
         """
@@ -72,9 +78,11 @@ class OrderLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total, accounting for the product's discount.
         """
-        discounted_price = self.product.price - self.product.discount if self.product.discount else self.product.price
-        self.lineitem_total = discounted_price * self.quantity
+
+        self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
+
+        self.order.update_total()
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
