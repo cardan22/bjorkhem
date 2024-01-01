@@ -500,10 +500,6 @@ label[for="id_gdpr_consent"] {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
-
-    .img-container {
-        height: 40vh;
-    }
 }    
 
 /* // Small devices (landscape phones, 576px and down) */
