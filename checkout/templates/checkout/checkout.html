@@ -96,14 +96,15 @@
                             <p><b>Payment</b></p>
                             <!-- A Stripe card element will go here -->
                             <div class="mb-3" id="card-element"></div>
-
+                            <!-- Safe and encrypted transaction text -->
                             <div class="mb-3 small">
                                 <span class="material-symbols-outlined">lock</span>
                                 The transaction is safe and encrypted.
                             </div>
-
                             <!-- Used to display form errors -->
                             <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                            <!-- Pass the client secret to the view so we can get the payment intent id -->
+                            <input type="hidden" value="{{ client_secret }}" name="client_secret">
                         </fieldset>
                         <!-- Complete order btn -->
                         <div class="submit-button text-center mb-2">                    
