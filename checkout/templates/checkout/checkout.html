@@ -97,14 +97,20 @@
                             <!-- A Stripe card element will go here -->
                             <div class="mb-3" id="card-element"></div>
 
+                            <div class="mb-3 small">
+                                <span class="material-symbols-outlined">lock</span>
+                                The transaction is safe and encrypted.
+                            </div>
+
                             <!-- Used to display form errors -->
                             <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         </fieldset>
-
+                        <!-- Complete order btn -->
                         <div class="submit-button text-center mb-2">                    
                             <button id="submit-button" class="btn btn-primary mt-3 w-100">
                                 Complete Order
                             </button>
+                            <!-- Card charged info -->
                             <div class="green-container mt-3 p-3 text-center">
                                 <p class="small my-0">
                                     <span class="material-symbols-outlined">
@@ -119,7 +125,14 @@
             </div>
         </div>
     </div>
-</div>
+    <!-- Loading overlay with a spinning icon -->
+    <div id="loading-overlay">
+        <h1 class="text-light logo-font loading-spinner">
+            <span class="icon">
+                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            </span>
+        </h1>
+    </div>
 {% endblock %}
 
 {% block postloadjs %}

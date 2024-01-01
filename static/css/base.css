@@ -345,7 +345,7 @@ footer {
 }
 
 .user-form input {
-    border-color: #545E56;
+    border-color: #44342C;
     border-radius: 0;
     background-color: #FFFEF8;
 }
@@ -500,6 +500,7 @@ label[for="id_gdpr_consent"] {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
+
 }    
 
 /* // Small devices (landscape phones, 576px and down) */
