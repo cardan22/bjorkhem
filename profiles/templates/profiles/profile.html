@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-6 pb-5">
-                <p class="text-center pb-3">Default Delivery Information</p>
+                <p class="pb-3"><strong>Default Delivery Information</strong></p>
                 <form class="user-form mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
@@ -30,27 +30,26 @@
                 </form>
             </div>
             <div class="col-12 col-lg-6 pb-5">
-                <p class="text-center pb-3">Order History</p>
+                <p class="pb-3"><strong>Order History</strong></p>
                 <div class="order-history table-responsive">
                     {% if orders %}
                         {% for order in orders %}
                             <div class="order-details">
-                                <p><strong>Order nr:</strong> {{ order.order_number }} - {{ order.date }}</p>
+                                <a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}">
+                                        {{ order.order_number|truncatechars:6 }} - {{ order.date }}
+                                </a>
                                 <ul class="list-unstyled">
                                     {% for item in order.lineitems.all %}
-                                        <li class="small">
-                                            {% if item.product.has_sizes %}
-                                                Size {{ item.product.size|upper }}
-                                            {% endif %}{{ item.product.name }} x{{ item.quantity }}
-                                        </li>
+                                        
                                     {% endfor %}
                                 </ul>
-                                <p><strong>Order total:</strong> ${{ order.grand_total }}</p>
+                                <p><strong>Order total:</strong> {{ order.grand_total }} KR</p>
                                 <hr>
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p class="text-center">You haven't placed any orders yet.</p>
+                        <p>You haven't placed any orders yet.</p>
                     {% endif %}
                 </div>
             </div>
