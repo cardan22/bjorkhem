@@ -48,6 +48,7 @@ def checkout(request):
             'postcode': request.POST['postcode'],
             'city': request.POST['city'],
         }
+
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -68,7 +69,7 @@ def checkout(request):
 
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "One of the products in your bag wasn't found in our database."
                         "Please call us for assistance!")
                     )
                     order.delete()
@@ -142,9 +143,10 @@ def checkout_success(request, order_number):
         # Save the user's info
         if save_info:
             profile_data = {
+                'default_full_name': order.full_name,
                 'default_phone_number': order.phone_number,
-                'default_street_address1': order.address1,
-                'default_street_address2': order.address2,
+                'default_address1': order.address1,
+                'default_address2': order.address2,
                 'default_postcode': order.postcode,
                 'default_city': order.city,
             }
