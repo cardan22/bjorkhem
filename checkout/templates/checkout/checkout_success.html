@@ -14,17 +14,30 @@
     <div class="overlay"></div>
     <div class="container container-bag px-5 px-xs-0 pb-5">
         <div class="col d-flex flex-column align-items-center">
-            <h1 class="text-center">Thank you!</h1>
-            <p class="text-center pt-2">We start processing your order immediately, <br> an order confirmation will be sent shortly to 
-                <strong>{{ order.email }}</strong>.
-            </p>
-            <div class="text-center my-3">
-                <div class="col">
-                    <a href="{% url 'products' %}" class="btn btn-primary w-100">
-                        <span class="text-uppercase">Find more inspiration</span>
-                    </a>
+            {% if from_profile %}
+                <h1 class="text-center">Your Order</h1>
+                <p class="text-center pt-2">Here is information about your order
+                </p>
+                <div class="text-center my-3">
+                    <div class="col">
+                        <a href="{% url 'profile' %}" class="btn btn-primary w-100">
+                            <span class="text-uppercase">Go back to Profile</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <h1 class="text-center">Thank you!</h1>
+                <p class="text-center pt-2">We start processing your order immediately, <br> an order confirmation will be sent shortly to 
+                    <strong>{{ order.email }}</strong>.
+                </p>
+                <div class="text-center my-3">
+                    <div class="col">
+                        <a href="{% url 'products' %}" class="btn btn-primary w-100">
+                            <span class="text-uppercase">Find more inspiration</span>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
         <div class="container mt-sm-5">
             <div class="row justify-content-center">
