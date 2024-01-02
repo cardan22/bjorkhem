@@ -1,0 +1,23 @@
+Hello {{ order.full_name }},
+
+Thank you for choosing Björkhem for your order – we're delighted to send our products your way!
+Here's a summary of your order:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date|date:"Y-m-d" }}
+
+Order Total: {{ order.order_total }} SEK
+Discounts: {{ order.discount_total }} SEK
+Delivery: {{ order.delivery_cost }} SEK
+Grand Total: {{ order.grand_total }} SEK
+
+Your order will be shipped to {{ order.address1 }} in {{ order.city }}.
+
+You will receive an SMS notification at {{ order.phone_number }} when your order is ready for pickup.
+
+If you have any questions, feel free to reach out to us at {{ contact_email }}.
+
+Thank you so much for your order!
+
+Best regards,
+Björkhem
