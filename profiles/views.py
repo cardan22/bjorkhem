@@ -8,8 +8,8 @@ from checkout.models import Order
 
 def profile(request):
     """ Display the user's profile. """
+    
     profile = get_object_or_404(UserProfile, user=request.user)
-    gdpr_consent, _ = GDPRConsent.objects.get_or_create(user_profile=profile)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -22,12 +22,12 @@ def profile(request):
         form = UserProfileForm(instance=profile)
 
     orders = profile.orders.all()
-    
+
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
+        'on_profile_page': True,
     }
 
     return render(request, template, context)

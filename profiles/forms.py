@@ -20,6 +20,10 @@ class UserProfileForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
 
+        gdpr_consent = getattr(self.instance, 'gdprconsent', None)
+        if gdpr_consent:
+            self.fields['gdpr_consent'].initial = gdpr_consent.gdpr_consent
+
         placeholders = {
             'default_full_name': 'Full Name',
             'default_phone_number': 'Phone Number',
@@ -47,9 +51,6 @@ class UserProfileForm(forms.ModelForm):
         gdpr_consent, _ = GDPRConsent.objects.get_or_create(user_profile=user_profile)
         gdpr_consent.gdpr_consent = self.cleaned_data['gdpr_consent']
 
-        try:
-            gdpr_consent.save()
-        except Exception as e:
-            pass
+        gdpr_consent.save()
 
         return user_profile
