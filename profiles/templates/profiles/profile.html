@@ -37,14 +37,14 @@
                             <div class="order-details">
                                 <a href="{% url 'order_history' order.order_number %}"
                                         title="{{ order.order_number }}">
-                                        {{ order.order_number|truncatechars:6 }} - {{ order.date }}
+                                        <strong>{{ order.order_number }} - {{ order.date|date:"Y-m-d" }}</strong>
                                 </a>
                                 <ul class="list-unstyled">
                                     {% for item in order.lineitems.all %}
-                                        
+                                    {{ item.product.name }} x{{ item.quantity }},
                                     {% endfor %}
+                                    <p><strong>Order total: {{ order.grand_total }} KR</strong></p>
                                 </ul>
-                                <p><strong>Order total:</strong> {{ order.grand_total }} KR</p>
                                 <hr>
                             </div>
                         {% endfor %}

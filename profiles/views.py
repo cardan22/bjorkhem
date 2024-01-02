@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from .models import UserProfile
+from .models import UserProfile, GDPRConsent
 from .forms import UserProfileForm
 
 from checkout.models import Order
@@ -8,8 +8,8 @@ from checkout.models import Order
 
 def profile(request):
     """ Display the user's profile. """
-
     profile = get_object_or_404(UserProfile, user=request.user)
+    gdpr_consent, _ = GDPRConsent.objects.get_or_create(user_profile=profile)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -21,11 +21,12 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
 
+    orders = profile.orders.all()
     
     template = 'profiles/profile.html'
     context = {
         'form': form,
-        'profile': profile,
+        'orders': orders,
         'on_profile_page': True
     }
 
