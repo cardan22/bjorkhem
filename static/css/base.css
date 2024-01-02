@@ -357,8 +357,18 @@ label[for="id_gdpr_consent"] {
 .form-control {
     color:#44342C;
     background-color: #FFFEF8;
-    border-color: #687D64;
+    border-color: #44342C;
     border-radius: 0.1 rem;
+}
+
+.user-form input:focus,
+.user-form textarea:focus,
+.form-group input:focus,
+.form-group textarea:focus,
+.form-control:focus {
+    background-color: #FFFEF8;
+    border: inherit;
+    box-shadow: 0 0 0 0.2rem rgba(84, 94, 86, 0.50);
 }
 
 /* Shopping bag */

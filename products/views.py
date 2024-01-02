@@ -5,7 +5,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models.functions import Lower
 from django.db.models import Q
-from .models import Product, Category
+from .models import Product, Category, Stock
+from .forms import ProductForm
 
 
 def all_products(request):
@@ -115,3 +116,13 @@ class favorite_products(LoginRequiredMixin, ListView):
             context['favorite_products'] = favorite_products
         return context
    
+
+def add_product(request):
+    """ Add a product to the store """
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
