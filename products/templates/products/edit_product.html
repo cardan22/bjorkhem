@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container container-bag px-5 px-xs-0 pb-5">
+        <div class="col text-center">
+            <h1>Product Management</h1>
+        </div> 
+        
+        <div class="container mt-sm-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <p><strong>Edit Product</strong></p>
+                    <!-- Form for adding a new product -->
+                    <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong> Please fix the following issues:
+                                <ul>
+                                    {% for field, errors in form.errors.items %}
+                                        {% for error in errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div class="text-right">
+                            <!-- Buttons for submitting the form and canceling the action -->
+                            <button class="btn rounded-0 text-uppercase py-2 mt-3 mr-2" type="submit">
+                                <span class="material-symbols-outlined">update</span> Update Product
+                            </button>
+                            <a class="btn btn-secondary rounded-0 text-uppercase py-2 mt-3" href="{% url 'products' %}">
+                                Cancel <span class="material-symbols-outlined">close</span> 
+                            </a>
+                        </div>
+                    </form>
+                </div>      
+            </div>
+        </div>
+    </div>
+{% endblock %}
