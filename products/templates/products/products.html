@@ -41,7 +41,7 @@
                 </div>      
             </div>
         </div>
-        <!-- Display product count and search term with link to "All Products" page. -->
+        <!-- Display product count and search term with link to "All Products" page -->
         <div class="row">
             <div class="col">
                 <p class="text-muted mt-3 text-md-left">
@@ -61,20 +61,34 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <!-- Product card with image, name, price, and discount if applicable -->
                     <div class="product-card">
+                        <!-- Product image -->
                         <a href="{% url 'product_detail' product.id %}" class="image-card">
                             <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
                         </a>
+                        <!-- Product name -->
                         <div class="card-details">
                             <h2 class="header-card pt-3">{{ product.name }}</h2>
 
                         {% if product.discount %}
-                            <!-- Display Regular Price with Strikethrough and Discounted Price -->
+                            <!-- Display regular price with strikethrough and discounted price -->
                             <p class="product-price">
                                 <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
                             </p>
                         {% else %}
-                            <!-- Display Regular Price without Strikethrough if there is no discount -->
+                            <!-- Display regular price without strikethrough if there is no discount -->
                             <p class="product-price">{{ product.price }} KR</p>
+                        {% endif %}
+
+                        <!-- Display edit/delete links for superuser -->
+                        {% if request.user.is_superuser %}
+                        <div class="text-right pb-4">
+                            <small>
+                                <a href="{% url 'edit_product' product.id %}">
+                                    <span class="material-symbols-outlined edit-icon">edit</span>Edit</a> | 
+                                <a class="text-danger" href="{% url 'delete_product' product.id %}">
+                                    <span class="material-symbols-outlined edit-icon">delete</span>Delete</a>
+                            </small>
+                        </div>
                         {% endif %}
                         </div>
                     </div>
