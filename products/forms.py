@@ -1,4 +1,5 @@
 from django import forms
+from .widgets import CustomClearableFileInput
 from .models import Product, Category, Stock
 
 
@@ -11,9 +12,11 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = fields = ['sku', 'name', 'category', 'color',
-                           'size', 'description', 'image',
-                           'image_alt', 'price', 'discount', 'quantity'
+                           'size', 'description', 'image', 'image_url',
+                           'image_alt', 'price', 'discount', 'quantity',
                           ]
+
+    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)                  
 
     # Add quantity field for stock information
     quantity = forms.IntegerField(label='Quantity in Stock', required=True)    
