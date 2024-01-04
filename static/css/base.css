@@ -257,6 +257,30 @@ footer {
     line-height: inherit;
 }
 
+/* Newsletter */
+
+.newsletter-bg {
+    background-color: #EEEAE7;
+    width: 100%;
+}
+
+#mc_embed_signup {
+    clear: left;
+    font: inherit;
+    width: auto; 
+    margin: auto;
+    padding: 20px; 
+}
+
+input#mce-EMAIL {
+    border: none;
+    color: #44342C;
+}
+
+.policy-link {
+    text-decoration: underline;
+}
+
 /* Product details */
 
 .image-container {
