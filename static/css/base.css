@@ -269,7 +269,10 @@ footer {
     font: inherit;
     width: auto; 
     margin: auto;
-    padding: 20px; 
+}
+
+#mc_embed_signup form {
+    padding: 0;
 }
 
 input#mce-EMAIL {
