@@ -1,24 +1,62 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-    <div class="container header-container">
-    </div>
-{% endblock %}
-
 {% block content %}
-    <div class="container-fluid content-container">
-        <div class="row align-items-center">
-            <div class="col-md-12 text-center">
-                <h1 class="display-4 logo-font text-white">
-                    Get ready for spring
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="" class="btn btn-lg rounded-0 text-uppercase py-2">Shop Now</a>
-                    </h4>
+    <!-- Section with a call-to-action button -->
+    <div class="bg-container">
+        <div class="content-container">
+            <div class="row hero-text align-items-center justify-content-center">
+                <div class="col-md-12 text-center">
+                    <div class="text-center">
+                        <!-- Heading for the hero section -->
+                        <h1 class="display-4 logo-font text-white">
+                            Get ready for spring
+                        </h1>
+                        <!-- Call-to-action button linking to the products page -->
+                        <div class="my-5">
+                            <a href="{% url 'products' %}" class="btn btn-lg rounded-0 py-2">Shop Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Show latets news -->
+    <div class="container-fluid container-products px-4">
+        <div class="row"> 
+            <div class="col mt-4 mb-3">
+                <h2 class="products">News</h2>
+            </div>
+        </div>
+        <div class="row"> 
+            <!-- Loop through products to display in cards -->
+            {% for product in news_products %}
+                <div class="col-lg-3 col-6">
+                    <!-- Product card with image, name, price, and discount if applicable -->
+                    <div class="product-card">
+                        <!-- Product image -->
+                        <a href="{% url 'product_detail' product.id %}" class="image-card">
+                            <img src="{{ product.image.url }}" alt="{{ product.image_alt }}">
+                        </a>
+                        <!-- Product name -->
+                        <div class="card-details">
+                            <h2 class="header-card pt-3">{{ product.name }}</h2>
+
+                        {% if product.discount %}
+                            <!-- Display regular price with strikethrough and discounted price -->
+                            <p class="product-price">
+                                <del>{{ product.price }} KR</del> <span class="text-danger">{{ product.discount }} KR</span>
+                            </p>
+                        {% else %}
+                            <!-- Display regular price without strikethrough if there is no discount -->
+                            <p class="product-price">{{ product.price }} KR</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Include the newsletter section -->
+    {% include 'includes/newsletter.html' %} 
 {% endblock %}

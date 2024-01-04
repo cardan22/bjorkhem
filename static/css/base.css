@@ -14,12 +14,12 @@ body {
     font-family: "Inter", sans-serif;
     min-height: 100vh;
     color: #44342C;
-    background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
 main {
     flex: 1 0 auto;
+    background-color: #FFFEF8;
 }
 
 a {
@@ -156,6 +156,19 @@ a:focus {
 
 input[name='q']::placeholder {
     color: #44342C;
+}
+
+/* Home page */
+
+.bg-container {
+    background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center;
+    margin: 0;
+    padding: 0;
+    height: 60vh;
+}
+
+.hero-text {
+    padding-top: 7rem;
 }
 
 /* Footer */
