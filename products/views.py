@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models.functions import Lower
 from django.db.models import Q
-from .models import Product, Category, Stock
+from .models import Product, Category, RelatedProduct
 from .forms import ProductForm
 
 
@@ -67,12 +67,13 @@ class product_detail(View):
 
     def get(self, request, product_id):
         product = get_object_or_404(Product, id=product_id)
-
+        related_products = RelatedProduct.objects.filter(from_product=product).select_related('to_product')
         favorite = product.favorites.filter(id=request.user.id).exists()
 
         context = {
             'product': product,
             'favorite': favorite,
+            'related_products': related_products,
         }
 
         return render(request, self.template_name, context)
@@ -129,7 +130,15 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product = form.save()
+            product = form.save(commit=False)
+            product.save()
+
+            # Save related products
+            related_products = form.cleaned_data.get('related_products')
+            if related_products:
+                for related_product in related_products:
+                    RelatedProduct.objects.create(from_product=product, to_product=related_product)
+
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -157,7 +166,15 @@ def edit_product(request, product_id):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
-            form.save()
+            product = form.save(commit=False)
+            product.save()
+
+            # Update related products
+            related_products = form.cleaned_data.get('related_products')
+            RelatedProduct.objects.filter(from_product=product).delete()
+            if related_products:
+                for related_product in related_products:
+                    RelatedProduct.objects.create(from_product=product, to_product=related_product)
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -174,6 +191,7 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
@@ -185,4 +203,5 @@ def delete_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
-    return redirect(reverse('products'))    
+    return redirect(reverse('products'))
+

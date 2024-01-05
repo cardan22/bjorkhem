@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Stock
+from .models import Product, Category, RelatedProduct
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -9,17 +9,9 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'image',
-        'get_stock_quantity',
     )
 
     ordering = ('sku',)
-
-    def get_stock_quantity(self, obj):
-        stock = Stock.objects.filter(product=obj).first()
-
-        return stock.quantity if stock else None
-
-    get_stock_quantity.short_description = 'Stock Quantity'
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -29,12 +21,12 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
-class StockAdmin(admin.ModelAdmin):
+class RelatedProductAdmin(admin.ModelAdmin):
     list_display = (
-        'product',
-        'quantity',
+        'from_product',
+        'to_product',
 )
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Stock, StockAdmin)
+admin.site.register(RelatedProduct, RelatedProductAdmin)
