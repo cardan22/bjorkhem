@@ -88,9 +88,10 @@
                 {% endfor %}
             </div>
             {% else %}
-            <div class="container">
-                <div class="row">
+            <div class="container mx-auto">
+                <div class="justify-content-center pt-4">
                     <p class="text-center">Your basket is empty.</p>
+                    <button class="btn btn-primary mx-auto d-block"><a href="{% url 'products' %}">Explore Our Products</a></button>
                 </div>
             </div> 
             {% endif %}
