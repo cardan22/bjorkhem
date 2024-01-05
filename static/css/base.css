@@ -91,6 +91,12 @@ a:focus {
     color: #687D64;
 }
 
+.custom-navbar-toggler:hover,
+.custom-navbar-toggler:active,
+.custom-navbar-toggler:focus{
+    background-color: #44342C;
+}
+
 .card-body {
     border: 0;
     border-bottom: solid 1px #ced4da;
@@ -169,6 +175,14 @@ input[name='q']::placeholder {
 
 .hero-text {
     padding-top: 7rem;
+}
+
+/* Contact Us page */
+
+.question-btn {
+    background-color: inherit;
+    font-weight: bold;
+    color: #44342C;
 }
 
 /* Footer */
@@ -301,8 +315,6 @@ input#mce-EMAIL {
 
 .image-container {
     position: relative;
-    height: 80%;
-    padding-bottom: 100%;
     overflow: hidden;
 }
 
@@ -408,6 +420,10 @@ label {
     background-color: #FFFEF8;
     border-color: #44342C;
     border-radius: 0.1 rem;
+}
+
+.form-control-sm {
+    border-color: #545E56;
 }
 
 .user-form input:focus,
@@ -594,16 +610,32 @@ label {
 /* // Small devices (landscape phones, 576px and down) */
 @media screen and (max-width: 576px) {
     .navbar {
-        padding: 0.5rem;
+        padding: 0.5rem 1.4rem;
     }
 
     .navbar-brand {
         margin: 0;
         font-size: small;
     }
+
+    .header-card {
+        font-size: 0.8rem;
+    }
+
+    .products {
+        font-size: 1rem;
+    }
+
+    .product-price {
+        font-size: 0.9rem !important;
+    }
     
     .display-4  {
         font-size: 2rem;
+    }
+
+    .btn {
+        font-size: small;
     }
 
     .card-body {
@@ -634,14 +666,6 @@ label {
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         padding-top: 0 !important;
-    }
-
-    .product-details-container {
-        padding: 0.9rem !important;
-    }
-
-    .image-container{
-        margin-bottom: 0 !important;
     }
 
     .form-header {
