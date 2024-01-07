@@ -8,18 +8,22 @@
 
 /* Body */
 
+body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 body {
     display: flex;
     flex-direction: column;
     font-family: "Inter", sans-serif;
     min-height: 100vh;
     color: #44342C;
-    background-size: cover;
+    background-color: #FFFEF8;
 }
 
 main {
     flex: 1 0 auto;
-    background-color: #FFFEF8;
 }
 
 a {
@@ -31,21 +35,11 @@ a:hover,
 a:active,
 a:focus {
     text-decoration: none;
-    color: inherit;
+    color: #687D64;
 }
 
 .material-symbols-outlined {
     vertical-align: bottom;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: #FFFEF8;
-    z-index: -1;
 }
 
 .text-muted {
@@ -91,6 +85,14 @@ a:focus {
     color: #687D64;
 }
 
+.navbar-toggler.navbar-toggler-icon {
+    background-color: #44342C;
+}
+
+.navbar-toggler {
+    margin-left: 0;
+}
+
 .custom-navbar-toggler:hover,
 .custom-navbar-toggler:active,
 .custom-navbar-toggler:focus{
@@ -104,6 +106,7 @@ a:focus {
 
 .border-top {
     border-color:#D9D9D9 !important;
+    padding: 0.4rem 0rem;
 }
 
 .dropdown-item {
@@ -164,12 +167,17 @@ input[name='q']::placeholder {
     color: #44342C;
 }
 
+.btn-search {
+    border: 0;
+}
+
 /* Home page */
 
 .bg-container {
     background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center;
     margin: 0;
     padding: 0;
+    width: 100%;
     height: 60vh;
 }
 
@@ -305,6 +313,7 @@ footer {
 input#mce-EMAIL {
     border: none;
     color: #44342C;
+    background-color: #FFFEF8 !important;
 }
 
 .policy-link {
@@ -314,24 +323,24 @@ input#mce-EMAIL {
 /* Product details */
 
 .image-container {
+    max-height: 80vh;
     position: relative;
     overflow: hidden;
+    object-fit: cover;
+    display: flex;
+    object-position: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.product-img {
+.image-container img {
     width: 100%;
-    height: 50vh;
-    object-fit: cover;
-    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .product-details-container p {
     font-size: 0.9rem;
-}
-
-.product-img {
-    display: flex;
-    flex-direction: column;
 }
 
 .product-price {
@@ -348,6 +357,10 @@ input#mce-EMAIL {
 }
 
 /* Allauth form formatting */
+
+#id_your_remember_me_checkbox input {
+    border-radius: 0px !important;
+}
 
 .allauth-form-inner-content input {
     border-color: #545E56;
@@ -434,6 +447,10 @@ label {
     background-color: #FFFEF8;
     border: inherit;
     box-shadow: 0 0 0 0.2rem rgba(84, 94, 86, 0.50);
+}
+
+a.button.secondaryAction {
+    text-decoration: underline;
 }
 
 /* Shopping bag */
@@ -610,7 +627,7 @@ label {
 /* // Small devices (landscape phones, 576px and down) */
 @media screen and (max-width: 576px) {
     .navbar {
-        padding: 0.5rem 1.4rem;
+        padding: 0.5rem 2rem 0.8rem 1rem;
     }
 
     .navbar-brand {
@@ -618,8 +635,12 @@ label {
         font-size: small;
     }
 
+    .form-inline .form-control {
+        width: 80% !important;
+    }
+
     .header-card {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .products {
