@@ -2,170 +2,204 @@
 {% load static %}
 
 {% block page_header %}
+    <!-- Page header block in the container -->
     <div class="container header-container">
     </div>
 {% endblock %}
 
-
 {% block content %}
-    <div class="overlay"></div>
+    <!-- Bag content block -->
     <div class="container container-bag px-5 px-xs-0 pb-5">
         <div class="col">
+            <!-- Bag title -->
             <h1 class="text-center">Your basket</h1>
         </div> 
         
         <div class="container mt-md-5">
-            <div class="row">
-            <!-- Column 1: Bag Items -->
-            <div class="col-lg-8">
-                {% if bag_items %}
-                <p><strong>Your order</strong></p>
+            <div class="row justify-content-center">
+                <!-- Column 1: Bag Items -->
+                <div class="col-lg-8">
+                    {% if bag_items %}
+                        <!-- Order items details -->
+                        <p><strong>Your order</strong></p>
 
-                {% for item in bag_items %}
-                    <div class="row mb-3">
-                        <div class="col-md-3">
-                            <div class="img-container">
-                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid">
-                            </div>
-                        </div>
-                        <div class="col-md-9 mt-2">
-                            <div class="d-flex justify-content-between">
-                                <a class="remove-item delete-icon nav-link" id="remove_{{ item.item_id }}">
-                                    <span class="material-symbols-outlined"> delete</span>
-                                </a>
-                                <p><strong>{{ item.product.name }}</strong></p>
-                            </div>
-                            {% if item.product.discount %}
-                                <!-- Display Regular Price with Strikethrough and Discounted Price -->
-                                <p class="product-price">
-                                    <del>{{ item.product.price }} KR</del> <span class="text-danger">{{ item.product.discount }} KR</span>
-                                </p>
-                            {% else %}
-                                <!-- Display Regular Price without Strikethrough if there is no discount -->
-                                <p class="product-price">{{ item.product.price }} KR</p>
-                            {% endif %}
-
-                            <!-- Quantity form -->
-                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
-                                {% csrf_token %}
-                                <div class="form-row">
-                                    <div class="col-xs">
-                                        <div class="form-group">
-                                            <div class="input-group d-flex flex-nowrap">
-                                                <div class="input-group-prepend">
-                                                    <button class="decrement-qty btn btn-sm rounded-0"
-                                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                        <span class="material-symbols-outlined">
-                                                            remove
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                                <input class="form-control form-control-sm qty_input text-center" type="number"
-                                                    name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                    data-item_id="{{ item.item_id }}"
-                                                    id="id_qty_{{ item.item_id }}">
-                                                <div class="input-group-append">
-                                                    <button class="increment-qty btn btn-sm rounded-0"
-                                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                        <span class="material-symbols-outlined">
-                                                            add
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                                <button class="update-link btn btn-sm rounded-0 ml-2">
-                                                    <span class="material-symbols-outlined">
-                                                        sync
-                                                    </span>
-                                                </button>   
-                                            </div>
-                                        </div>
+                        {% for item in bag_items %}
+                            <!-- Order item row -->
+                            <div class="row mb-3">
+                                <!-- Product image column -->
+                                <div class="col-4">
+                                    <div class="img-container">
+                                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid">
                                     </div>
-                                </div>  
-                            </form>
-                        </div>
-                    </div>
-                    <hr>
-                {% endfor %}
-            </div>
-            {% else %}
-            <div class="container mx-auto">
-                <div class="justify-content-center pt-4">
-                    <p class="text-center">Your basket is empty.</p>
-                    <button class="btn btn-primary mx-auto d-block"><a href="{% url 'products' %}">Explore Our Products</a></button>
-                </div>
-            </div> 
-            {% endif %}
+                                </div>
+                                <!-- Product details column -->
+                                <div class="col-8 mt-2">
+                                    <!-- Product name and remove button -->
+                                    <div class="d-flex justify-content-between">
+                                        <a class="remove-item delete-icon nav-link" id="remove_{{ item.item_id }}">
+                                            <span class="material-symbols-outlined"> delete</span>
+                                        </a>
+                                        <p class="pr-5"><strong>{{ item.product.name }}</strong></p>
+                                    </div>
+                                    <!-- Product price -->
+                                    {% if item.product.discount %}
+                                        <!-- Display Regular Price with Strikethrough and Discounted Price -->
+                                        <p class="product-price">
+                                            <del>{{ item.product.price }} KR</del> <span class="text-danger">{{ item.product.discount }} KR</span>
+                                        </p>
+                                    {% else %}
+                                        <!-- Display Regular Price without Strikethrough if there is no discount -->
+                                        <p class="product-price">{{ item.product.price }} KR</p>
+                                    {% endif %}
 
-            <!-- Column 2: Summary -->
-            {% if bag_items %}
-                <div class="col-lg-4">
-                    <p><strong>Summary</strong></p>
-
-                    <!-- Bag Total, Discounts, Grand Total -->
-                    <div class="bag-prices">
-                        <div class="row">
-                            <div class="col-6">
-                                <p>Bag Total:</p>
-                                <p>Discounts:</p>
-                                <p>Delivery:</p>
-                                <p class="pt-2"><b>Grand Total:</b></p>
+                                    <!-- Quantity form -->
+                                    <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                                        {% csrf_token %}
+                                        <div class="form-row">
+                                            <div class="col-xs">
+                                                <!-- Quantity input group -->
+                                                <div class="form-group">
+                                                    <div class="input-group d-flex flex-nowrap">
+                                                        <!-- Decrement quantity button -->
+                                                        <div class="input-group-prepend">
+                                                            <button class="decrement-qty btn btn-sm rounded-0"
+                                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                                <span class="material-symbols-outlined">
+                                                                    remove
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                        <!-- Quantity input -->
+                                                        <input class="form-control form-control-sm qty_input text-center" type="number"
+                                                            name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                            data-item_id="{{ item.item_id }}"
+                                                            id="id_qty_{{ item.item_id }}">
+                                                        <!-- Increment quantity button -->
+                                                        <div class="input-group-append">
+                                                            <button class="increment-qty btn btn-sm rounded-0"
+                                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                                <span class="material-symbols-outlined">
+                                                                    add
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                        <!-- Update quantity button -->
+                                                        <button class="update-link btn btn-sm rounded-0 ml-2">
+                                                            <span class="material-symbols-outlined">
+                                                                sync
+                                                            </span>
+                                                        </button>   
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col-6 text-right">
-                                <p>{{ total|floatformat:2 }} KR</p>
-                                <p>-{{ total_discount|floatformat:2 }} KR</p>
-                                <p>{{ delivery|floatformat:2 }} KR</p>
-                                <p class="pt-2"><b>{{ grand_total|floatformat:2 }} KR</b></p>
+                            <!-- Horizontal line separator -->
+                            <hr>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        <!-- Empty bag message -->
+                        <div class="container mx-auto">
+                            <div class="justify-content-center pt-4">
+                                <p class="text-center">Your basket is empty.</p>
+                                <!-- Explore products button -->
+                                <button class="btn btn-primary mx-auto d-block"><a href="{% url 'products' %}">Explore Our Products</a></button>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Free Shipping Message -->
-                    {% if free_delivery_delta > 0 %}
-                    <div class="green-container mt-3 p-3 text-center"> 
-                        <p>If you shop for <strong>{{ free_delivery_delta }} KR</strong> more, you will get free shipping.</p>  
-                    </div>
+                        </div> 
                     {% endif %}
 
-                    <!-- Go to Checkout Button -->
-                    <a href="{% url 'checkout' %}" class="btn btn-primary mt-3 w-100">Go to Checkout</a>
+                    <!-- Column 2: Summary -->
+                    {% if bag_items %}
+                        <div class="col-lg-4">
+                            <!-- Summary title -->
+                            <p><strong>Summary</strong></p>
+
+                            <!-- Bag Total, Discounts, Grand Total -->
+                            <div class="bag-prices">
+                                <!-- Summary rows -->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <!-- Bag Total row -->
+                                        <p>Bag Total:</p>
+                                        <!-- Discounts row -->
+                                        <p>Discounts:</p>
+                                        <!-- Delivery row -->
+                                        <p>Delivery:</p>
+                                        <!-- Grand Total row -->
+                                        <p class="pt-2"><b>Grand Total:</b></p>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- Bag Total value -->
+                                        <p>{{ total|floatformat:2 }} KR</p>
+                                        <!-- Display discounts if available -->
+                                        {% if total_discount > 0 %}
+                                            <!-- Discounts value -->
+                                            <p>-{{ total_discount|floatformat:2 }} KR</p>
+                                        {% endif %}
+                                        <!-- Check if free delivery is met -->
+                                        {% if free_delivery_delta == 0 %}
+                                            <!-- Free Delivery row -->
+                                            <p>Free Delivery</p>
+                                        {% else %}
+                                            <!-- Delivery value -->
+                                            <p>{{ delivery|floatformat:2 }} KR</p>
+                                        {% endif %}
+                                        <!-- Grand Total value -->
+                                        <p class="pt-2"><b>{{ grand_total|floatformat:2 }} KR</b></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Free Shipping Message -->
+                            {% if free_delivery_delta > 0 %}
+                                <!-- Free Shipping information -->
+                                <div class="green-container mt-3 p-3 text-center"> 
+                                    <p>If you shop for <strong>{{ free_delivery_delta }} KR</strong> more, you will get free shipping.</p>  
+                                </div>
+                            {% endif %}
+
+                            <!-- Go to Checkout Button -->
+                            <a href="{% url 'checkout' %}" class="btn btn-primary mt-3 w-100">Go to Checkout</a>
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block postloadjs %}
-{{ block.super }}
-{% include 'products/includes/quantity_input_script.html' %}
+    <!-- Load additional JavaScript after the main content -->
+    {{ block.super }}
+    {% include 'products/includes/quantity_input_script.html' %}
 
-<!--
-/**
- * Handles updating quantity and removing items in the shopping bag.
- *
- * Code taken from @code institute for boutique ado project.
--->
+    <!--
+    /**
+     * Handles updating quantity and removing items in the shopping bag.
+     *
+     * Code taken from @code institute for boutique ado project.
+    -->
+    <script type="text/javascript">
+        // Update quantity on click
+        $('.update-link').click(function(e) {
+            var form = $(this).prev('.update-form');
+            form.submit();
+        });
 
-<script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    });
+        // Remove item and reload on click
+        $('.remove-item').click(function(e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var url = `/bag/remove/${itemId}/`;
+            var data = {'csrfmiddlewaretoken': csrfToken};
 
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    });
-</script>
-
+            $.post(url, data)
+            .done(function() {
+                location.reload();
+            });
+        });
+    </script>
 {% endblock %}
-

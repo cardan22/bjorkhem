@@ -5,7 +5,14 @@
     box-shadow: 0 0 0 0.2rem rgba(84, 94, 86, 0.50);
 }
 
+.text-info {
+  color: #44342C !important;
+  text-decoration: underline;
+}
 
+.form-check-label a.text-info:hover {
+  color: #687D64 !important;
+}
 
 .StripeElement,
 .stripe-style-input {

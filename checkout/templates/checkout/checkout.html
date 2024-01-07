@@ -2,18 +2,21 @@
 {% load static %}
 
 {% block extra_css %}
+    <!-- Add custom CSS for the checkout page -->
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
+    <!-- Header container for the checkout page -->
     <div class="container header-container">
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
+    <!-- Main content container for the checkout page -->
     <div class="container container-bag px-5 px-xs-0 pb-5">
         <div class="col">
+            <!-- Checkout page heading -->
             <h1 class="text-center">Checkout</h1>
         </div> 
         
@@ -21,16 +24,20 @@
             <div class="row">
                 <!-- Order summary -->
                 <div class="col-12 col-lg-6">
+                    <!-- Section heading for order summary -->
                     <p><strong>Order Summary</strong></p>
 
                     {% for item in bag_items %}
+                        <!-- Display each ordered item with details -->
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-4">
+                                <!-- Product image container -->
                                 <div class="img-container">
                                     <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid">
                                 </div>
                             </div>
-                            <div class="col-md-9 mt-2">
+                            <div class="col-8 mt-2">
+                                <!-- Product details -->
                                 <p><strong>{{ item.product.name }}</strong></p>
                                 {% if item.product.discount %}
                                     <!-- Display Regular Price with Strikethrough and Discounted Price -->
@@ -52,15 +59,25 @@
                     <div class="bag-prices mt-sm-4">
                         <div class="row">
                             <div class="col-6">
+                                <!-- Display Bag Total, Discounts, Delivery, and Grand Total -->
                                 <p>Bag Total:</p>
                                 <p>Discounts:</p>
                                 <p>Delivery:</p>
                                 <p class="pt-2"><b>Grand Total:</b></p>
                             </div>
                             <div class="col-6 text-right">
+                                <!-- Display corresponding values dynamically -->
                                 <p>{{ total|floatformat:2 }} KR</p>
-                                <p>-{{ total_discount|floatformat:2 }} KR</p>
-                                <p>{{ delivery|floatformat:2 }} KR</p>
+                                <!-- Display discounts if available -->
+                                {% if total_discount > 0 %}
+                                    <p>-{{ total_discount|floatformat:2 }} KR</p>
+                                {% endif %}
+                                <!-- Check if free delivery is met -->
+                                {% if free_delivery_delta == 0 %}
+                                    <p>Free Delivery</p>
+                                {% else %}
+                                    <p>{{ delivery|floatformat:2 }} KR</p>
+                                {% endif %}
                                 <p class="pt-2"><b>{{ grand_total|floatformat:2 }} KR</b></p>
                             </div>
                         </div>
@@ -69,10 +86,13 @@
 
                 <!-- Checkout form -->
                 <div class="col-12 col-lg-6">
+                    <!-- Form for user details and payment -->
                     <form class="user-form" action="{% url 'checkout' %}" method="POST" id="payment-form">
                         {% csrf_token %}
-                        <fieldset class="mb-5 mt-xs-4">
+                        <!-- Shipping details section -->
+                        <fieldset class="my-3 mb-lg-5">
                             <p><b>Shipping details</b></p>
+                            <!-- Display shipping details form fields -->
                             {{ order_form.full_name | as_crispy_field }}
                             {{ order_form.email | as_crispy_field }}
                             {{ order_form.phone_number | as_crispy_field }}
@@ -80,11 +100,13 @@
                             {{ order_form.address2 | as_crispy_field }}
                             {{ order_form.postcode | as_crispy_field }}
                             {{ order_form.city | as_crispy_field }}
+                            <!-- Save info checkbox for authenticated users -->
                             <div class="form-check form-check-inline mr-0">
                                 {% if user.is_authenticated %}
                                     <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
                                     <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
                                 {% else %}
+                                    <!-- Display login or signup link for non-authenticated users -->
                                     <label class="form-check-label" for="id-save-info">
                                         <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
                                         <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
@@ -92,26 +114,27 @@
                                 {% endif %}
                             </div>
                         </fieldset>
+                        <!-- Payment details section -->
                         <fieldset>
                             <p><b>Payment</b></p>
-                            <!-- A Stripe card element will go here -->
+                            <!-- Stripe card element container -->
                             <div class="mb-3" id="card-element"></div>
                             <!-- Safe and encrypted transaction text -->
                             <div class="mb-3 small">
                                 <span class="material-symbols-outlined">lock</span>
                                 The transaction is safe and encrypted.
                             </div>
-                            <!-- Used to display form errors -->
+                            <!-- Display form errors if any -->
                             <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                            <!-- Pass the client secret to the view so we can get the payment intent id -->
+                            <!-- Hidden input to pass client secret to the view -->
                             <input type="hidden" value="{{ client_secret }}" name="client_secret">
                         </fieldset>
-                        <!-- Complete order btn -->
+                        <!-- Complete order button -->
                         <div class="submit-button text-center mb-2">                    
                             <button id="submit-button" class="btn btn-primary mt-3 w-100">
                                 Complete Order
                             </button>
-                            <!-- Card charged info -->
+                            <!-- Card charged information -->
                             <div class="green-container mt-3 p-3 text-center">
                                 <p class="small my-0">
                                     <span class="material-symbols-outlined">
@@ -137,8 +160,10 @@
 {% endblock %}
 
 {% block postloadjs %}
+    <!-- Include Stripe public key and client secret for payment -->
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
+    <!-- Include JavaScript for Stripe Elements -->
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
