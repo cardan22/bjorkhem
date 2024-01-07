@@ -18,9 +18,13 @@
                 <div class="col-12 col-md-6 col-lg-10 px-0 pb-3">
                     <div class="d-flex justify-content-between">
                         <!-- Link to go back with a chevron icon -->
-                        <a href="#" onclick="history.back();">
-                            <span class="material-symbols-outlined">chevron_left</span>back
-                        </a>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="#" onclick="history.back();"></li>
+                              <li class="breadcrumb-item"><a href="{% url 'products' %}"><span class="material-symbols-outlined">chevron_left</span> All Products</a></li>
+                              <li class="breadcrumb-item" aria-current="page"><a href="#" onclick="history.back();">{{ product.category }}</a></li>
+                            </ol>
+                          </nav>
     
                         <!-- Favorite icon for small screens -->
                         {% if user.is_authenticated %}
@@ -51,7 +55,7 @@
                 {% endif %}
     
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-6 col-lg-6 pb-4 pb-lg-0 mb-3">
+                    <div class="col-12 col-md-6 col-lg-6 pb-4 pb-lg-5 mb-3">
                         <!--Image container -->
                         <div class="image-container">
                             <a href="{{ product.image.url }}" target="_blank">
