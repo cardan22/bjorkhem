@@ -1,13 +1,15 @@
+<!-- Newsletter Section -->
 <div class="newsletter-bg py-4 px-2 p-sm-5">
     <div class="container">
         <h2 class="text-center products mt-0 pb-3">Get Our Newsletter</h2>
 
+        <!-- Newsletter Form -->
         <form action="https://sanktkors.us21.list-manage.com/subscribe/post?u=fc05ae4ad0a85d4050ccd4942&amp;id=0481ac4d6f&amp;f_id=0099f7e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="input-group mb-3">
                         <input type="email" name="EMAIL" class="form-control rounded-0" id="mce-EMAIL" required="" placeholder="Add Email" aria-label="Email Address">
-                        <div class="input-group-append">
+                        <div class="input">
                             <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary rounded-0">
                                 <span class="material-symbols-outlined">chevron_right</span>
                             </button>
@@ -16,6 +18,7 @@
                 </div>
             </div>
             
+            <!-- Responses Section -->
             <div class="row">
                 <div class="col-12">
                     <small>
@@ -27,6 +30,7 @@
                 </div>
             </div>
 
+            <!-- Hidden Input for Bot Protection -->
             <div aria-hidden="true" style="position: absolute; left: -5000px;">
                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups -->
                 <input type="text" name="b_fc05ae4ad0a85d4050ccd4942_0481ac4d6f" tabindex="-1" value="">
@@ -40,12 +44,12 @@
     </div>
 </div>
 
-
 {% block postloadjs %}
     <!-- Custom JavaScript for Mailchimp Validation  -->
     
     <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
 
+    <!-- Custom JavaScript for Mailchimp Form Initialization -->
     <script type="text/javascript">
         (function($) {
             window.fnames = new Array();
