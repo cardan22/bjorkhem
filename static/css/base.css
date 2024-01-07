@@ -16,7 +16,7 @@ body, html {
 body {
     display: flex;
     flex-direction: column;
-    font-family: "Inter", sans-serif;
+    font-family: "Jost", sans-serif;
     min-height: 100vh;
     color: #44342C;
     background-color: #FFFEF8;
@@ -45,6 +45,29 @@ a:focus {
 .text-muted {
     color: #545E56 !important;
 }
+
+a.nav-link {
+    background-color: transparent !important;
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+a.nav-link:hover {
+    color: inherit !important;
+}
+
+a.nav-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.dropdown-item:hover,
+.dropdown-item:active,
+.dropdown-item:focus {
+    background-color: inherit;
+    color: #687D64;
+}
+
 
 /* Container */
 
@@ -75,7 +98,6 @@ a:focus {
 
 .nav-link {
     color:#44342C;
-    font-weight: 500;
     text-transform: uppercase;
 }
 
@@ -113,6 +135,11 @@ a:focus {
     color:#44342C;
 }
 
+.breadcrumb {
+    background-color: #FFFEF8 !important;
+    padding: 0.75rem 0rem;
+}
+
 /* Header */
 
 .header-container {
@@ -124,7 +151,6 @@ a:focus {
 .btn {
     background-color: #687D64;
     color: #fff;
-    font-weight: 500;
     border: solid #687D64 0.1rem;
     border-radius: 0!important;
     text-transform: uppercase;
@@ -141,7 +167,6 @@ a:focus {
 .btn-secondary {
     background-color: #FFFEF8;
     color: #687D64;
-    font-weight: 500;
     border: solid 0.1rem;
 }
 
@@ -217,7 +242,6 @@ footer {
 .products {
     font-size: 1.5rem;
     text-transform: uppercase;
-    font-weight: 600;
 }
 
 .product-card {
@@ -253,7 +277,6 @@ footer {
 }
 
 .header-card {
-    font-weight: 600;
     font-size: 1.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -265,7 +288,7 @@ footer {
 
 .dropdown-menu {
     background-color: #FFFEF8 !important;
-    min-width: auto;
+    min-width: 8rem;
 }
 
 .show>.btn-secondary.dropdown-toggle {
@@ -422,10 +445,6 @@ input#mce-EMAIL {
 
 label[for="id_gdpr_consent"] {
     font-size: 0.8rem;
-}
-
-label {
-    font-weight: bold;
 }
 
 .form-control {
