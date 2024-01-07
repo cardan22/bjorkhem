@@ -1,11 +1,14 @@
 <!-- Main Navigation (Visible on Larger Screens) -->
-<nav class="navbar navbar-expand-lg d-none d-lg-flex">
-    <a class="navbar-brand order-lg-first" href="{% url 'home' %}">
+<nav class="navbar navbar-expand-lg d-none d-lg-flex" aria-label="Main Navigation">
+    <!-- Site Logo -->
+    <a class="navbar-brand order-lg-first" href="{% url 'home' %}" aria-label="Björkhem Home">
         <img src="#" alt="Björkhem" height="40">
     </a>
+
+    <!-- Main Navigation Links -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
-            <!-- Your main navigation links go here -->
+            <!-- Main navigation links for different product categories -->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'products' %}?category=News">News</a>
             </li>
@@ -26,41 +29,54 @@
             </li>
         </ul>
     </div>
-    <!-- Navbar icons -->
+
+    <!-- Navbar icons and user-related options -->
     <div class="ml-auto">
         <ul class="navbar-nav d-flex flex-row">
+            <!-- Search Icon -->
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#toggle-search" role="button" aria-expanded="false" aria-controls="collapse">
-                    <span class="material-symbols-outlined">search</span>
+                <a class="nav-link" data-toggle="collapse" href="#toggle-search" role="button" aria-expanded="false" aria-controls="collapse" aria-label="Toggle Search">
+                    <span class="material-symbols-outlined" aria-hidden="true">search</span>
                 </a>
             </li>
+
+            <!-- User Options Dropdown -->
             <li class="nav-item dropdown">
-                <a class="nav-link" href="#" id="user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="material-symbols-outlined">person</span>
+                <a class="nav-link" href="#" id="user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User Options">
+                    <span class="material-symbols-outlined" aria-hidden="true">person</span>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                     {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
+                            <!-- Superuser option for product management -->
                             <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                        {% else %}
+                            <!-- Regular user option for viewing their profile -->
+                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                         {% endif %}
-                        <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                        <!-- Logout option for all authenticated users -->
                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                     {% else %}
+                        <!-- Registration and login options for unauthenticated users -->
                         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                         <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                     {% endif %}
                 </div>
             </li>
+
+            <!-- Favorite Products Icon (visible for authenticated users) -->
             {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'favorite_products' %}">
-                        <span class="material-symbols-outlined">favorite</span>
+                    <a class="nav-link" href="{% url 'favorite_products' %}" aria-label="View Favorite Products">
+                        <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
                     </a>
                 </li>
             {% endif %}
+
+            <!-- Shopping Bag Icon -->
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'view_bag' %}">
-                    <span class="material-symbols-outlined">shopping_bag</span>
+                <a class="nav-link" href="{% url 'view_bag' %}" aria-label="View Shopping Bag">
+                    <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
                 </a>
             </li>
         </ul>

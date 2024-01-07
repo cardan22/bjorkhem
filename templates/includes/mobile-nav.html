@@ -1,38 +1,46 @@
 <!-- Mobile Navigation (Visible on Small Screens) -->
-<nav class="navbar d-lg-none">
+
+<nav class="navbar d-lg-none" aria-label="Mobile Navigation">
     <!-- Hamburger Menu Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle mobile navigation">
         <span class="material-symbols-outlined">menu</span>
     </button>
+
     <!-- Logo -->
-    <a class="navbar-brand order-lg-first" href="{% url 'home' %}">
+    <a class="navbar-brand order-lg-first" href="{% url 'home' %}" aria-label="Björkhem Home">
         <img src="#" alt="Björkhem" height="40">
     </a>
+
     <!-- Mobile Navigation Icons -->
     <ul class="navbar-nav d-flex flex-row ml-auto">
-        <!-- Mobile navigation icons -->
+        <!-- Mobile navigation icon for search -->
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#toggle-search" role="button" aria-expanded="false" aria-controls="toggle-search">
+            <a class="nav-link" data-toggle="collapse" href="#toggle-search" role="button" aria-expanded="false" aria-controls="toggle-search" aria-label="Toggle Search">
                 <span class="material-symbols-outlined pr-3">search</span>
             </a>
         </li>
+
+        <!-- Mobile navigation icon for favorite products (visible for authenticated users) -->
         {% if request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'favorite_products' %}">
+                <a class="nav-link" href="{% url 'favorite_products' %}" aria-label="View Favorite Products">
                     <span class="material-symbols-outlined pr-3">favorite</span>
                 </a>
             </li>
         {% endif %}
+
+        <!-- Mobile navigation icon for shopping bag -->
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'view_bag' %}">
+            <a class="nav-link" href="{% url 'view_bag' %}" aria-label="View Shopping Bag">
                 <span class="material-symbols-outlined">shopping_bag</span>
             </a>
         </li>
     </ul>
+
     <!-- Mobile Navigation Links -->
     <div class="collapse navbar-collapse" id="mobileNav">
-        <ul class="navbar-nav">
-            <!-- Your mobile navigation links go here -->
+        <ul class="navbar-nav mt-4">
+            <!-- Mobile navigation links for different product categories -->
             <li class="nav-item active border-top">
                 <a class="nav-link" href="{% url 'products' %}?category=News">News</a>
             </li>
@@ -51,19 +59,26 @@
             <li class="nav-item border-top">
                 <a class="nav-link" href="{% url 'products' %}?category=Sale">Sale</a>
             </li>
+
+            <!-- Mobile navigation link for user options (dropdown) -->
             <li class="nav-item border-top dropdown">
-                <a class="nav-link" href="#" id="user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="#" id="user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User Options">
                     <span class="material-symbols-outlined">person</span>
                     My Profile
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                     {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
-                            <a href="{%  url 'add_product' %}" class="dropdown-item">Product Management</a>
+                            <!-- Superuser option for product management -->
+                            <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                        {% else %}
+                            <!-- Regular user option for viewing their profile -->
+                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                         {% endif %}
-                        <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                        <!-- Logout option for all authenticated users -->
                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                     {% else %}
+                        <!-- Registration and login options for unauthenticated users -->
                         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                         <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                     {% endif %}
