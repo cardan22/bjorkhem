@@ -48,12 +48,12 @@ a:focus {
 
 a.nav-link {
     background-color: transparent !important;
-    color: inherit !important;
+    color: inherit;
     text-decoration: none !important;
 }
 
 a.nav-link:hover {
-    color: inherit !important;
+    color: #687D64;
 }
 
 a.nav-link:focus {
@@ -68,6 +68,11 @@ a.nav-link:focus {
     color: #687D64;
 }
 
+.navbar-toggler:hover,
+.navbar-toggler:active,
+.navbar-toggler:focus {
+    color: #44342C !important;
+}
 
 /* Container */
 
@@ -88,6 +93,10 @@ a.nav-link:focus {
     max-width: 80%;
 }
 
+.hero-container {
+    padding: 4rem;
+}
+
 /* Navigation */
 
 .navbar {
@@ -99,6 +108,7 @@ a.nav-link:focus {
 .nav-link {
     color:#44342C;
     text-transform: uppercase;
+    font-size: 1.2rem;
 }
 
 .nav-link:hover,
@@ -201,7 +211,7 @@ input[name='q']::placeholder {
 .bg-container {
     background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center;
     margin: 0;
-    padding: 0;
+    padding-top: 2rem;
     width: 100%;
     height: 60vh;
 }
@@ -512,7 +522,7 @@ a.button.secondaryAction {
 .message-container {
     position: fixed;
     top: 72px;
-    right: 15px;
+    right: 0px;
     z-index: 99999999999;
 }
 
@@ -522,18 +532,6 @@ a.button.secondaryAction {
 
 .toast-capper {
     height: 2px;
-}
-
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
-.arrow-up {
-    width: 0; 
-    height: 0; 
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent; 
-    border-bottom: 10px solid black;
-    position: absolute;
-    top: -10px;
-    right: 36px;
 }
 
 /* Convenience classes - colors copied from Bootstrap */
@@ -608,7 +606,8 @@ a.button.secondaryAction {
     border-radius: 0;
 }
 
-/* pad the top a bit when navbar is collapsed on mobile */
+/* @media (max-width: 991px) */
+
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
@@ -621,32 +620,12 @@ a.button.secondaryAction {
     .container-products {
         max-width: 100%;
     }
-
-    .image-container {
-        padding: 0 !important;
-    }
 }
 
-@media screen and (max-width: 768px) {
-    .product-img {
-        padding: 0 !important;
-    }
-
-    .image-container {
-        padding: 0 !important;
-    }
-
-    .product-description-container {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-
-}    
-
-/* // Small devices (landscape phones, 576px and down) */
+/* Small devices (landscape phones, 576px and down) */
 @media screen and (max-width: 576px) {
     .navbar {
-        padding: 0.5rem 2rem 0.8rem 1rem;
+        padding: 0.8rem;
     }
 
     .navbar-brand {
@@ -656,6 +635,14 @@ a.button.secondaryAction {
 
     .form-inline .form-control {
         width: 80% !important;
+    }
+
+    .hero-container {
+        padding: 3rem 2rem;
+    }
+
+    .hero-text {
+        padding-top: 4rem;
     }
 
     .header-card {
@@ -683,10 +670,6 @@ a.button.secondaryAction {
         padding: 0.5rem;
     }
 
-    .navbar-toggler {
-        padding-left: 0;
-    }
-
     .dropdown-menu {
         background-color: #EEEAE7;
     }
@@ -699,7 +682,11 @@ a.button.secondaryAction {
     }
 
     .header-container {
-        padding-top: 80px;
+        padding-top: 100px;
+    }
+
+    .home-container {
+        padding-top: 20px;
     }
 
     .product-description-container {
@@ -729,5 +716,17 @@ a.button.secondaryAction {
 
     .container-bag h1 {
         font-size: 1.5rem;
+    }
+}
+
+/* // Extra Small devices (300px and down) */
+@media (max-width: 300px) {
+
+    .navbar-brand img {
+        height: 20px;
+    }
+
+    .nav-link > .material-symbols-outlined.pr-3 {
+        padding-right: 0.4rem !important;
     }
 }
