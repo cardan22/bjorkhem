@@ -1,10 +1,6 @@
 <!-- Mobile Navigation (Visible on Small Screens) -->
 
 <nav class="navbar d-lg-none" aria-label="Mobile Navigation">
-    <!-- Hamburger Menu Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileNav" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle mobile navigation">
-        <span class="material-symbols-outlined">menu</span>
-    </button>
 
     <!-- Logo -->
     <a class="navbar-brand order-lg-first" href="{% url 'home' %}" aria-label="Björkhem Home">
@@ -32,9 +28,17 @@
         <!-- Mobile navigation icon for shopping bag -->
         <li class="nav-item">
             <a class="nav-link" href="{% url 'view_bag' %}" aria-label="View Shopping Bag">
-                <span class="material-symbols-outlined">shopping_bag</span>
+                <span class="material-symbols-outlined pr-3">shopping_bag</span>
             </a>
         </li>
+
+        <!-- Hamburger Menu Button -->
+        <li class="nav-item d-block d-lg-none">
+            <a class="nav-link" data-toggle="collapse" href="#mobileNav" role="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle mobile navigation">
+                <span class="material-symbols-outlined">menu</span>
+            </a>
+        </li>
+
     </ul>
 
     <!-- Mobile Navigation Links -->
