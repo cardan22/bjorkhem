@@ -67,7 +67,7 @@ class product_detail(View):
 
     def get(self, request, product_id):
         product = get_object_or_404(Product, id=product_id)
-        related_products = RelatedProduct.objects.filter(from_product=product).select_related('to_product')
+        related_products = RelatedProduct.objects.filter(from_product=product).select_related('to_product')[:4]
         favorite = product.favorites.filter(id=request.user.id).exists()
 
         context = {
