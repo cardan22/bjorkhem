@@ -94,13 +94,14 @@ a.nav-link:focus {
 }
 
 .hero-container {
-    padding: 4rem;
+    padding-top: 7rem;
+    margin-top: 2rem;
 }
 
 /* Navigation */
 
 .navbar {
-    background-color: #EEEAE7;
+    background-color: #EDE8E3;
     color: #44342C;
     padding: 1rem 5rem;
 }
@@ -195,7 +196,7 @@ a.nav-link:focus {
 /* Search bar */
 
 .card {
-    background-color: #EEEAE7;
+    background-color: #EDE8E3;
 }
 
 input[name='q']::placeholder {
@@ -207,14 +208,6 @@ input[name='q']::placeholder {
 }
 
 /* Home page */
-
-.bg-container {
-    background: url('/media/bjorkhem-spring-news-interior.jpg') no-repeat center center;
-    margin: 0;
-    padding-top: 2rem;
-    width: 100%;
-    height: 60vh;
-}
 
 .hero-text {
     padding-top: 7rem;
@@ -328,7 +321,7 @@ footer {
 /* Newsletter */
 
 .newsletter-bg {
-    background-color: #EEEAE7;
+    background-color: #EDE8E3;
     width: 100%;
 }
 
@@ -671,7 +664,7 @@ a.button.secondaryAction {
     }
 
     .dropdown-menu {
-        background-color: #EEEAE7;
+        background-color: #EDE8E3;
     }
 
     .dropdown-menu.w-100.sort-dropdown-menu.show {
