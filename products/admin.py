@@ -25,7 +25,8 @@ class RelatedProductAdmin(admin.ModelAdmin):
     list_display = (
         'from_product',
         'to_product',
-)
+    )
+
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)

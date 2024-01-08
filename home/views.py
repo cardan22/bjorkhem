@@ -22,7 +22,5 @@ def contact(request):
 
 def policy(request):
     """ A view to return the Policy page """
-  
-    return render(request, 'home/policy.html')
-    
 
+    return render(request, 'home/policy.html')

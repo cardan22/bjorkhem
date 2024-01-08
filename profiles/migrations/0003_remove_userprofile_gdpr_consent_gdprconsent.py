@@ -18,7 +18,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GDPRConsent',
             fields=[
-                ('id', models.BigAutoField(
+                (
+                    'id', models.BigAutoField(
                     auto_created=True,
                     primary_key=True,
                     serialize=False,
