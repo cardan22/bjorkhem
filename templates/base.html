@@ -42,7 +42,7 @@
         <!-- Additional JavaScript scripts can be added here -->
     {% endblock %}
 
-    <title>Björkhem {% block extra_title %}{% endblock %}</title>
+    <title>{% block extra_title %}{% endblock %} | Björkhem</title>
   </head>
   <body>
     <header class="container-fluid fixed-top">
@@ -111,9 +111,9 @@
                 <!-- Footer links -->
                 <div class="col-md-12">
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="{% url 'contact' %}" class="text-white">Contact &nbsp; | &nbsp;</a></li>
-                        <li class="list-inline-item"><a href="{% url 'contact' %}" class="text-white">Faq &nbsp; | &nbsp;</a></li>
-                        <li class="list-inline-item"><a href="{% url 'policy' %}" class="text-white">Policy</a></li>
+                        <li class="list-inline-item text-white m-0"><a href="{% url 'contact' %}">Contact &nbsp;|&nbsp;</a></li>
+                        <li class="list-inline-item text-white m-0"><a href="{% url 'contact' %}">Faq &nbsp;|&nbsp;</a></li>
+                        <li class="list-inline-item text-white m-0"><a href="{% url 'policy' %}">Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -135,7 +135,7 @@
                 <div class="col-md-12">
                     <p class="copyright">
                         &copy; Designed by 
-                        <a href="https://www.linkedin.com/in/caroline-danielsson-57447a57" target="_blank" aria-label="Caroline Danielsson Linkedin profile">
+                        <a href="https://www.linkedin.com/in/caroline-danielsson-57447a57" target="_blank" rel="noopener" aria-label="Caroline Danielsson Linkedin profile">
                         Caroline Danielsson
                         </a>
                     </p>
@@ -146,9 +146,17 @@
 
     <!-- Post-load JavaScript block -->
     {% block postloadjs %}
-        <!-- JavaScript executed after page load, e.g., showing toasts -->
+        <!-- JavaScript executed after page load, showing toasts -->
         <script type="text/javascript">
-            $('.toast').toast('show');
+            $(document).ready(function() {
+                // Show the toast
+                $('.toast').toast('show');
+
+                // Hide the toast after 3000 milliseconds (3 seconds)
+                setTimeout(function() {
+                    $('.toast').toast('hide');
+                }, 3000);
+            });
         </script>
     {% endblock %}
   </body>
