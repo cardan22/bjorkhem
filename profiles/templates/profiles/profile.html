@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-{% endblock %}
+{% block extra_title %}My Profile{% endblock %}
 
+<!-- Page header block with container and row -->
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -12,6 +12,7 @@
     </div>
 {% endblock %}
 
+<!-- Content block with an overlay, container, row, and columns -->
 {% block content %}
     <div class="overlay"></div>
     <div class="container">
@@ -22,6 +23,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-6 pb-5">
+                <!-- Form for default delivery information -->
                 <p class="pb-3"><strong>Default Delivery Information</strong></p>
                 <form class="user-form mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
@@ -30,14 +32,15 @@
                 </form>
             </div>
             <div class="col-12 col-lg-6 pb-5">
+                <!-- Order history section -->
                 <p class="pb-3"><strong>Order History</strong></p>
                 <div class="order-history table-responsive">
                     {% if orders %}
                         {% for order in orders %}
                             <div class="order-details">
                                 <a href="{% url 'order_history' order.order_number %}"
-                                        title="{{ order.order_number }}">
-                                        <strong>{{ order.order_number }} - {{ order.date|date:"Y-m-d" }}</strong>
+                                   title="{{ order.order_number }}">
+                                    <strong>{{ order.order_number }} - {{ order.date|date:"Y-m-d" }}</strong>
                                 </a>
                                 <ul class="list-unstyled">
                                     {% for item in order.lineitems.all %}
@@ -54,4 +57,5 @@
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}
