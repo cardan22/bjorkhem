@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}Your basket{% endblock %}
+
 {% block page_header %}
     <!-- Page header block in the container -->
     <div class="container header-container">
@@ -125,7 +127,9 @@
                                         <!-- Bag Total row -->
                                         <p>Bag Total:</p>
                                         <!-- Discounts row -->
-                                        <p>Discounts:</p>
+                                        {% if total_discount > 0 %}
+                                            <p>Discounts:</p>
+                                        {% endif %}
                                         <!-- Delivery row -->
                                         <p>Delivery:</p>
                                         <!-- Grand Total row -->

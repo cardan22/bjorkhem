@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}Checkout{% endblock %}
+
 {% block extra_css %}
     <!-- Add custom CSS for the checkout page -->
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -61,7 +63,9 @@
                             <div class="col-6">
                                 <!-- Display Bag Total, Discounts, Delivery, and Grand Total -->
                                 <p>Bag Total:</p>
-                                <p>Discounts:</p>
+                                {% if total_discount > 0 %}
+                                    <p>Discounts:</p>
+                                {% endif %}
                                 <p>Delivery:</p>
                                 <p class="pt-2"><b>Grand Total:</b></p>
                             </div>
