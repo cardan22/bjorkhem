@@ -18,9 +18,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GDPRConsent',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                    )
+                ),
                 ('gdpr_consent', models.BooleanField(default=False)),
-                ('user_profile', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='profiles.userprofile')),
+                ('user_profile', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='profiles.userprofile'
+                )
+                ),
             ],
         ),
     ]

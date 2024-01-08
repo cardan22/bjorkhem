@@ -5,8 +5,8 @@ from .models import Product, Category, RelatedProduct
 
 
 class ProductForm(forms.ModelForm):
-    """ 
-    Form for creating and updating Product instances, 
+    """
+    Form for creating and updating Product instances,
     including related products.
     """
     related_products = forms.ModelMultipleChoiceField(
@@ -23,7 +23,10 @@ class ProductForm(forms.ModelForm):
                            'image_alt', 'price', 'discount', 'related_products',
                           ]
 
-    image = forms.ImageField(label='Image*', required=False, widget=CustomClearableFileInput)                    
+    image = forms.ImageField(
+        label='Image*',
+        required=False, widget=CustomClearableFileInput
+    )                
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -43,17 +46,33 @@ class ProductForm(forms.ModelForm):
         image = cleaned_data.get('image')
 
         if price is not None and price <= 0:
-            self.add_error('price', forms.ValidationError("Price should be greater than 0."))
+            self.add_error(
+                'price',
+                forms.ValidationError(
+                    "Price should be greater than 0."
+                )
+            )
 
         if discount is not None and discount <= 0:
-            self.add_error('discount', forms.ValidationError("Discount should be greater than 0."))
+            self.add_error(
+                'discount',
+                forms.ValidationError(
+                    "Discount should be greater than 0."
+                )
+            )
 
         if related_products is not None and len(related_products) < 4:
-            self.add_error('related_products', forms.ValidationError("Please choose at least four different related products."))
+            self.add_error(
+                'related_products',
+                forms.ValidationError(
+                    "Please choose at least four different related products."
+                )
+            )
 
         if image is None:
-            self.add_error('image', forms.ValidationError("Please upload an image."))     
-             
+            self.add_error(
+                'image',
+                forms.ValidationError("Please upload an image.")
+            )
+ 
         return cleaned_data
-
-

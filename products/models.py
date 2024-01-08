@@ -2,6 +2,7 @@ from django.db import models
 import random
 import string
 
+
 def generate_sku():
     """
     Generates a random SKU for the product.
@@ -16,7 +17,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-        
+     
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -24,16 +25,30 @@ class Category(models.Model):
         return self.name
 
     def get_friendly_name(self):
-        return self.friendly_name    
+        return self.friendly_name
 
 
 class Product(models.Model):
     """
     Model representing a product.
     """
-    sku = models.CharField(max_length=254, unique=True, editable=True, default=generate_sku)
+    sku = (
+        models.CharField(
+            max_length=254,
+            unique=True,
+            editable=True,
+            default=generate_sku
+        )
+    )
     name = models.CharField(max_length=254)
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = (
+        models.ForeignKey(
+            'Category',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL
+        )
+    )
     color = models.CharField(max_length=254, null=True, blank=True)
     size = models.CharField(max_length=254, null=True, blank=True)
     description = models.TextField()
@@ -41,10 +56,28 @@ class Product(models.Model):
     image_url = models.URLField(max_length=254, null=True, blank=True)
     image_alt = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=0)
-    discount = models.DecimalField(max_digits=8, decimal_places=0, null=True, blank=True)
-    favorites = models.ManyToManyField('auth.User', related_name='favorite_products', blank=True)
-    related_products = models.ManyToManyField('self', through='RelatedProduct', symmetrical=False)
-
+    discount = (
+        models.DecimalField(
+            max_digits=8,
+            decimal_places=0,
+            null=True,
+            blank=True
+        )
+    )
+    favorites = (
+        models.ManyToManyField(
+            'auth.User',
+            related_name='favorite_products',
+            blank=True
+        )
+    )
+    related_products = (
+        models.ManyToManyField(
+            'self',
+            through='RelatedProduct',
+            symmetrical=False
+        )
+    )
 
     def save(self, *args, **kwargs):
         """
@@ -62,9 +95,20 @@ class RelatedProduct(models.Model):
     """
     Model representing related products.
     """
-    from_product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='related_from')
-    to_product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='related_to')
+    from_product = (
+        models.ForeignKey(
+            'Product',
+            on_delete=models.CASCADE,
+            related_name='related_from'
+        )
+    )
+    to_product = (
+        models.ForeignKey(
+            'Product',
+            on_delete=models.CASCADE,
+            related_name='related_to'
+        )
+    )
 
     def __str__(self):
         return f"{self.from_product.name} -> {self.to_product.name}"
-

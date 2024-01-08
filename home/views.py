@@ -16,13 +16,13 @@ def index(request):
 
 def contact(request):
     """ A view to return the contact page """
-    
+
     return render(request, 'home/contact.html')
 
 
 def policy(request):
     """ A view to return the Policy page """
-    
+  
     return render(request, 'home/policy.html')
     
 
