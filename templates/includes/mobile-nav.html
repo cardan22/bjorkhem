@@ -66,11 +66,11 @@
 
             <!-- Mobile navigation link for user options (dropdown) -->
             <li class="nav-item border-top dropdown">
-                <a class="nav-link" href="#" id="user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User Options">
+                <a class="nav-link" href="#" id="mb-user-options" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User Options">
                     <span class="material-symbols-outlined">person</span>
                     My Profile
                 </a>
-                <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                <div class="dropdown-menu border-0" aria-labelledby="mb-user-options">
                     {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
                             <!-- Superuser option for product management -->

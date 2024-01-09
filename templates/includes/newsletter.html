@@ -8,9 +8,10 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="input-group mb-3">
+                        <label for="mce-EMAIL" class="sr-only">Email Address</label>
                         <input type="email" name="EMAIL" class="form-control rounded-0" id="mce-EMAIL" required="" placeholder="Add Email" aria-label="Email Address">
                         <div class="input">
-                            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary rounded-0">
+                            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary rounded-0" aria-label="Subscribe to Newsletter">
                                 <span class="material-symbols-outlined">chevron_right</span>
                             </button>
                         </div>
@@ -38,8 +39,8 @@
         </form>
 
         <!-- Policy link -->
-        <small>
-            <p class="text-center policy-link m-0"><a href="{% url 'policy' %}" target="_blank">Our policy for email addresses</a></p>
+        <small class="text-center policy-link m-0">
+            <a href="{% url 'policy' %}" target="_blank" aria-label="Read our policy for email addresses">Our policy for email addresses</a>
         </small>
     </div>
 </div>
@@ -47,10 +48,10 @@
 {% block postloadjs %}
     <!-- Custom JavaScript for Mailchimp Validation  -->
     
-    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
 
     <!-- Custom JavaScript for Mailchimp Form Initialization -->
-    <script type="text/javascript">
+    <script>
         (function($) {
             window.fnames = new Array();
             window.ftypes = new Array();
