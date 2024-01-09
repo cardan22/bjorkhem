@@ -95,7 +95,6 @@ a.nav-link:focus {
 
 .hero-container {
     padding-top: 7rem;
-    margin-top: 2rem;
 }
 
 /* Navigation */
@@ -349,8 +348,6 @@ input#mce-EMAIL {
 /* Product details */
 
 .image-container {
-    max-height: 80vh;
-    position: relative;
     overflow: hidden;
     object-fit: cover;
     display: flex;
@@ -362,7 +359,6 @@ input#mce-EMAIL {
 .image-container img {
     width: 100%;
     height: auto;
-    display: block;
 }
 
 .product-details-container p {
@@ -528,6 +524,7 @@ a.button.secondaryAction {
 }
 
 /* Convenience classes - colors copied from Bootstrap */
+
 .arrow-primary {
     border-bottom-color: #007bff !important;
 }
@@ -635,7 +632,7 @@ a.button.secondaryAction {
     }
 
     .hero-text {
-        padding-top: 4rem;
+        padding-top: 9rem;
     }
 
     .header-card {
