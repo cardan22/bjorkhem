@@ -5,6 +5,7 @@ from .models import Order, OrderLineItem
 class OrderLineItemAdminInline(admin.TabularInline):
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
+    exclude = ('purchased_quantity',)
 
 
 class OrderAdmin(admin.ModelAdmin):
