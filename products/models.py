@@ -78,6 +78,10 @@ class Product(models.Model):
             symmetrical=False
         )
     )
+    posted_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-posted_date"]
 
     def save(self, *args, **kwargs):
         """

@@ -33,6 +33,9 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
+        else:
+            # Default sorting by added_date if no sorting option is selected
+            products = products.order_by('-posted_date')
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
