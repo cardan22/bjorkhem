@@ -3,12 +3,23 @@
 
 {% block extra_title %}Contact{% endblock %}
 
+{% block page_header %}
+    <!-- Page header block in the template -->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
 {% block content %}
     <!-- Section with a call-to-action button -->
     <div class="bg container">
-        <div class="row hero-text align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-center">
             <div class="col-12 col-lg-8">
-                <div class="contact text-center mt-5">
+                <div class="contact text-center mt-3 mt-lg--5">
                     <!-- Heading -->
                     <h1 class="pb-2">Contact Us</h1>
                     <p>
@@ -73,7 +84,8 @@
                             </button>
                             <div id="question4Collapse" class="collapse" data-parent="#faqAccordion">
                                 <div class="answer">
-                                    If you're not satisfied with your purchase, you can return the item within 14 days of receiving it. Please review our detailed return policy for more information.
+                                    If you're not satisfied with your purchase, you can return the item within 14 days of receiving it.
+                                    To return an item, simply affix the provided label and drop it off at your nearest courier.
                                 </div>
                             </div>
                         </div>
@@ -107,7 +119,7 @@
                 </div>
 
                 <!-- Policy Section -->
-                <div class="policy text-center pb-5">
+                <div class="policy text-center pb-4 mt-lg-4">
                     <!-- Heading -->
                     <h2 class="pb-2">Policy</h2>
                     <p>You can read about our policy <a href="{% url 'policy' %}" aria-label="Read our policy"><b>here</a></b>.</p>
