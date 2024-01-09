@@ -22,12 +22,10 @@
             <!-- Responses Section -->
             <div class="row">
                 <div class="col-12">
-                    <small>
                         <div id="mce-responses" class="clear text-center pb-2">
                             <div class="response text-danger" id="mce-error-response" style="display: none;"></div>
                             <div class="response text-danger" id="mce-success-response" style="display: none;"></div>
                         </div>
-                    </small>
                 </div>
             </div>
 
@@ -39,9 +37,13 @@
         </form>
 
         <!-- Policy link -->
-        <small class="text-center policy-link m-0">
-            <a href="{% url 'policy' %}" target="_blank" aria-label="Read our policy for email addresses">Our policy for email addresses</a>
-        </small>
+        <div class="row">
+            <div class="col-12 text-center">
+                <small class="text-center policy-link m-0">
+                    <a href="{% url 'policy' %}" target="_blank" aria-label="Read our policy for email addresses">Our policy for email addresses</a>
+                </small>
+            </div>
+        </div>
     </div>
 </div>
 
