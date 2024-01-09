@@ -98,7 +98,7 @@ a.nav-link:focus {
 }
 
 .bg-container {
-    margin-top: -40px;
+    margin-top: -50px;
 }
 
 /* Navigation */
@@ -213,7 +213,7 @@ input[name='q']::placeholder {
 /* Home page */
 
 .hero-text {
-    padding-top: 7rem;
+    padding-top: 3rem;
 }
 
 /* Contact Us page */
@@ -454,7 +454,7 @@ label[for="id_gdpr_consent"] {
     color:#44342C;
     background-color: #FFFEF8;
     border-color: #44342C;
-    border-radius: 0.1 rem;
+    border-radius: 0.1rem;
 }
 
 .form-control-sm {
@@ -636,7 +636,7 @@ a.button.secondaryAction {
     }
 
     .hero-text {
-        padding-top: 9rem;
+        padding-top: 6rem;
     }
 
     .header-card {
