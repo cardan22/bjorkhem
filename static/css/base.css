@@ -212,8 +212,22 @@ input[name='q']::placeholder {
 
 /* Home page */
 
+
+
+/* Hero section with background image */
+
+.hero {
+    background-image: url(https://bjorkhem.s3.eu-north-1.amazonaws.com/media/bjorkhem_spring_rustic_interior_design_news.jpg);
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+    padding: 7rem;
+    margin-top: -4rem;
+}
+
 .hero-text {
-    padding-top: 3rem;
+    font-weight: 500;
 }
 
 /* Contact Us page */
@@ -635,8 +649,9 @@ a.button.secondaryAction {
         padding: 3rem 2rem;
     }
 
-    .hero-text {
-        padding-top: 6rem;
+    .hero {
+        padding: 4rem;
+        margin-top: -3rem;
     }
 
     .header-card {
