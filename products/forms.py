@@ -12,8 +12,8 @@ class ProductForm(forms.ModelForm):
     related_products = forms.ModelMultipleChoiceField(
         queryset=Product.objects.all(),
         widget=CheckboxSelectMultiple,
-        required=True,
-        label='Related Products - choose at least four items'
+        required=False,
+        label='Related Products (Preferably select at least four items)'
     )
 
     class Meta:
@@ -25,8 +25,9 @@ class ProductForm(forms.ModelForm):
         ]
 
     image = forms.ImageField(
-        label='Image*',
-        required=False, widget=CustomClearableFileInput
+        label='Image',
+        required=True,
+        widget=CustomClearableFileInput,
     )
 
     def __init__(self, *args, **kwargs):
@@ -38,13 +39,20 @@ class ProductForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
 
+    def clean_image(self):
+        image = self.cleaned_data.get('image')
+        existing_image = self.instance.image
+
+        # Check if a new image is uploaded or an existing image is present
+        if not image and not existing_image:
+            raise forms.ValidationError("Please upload an image.")
+        return image
+
     def clean(self):
         """Custom validation for various fields."""
         cleaned_data = super().clean()
         price = cleaned_data.get('price')
         discount = cleaned_data.get('discount')
-        related_products = cleaned_data.get('related_products')
-        image = cleaned_data.get('image')
 
         if price is not None and price <= 0:
             self.add_error(
@@ -60,20 +68,6 @@ class ProductForm(forms.ModelForm):
                 forms.ValidationError(
                     "Discount should be greater than 0."
                 )
-            )
-
-        if related_products is not None and len(related_products) < 4:
-            self.add_error(
-                'related_products',
-                forms.ValidationError(
-                    "Please choose at least four different related products."
-                )
-            )
-
-        if image is None:
-            self.add_error(
-                'image',
-                forms.ValidationError("Please upload an image.")
             )
 
         return cleaned_data
