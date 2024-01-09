@@ -97,6 +97,10 @@ a.nav-link:focus {
     padding-top: 7rem;
 }
 
+.bg-container {
+    margin-top: -40px;
+}
+
 /* Navigation */
 
 .navbar {
