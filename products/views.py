@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models.functions import Lower
-from django.db.models import Q
+from django.db.models import Q, Case, When, Value, DecimalField, F
 from .models import Product, Category, RelatedProduct
 from .forms import ProductForm
 
@@ -28,13 +28,25 @@ def all_products(request):
                 products = products.annotate(lower_name=Lower('name'))
             if sortkey == 'category':
                 sortkey = 'category__name'
+            elif sortkey == 'price':
+                # Use discount for sorting if available, otherwise use regular price
+                products = products.annotate(
+                    sorted_price=Case(
+                        When(discount__isnull=False, then=F('discount')),
+                        default=F('price'),
+                        output_field=DecimalField(),
+                    )
+                )
+                sortkey = 'sorted_price'
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
+
             products = products.order_by(sortkey)
         else:
-            # Default sorting by added_date if no sorting option is selected
+            # Default sorting by posted_date if no sorting option is selected
             products = products.order_by('-posted_date')
 
         if 'category' in request.GET:
