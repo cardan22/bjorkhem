@@ -104,7 +104,7 @@ a.nav-link:focus {
 /* Navigation */
 
 .navbar {
-    background-color: #EDE8E3;
+    background-color: #F1EBE6;
     color: #44342C;
     padding: 1rem 5rem;
 }
@@ -199,7 +199,7 @@ a.nav-link:focus {
 /* Search bar */
 
 .card {
-    background-color: #EDE8E3;
+    background-color: #F1EBE6;
 }
 
 input[name='q']::placeholder {
@@ -222,7 +222,7 @@ input[name='q']::placeholder {
     background-position: center;
     text-align: center;
     color: #fff;
-    padding: 7rem;
+    padding: 10rem;
     margin-top: -4rem;
 }
 
@@ -341,7 +341,7 @@ footer {
 /* Newsletter */
 
 .newsletter-bg {
-    background-color: #EDE8E3;
+    background-color: #F1EBE6;
     width: 100%;
 }
 
@@ -532,8 +532,12 @@ a.button.secondaryAction {
 .message-container {
     position: fixed;
     top: 72px;
-    right: 0px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 99999999999;
+    padding-right: 5rem;
 }
 
 .custom-toast {
@@ -644,6 +648,10 @@ a.button.secondaryAction {
         font-size: small;
     }
 
+    .message-container {
+        padding-right: 0.8rem;
+    }
+
     .form-inline .form-control {
         width: 80% !important;
     }
@@ -683,7 +691,7 @@ a.button.secondaryAction {
     }
 
     .dropdown-menu {
-        background-color: #EDE8E3;
+        background-color: #F1EBE6;
     }
 
     .dropdown-menu.w-100.sort-dropdown-menu.show {

@@ -107,12 +107,12 @@
                                         <p class="m-0">Color: {{ product.color }}</p>
                                         <p>Size: {{ product.size }}</p>
                             {% endif %}
-    
+                            
                             <!-- Add quantity and add to Cart button -->
                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                 {% csrf_token %}
                                 <div class="form-row">
-                                    <div class="col-7 col-lg-6">
+                                    <div class="col-form">
                                         <div class="form-group">
                                             <div class="input-group d-flex flex-nowrap">
                                                 <div class="input-group-prepend">
