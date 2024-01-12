@@ -22,9 +22,10 @@
                         <!-- Link to go back with a chevron icon -->
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#" onclick="history.back();"></a></li>
-                              <li class="breadcrumb-item"><a href="{% url 'products' %}"><span class="material-symbols-outlined">chevron_left</span> All Products</a></li>
-                              <li class="breadcrumb-item" aria-current="page"><a href="#" onclick="history.back();">{{ product.category }}</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'products' %}"><span class="material-symbols-outlined">chevron_left</span> All Products</a></li>
+                                {% if product.category %}
+                                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'products' %}?category={{ product.category }}">{{ product.category }}</a></li>
+                                {% endif %}
                             </ol>
                           </nav>
     
