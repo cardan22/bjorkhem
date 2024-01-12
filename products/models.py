@@ -61,7 +61,8 @@ class Product(models.Model):
             max_digits=8,
             decimal_places=0,
             null=True,
-            blank=True
+            blank=True,
+            verbose_name='Discounted Price',
         )
     )
     favorites = (
