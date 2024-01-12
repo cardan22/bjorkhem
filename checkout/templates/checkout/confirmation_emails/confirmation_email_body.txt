@@ -16,7 +16,7 @@ You can expect it to arrive within 2-3 business days.
 
 You will receive an SMS notification at {{ order.phone_number }} when your order is ready for pickup.
 
-If you have any questions, feel free to reach out to us at {{ contact_email }}.
+If you have any questions, feel free to reach out to us at bjorkhem@mail.com.
 
 Thank you so much for your order!
 
