@@ -54,6 +54,7 @@
             <!-- Search form for products -->
             <div class="card card-body rounded-0 border-0">
                     <form method="GET" action=" {% url 'products' %}" class="form-inline justify-content-center mx-auto col-12 col-md-6 col-lg-4 px-0">
+                        <label for="search-input" class="sr-only">Search products</label>
                         <input type="text" name="q" class="form-control w-50 rounded-0 border" placeholder="Search products">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-search rounded-0">
