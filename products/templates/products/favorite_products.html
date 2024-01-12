@@ -17,6 +17,7 @@
     <!-- Main content block in the template -->
     <div class="overlay"></div>
     <div class="container-fluid container-products px-4">
+        {% if favorite_products %}
         <div class="row pb-4">
             <div class="col">
                 <!-- Subheading for products in the main content block -->
@@ -26,7 +27,7 @@
         <div class="row pb-3">
             
         <!-- Loop through favoriete products -->
-        {% if favorite_products %}
+
             {% for favorite_product in favorite_products %}
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <!-- Product card with image, name, price, and discount if applicable -->
@@ -52,9 +53,11 @@
             {% endfor %}
         {% else %}
             <!-- Display message when no favorite items are available -->
-            <div class="col-md-12 text-center">
-                <h2>No favorite items yet?</h2>
-                <p>Mark your favorite items using the heart icon <span class="material-symbols-outlined">favorite</span></p>
+            <div class="col-md-12 text-center favorite-col">
+                <h1 class="mt-4">No favorite items yet?</h1>
+                <p class="mt-4">Mark your favorite items using the heart icon <span class="material-symbols-outlined">favorite</span></p>
+                <!-- Explore products button -->
+                <a href="{% url 'products' %}" class="btn btn-primary">Explore Our Products</a>
             </div>
         {% endif %}
         </div>

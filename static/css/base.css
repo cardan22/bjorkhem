@@ -232,10 +232,13 @@ input[name='q']::placeholder {
 
 /* Contact Us page */
 
-.question-btn {
-    background-color: inherit;
+.question-btn,
+.question-btn:hover,    
+.question-btn:active,
+.question-btn:focus {
+    background-color: transparent !important;
     font-weight: bold;
-    color: #44342C;
+    color: #44342C !important;
 }
 
 /* Footer */
@@ -723,7 +726,12 @@ a.button.secondaryAction {
         padding: 0rem 0rem 2rem 0rem !important;
     }
 
-    .container-bag h1 {
+    .container-bag h1,
+    .favorite-col h1 {
+        font-size: 1.5rem;
+    }
+
+    .policy h3 {
         font-size: 1.5rem;
     }
 }
