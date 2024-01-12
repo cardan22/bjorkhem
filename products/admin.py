@@ -6,7 +6,9 @@ class RelatedProductInline(admin.TabularInline):
     model = RelatedProduct
     fk_name = 'from_product'
     extra = 1
-    verbose_name_plural = 'RELATED PRODUCTS (Preferably select at least four items)'
+    verbose_name_plural = (
+        'RELATED PRODUCTS(Preferably select at least four items)'
+    )
 
 
 class ProductAdmin(admin.ModelAdmin):

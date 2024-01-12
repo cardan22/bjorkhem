@@ -29,7 +29,8 @@ def all_products(request):
             if sortkey == 'category':
                 sortkey = 'category__name'
             elif sortkey == 'price':
-                # Use discount for sorting if available, otherwise use regular price
+                # Use discount for sorting if available,
+                # otherwise use regular price
                 products = products.annotate(
                     sorted_price=Case(
                         When(discount__isnull=False, then=F('discount')),
