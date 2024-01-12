@@ -9,7 +9,7 @@
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="input-group mb-3">
                         <label for="mce-EMAIL" class="sr-only">Email Address</label>
-                        <input type="email" name="EMAIL" class="form-control rounded-0" id="mce-EMAIL" required="" placeholder="Add Email" aria-label="Email Address">
+                        <input type="email" name="EMAIL" class="form-control rounded-0" id="mce-EMAIL" required="" placeholder="Add Email*" aria-label="Email Address" oninvalid="this.setCustomValidity('Please enter a valid email address')">
                         <div class="input">
                             <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary rounded-0" aria-label="Subscribe to Newsletter">
                                 <span class="material-symbols-outlined">chevron_right</span>
@@ -53,6 +53,7 @@
     <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
 
     <!-- Custom JavaScript for Mailchimp Form Initialization -->
+    <!-- Custom JavaScript for Mailchimp Form Initialization -->
     <script>
         (function($) {
             window.fnames = new Array();
@@ -61,6 +62,25 @@
             fnames[0] = 'EMAIL';
             ftypes[0] = 'email';
 
+            // Custom JavaScript for form error checking
+            $(document).ready(function() {
+                // Listen for form submission
+                $("#mc-embedded-subscribe-form").submit(function() {
+                    var emailInput = $("#mce-EMAIL");
+
+                    // Check if the email address is empty
+                    if (emailInput.val().trim() === "") {
+                        // Show custom error message
+                        $("#mce-error-response").text("Please enter a valid email address").show();
+
+                        // Prevent the form from submitting
+                        return false;
+                    }
+
+                    // If everything is fine, let the form submit
+                    return true;
+                });
+            });
         })(jQuery);
 
         var $mcj = jQuery.noConflict(true);
