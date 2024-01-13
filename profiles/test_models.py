@@ -6,7 +6,9 @@ from .models import UserProfile, GDPRConsent
 class UserProfileModelTest(TestCase):
     def test_user_profile_creation(self):
         # Create a user
-        user = User.objects.create_user(username='testuser', password='testpassword')
+        user = User.objects.create_user(
+            username='testuser', password='testpassword'
+        )
 
         # Check if UserProfile is created
         user_profile = UserProfile.objects.get(user=user)

@@ -2,10 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Product, Category, RelatedProduct
-from .views import (
-    all_products, product_detail, add_favorite_product,
-    favorite_products, add_product
-)
+
 
 class ProductViewsTest(TestCase):
     def setUp(self):
@@ -51,7 +48,9 @@ class ProductViewsTest(TestCase):
         self.client.logout()
 
         # Log in a regular user
-        self.client.login(username='regularuser', password='regularuserpassword')
+        self.client.login(
+            username='regularuser', password='regularuserpassword'
+        )
 
         url = reverse('add_product')
         response = self.client.get(url)
