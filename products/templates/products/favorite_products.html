@@ -15,7 +15,6 @@
 
 {% block content %}
     <!-- Main content block in the template -->
-    <div class="overlay"></div>
     <div class="container-fluid container-products px-4">
         {% if favorite_products %}
         <div class="row pb-4">
@@ -54,8 +53,8 @@
         {% else %}
             <!-- Display message when no favorite items are available -->
             <div class="col-md-12 text-center favorite-col">
-                <h1 class="mt-4">No favorite items yet?</h1>
-                <p class="mt-4">Mark your favorite items using the heart icon <span class="material-symbols-outlined">favorite</span></p>
+                <h1 class="mt-1">No favorite items yet?</h1>
+                <p class="pt-4 pb-3">Mark your favorite items using the heart icon <span class="material-symbols-outlined">favorite</span></p>
                 <!-- Explore products button -->
                 <a href="{% url 'products' %}" class="btn btn-primary">Explore Our Products</a>
             </div>
