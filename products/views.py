@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views import View
 from django.views.generic import ListView
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -110,6 +111,12 @@ class add_favorite_product(LoginRequiredMixin, View):
     """
 
     def get(self, request, product_id):
+        if not request.user.is_authenticated:
+            messages.warning(
+                request, "Please log in to add/remove favorites."
+            )
+            return HttpResponseRedirect(reverse_lazy('login'))
+
         product = get_object_or_404(Product, id=product_id)
 
         is_favorite = product.favorites.filter(id=request.user.id).exists()
@@ -133,7 +140,13 @@ class favorite_products(LoginRequiredMixin, ListView):
     template_name = 'products/favorite_products.html'
     context_object_name = 'favorite_products'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.warning(
+                request, "Please log in to view your favorite products."
+            )
+            return HttpResponseRedirect(reverse_lazy('login'))
+
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             user = self.request.user
