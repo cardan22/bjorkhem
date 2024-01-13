@@ -68,11 +68,7 @@ The following pages have been tested, and no errors were detected on any of them
 </details>
 <details>
 <summary>Details page</summary>
-<img src="static/docs/html-detials.png" width="60%">
-</details>
-<details>
-<summary>Textile page</summary>
-<img src="static/docs/html-textile.png" width="60%">
+<img src="static/docs/html-details.png" width="60%">
 </details>
 <details>
 <summary>Textile page</summary>
