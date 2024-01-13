@@ -1,5 +1,7 @@
 # Björkhem
-Link to the website: Björkhem
+Link to the website: [Björkhem](https://bjorkhem-8b5ef3ef81a6.herokuapp.com/)
+
+<img src="static/docs/bjorkhem-mockup.png">
 
 ## Table of Content
 
@@ -195,7 +197,7 @@ The Entity Relationship Diagram (ERD) shows how the database is organized at the
 I aimed to establish a warm and inviting ambiance, opting for earthy tones and subtly muted colors.
 
 #### Typography
-I selected the Inter font to improve the visual appeal and readability of the webshop. The aim was to create a text style that is both pleasant and easy to read, harmonizing seamlessly with the overall design.
+I selected the Jost font to improve the visual appeal and readability of the webshop. The aim was to create a text style that is both pleasant and easy to read, harmonizing seamlessly with the overall design.
 
 #### Logo
 I created a simple logo for Björhem to strengthen its visual identity. The logo is minimalistic and easy to understand, making it easier for users to recognize and associate with Björkhem.
@@ -231,11 +233,25 @@ The development of this project was managed through GitHub issues, milestones, a
 * **Django:** A high-level Python web framework that served as the foundation for building this application/site.
 * ***Psycopg2:**  This package acts as a PostgreSQL database adapter for Python, enabling seamless interaction with the database.
 * **boto3:** A Python library that provides an interface to Amazon Web Services (AWS), allowing seamless integration with AWS services.
+* **botocore:** A Python library that provides low-level, core functionality for AWS services.
+* **dj-database-url:** A Django utility for parsing database connection URLs.
 * **django-storages:** A Django library to manage storage backends like Amazon S3 and others.
 * **django-allauth:** It's a comprehensive suite of Django applications that addresses various aspects of user authentication, registration, account management, and third-party (social) account authentication.
 * **django-crispy-forms:** This package enhances the rendering of Django forms, offering more control and elegance in form presentation.
 * **crispy-bootstrap4:** It's a template pack for django-crispy-forms that is tailored for use with Bootstrap 4, further improving the presentation of forms.
 * **pillow:** A powerful Python imaging library that adds support for opening, manipulating, and saving many different image file formats.
+* **gunicorn:** A Python WSGI HTTP Server for UNIX, used to serve the Django application.
+* **asgiref:** ASGI specification reference implementation, used for handling asynchronous requests in Django.
+* **jmespath:** Used for querying JSON-like data structures.
+* **oauthlib:** Provides support for OAuth1 and OAuth2.
+* **PyJWT:** Enables working with JSON Web Tokens (JWT).
+* **python3-openid:** A set of Python packages to support the use of the OpenID decentralized identity system.
+* **requests-oauthlib:** A OAuthlib extension to work with requests.
+* **s3transfer:** Used for managing Amazon S3 transfers.
+* **sqlparse:** A non-validating SQL parser.
+* **stripe:** A Python library for interacting with the Stripe API.
+* **urllib3:** A powerful HTTP client for Python.
+* **coverage:** Measures code coverage during test execution.
 
 ### Frameworks & Tools
 
@@ -253,10 +269,186 @@ The testing documentation can be found at [TESTING.md](TESTING.md)
 
 ## Deployment & Development
 
+### Deploy on Heroku
+
+**To deploy your project on Heroku, follow these steps:**
+
+**Step 1: Preparing Files**
+
+Before you start, you need two essential files: `requirements.txt` and `Procfile`.
+
+- Create `requirements.txt` by running this command in your terminal: `pip3 freeze --local > requirements.txt`. This file will list all the requirements.
+- Next, create a file named `Procfile` and add the line: `web: gunicorn pastryhub.wsgi` to it, without any empty lines. Make sure to push both these files to your repository.
+
+**Step 2: Creating a Heroku App**
+
+- Log in to Heroku and go to the Dashboard.
+- Click "New" and select "Create new app."
+- Give your app a name and choose the region closest to you.
+- Click "Create app" to confirm.
+
+**Step 3: Setting Up a Database**
+
+- Log in to ElephantSQL.com and access your dashboard.
+- Click "Create New Instance."
+- Choose a plan, give it a name, select the Tiny Turtel (Free) plan, and leave the Tags field blank.
+- Select a data center near you.
+- Click "Review" and confirm your details.
+- Return to the ElephantSQL dashboard and click on the database instance name for your project.
+- In the URL section, copy the database URL.
+- Ensure that Django and Gunicorn are installed in your workspace using `pip3 install 'django<4' gunicorn`.
+- Also, make sure the database infrastructure is installed by running `pip3 install dj_database_url===0.5.0 psycopg2`.
+- Ensure that the PostgreSQL adapter is installed by running `pip3 install psycopg2-binary`.
+- Update the `requirements.txt` file if necessary.
+
+**Step 4: The env.py File**
+
+- Create an `env.py` file if you don't already have one and make sure it's included in the .gitignore file.
+In the `env.py` file, add the following lines:
+
+`import os` <br>
+`os.environ["DATABASE_URL"] = "<copied URL from SQL database>"` <br>
+`os.environ["SECRET_KEY"] = "<create a secret key of your own>"` <br>
+
+Ensure that the environment variables are correctly imported into the `settings.py` file.
+
+**Step 5: Configuring S3 Storage for Media Files**
+
+- If you haven't already, sign up for an Amazon S3 account.
+- Create a new S3 bucket for storing your media files.
+- Obtain your AWS access key and secret key.
+- In your `env.py` file, add the following lines:
+* `os.environ["AWS_ACCESS_KEY_ID"] = "<your AWS access key>"`
+* `os.environ["AWS_SECRET_ACCESS_KEY"] = "<your AWS secret key>"`
+
+- Update your `settings.py` file to use S3 storage for media files. Install the required package:
+- `pip install django-storages==1.14.2`
+
+- Add the following configuration to `settings.py`:
+* `AWS_STORAGE_BUCKET_NAME = '< bucket namne>'`
+* `AWS_S3_REGION_NAME = '<region name>'`
+* `AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')`
+* `AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')`
+* `AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'`
+
+Update the `MEDIA_URL` and `DEFAULT_FILE_STORAGE`:
+* `MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'`
+* `DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`
+
+**Step 6: Setting Up Stripe for Payment Processing**
+
+- Log in to your Stripe Dashboard or create an account if you don't have one.
+- In the dashboard, navigate to "Developers" > "API keys."
+- Copy the "Publishable key" and "Secret key."
+- Open your `env.py` file and add the following lines:
+* `os.environ["STRIPE_PUBLIC_KEY"] = "<your Stripe Publishable key>"`
+* `os.environ["STRIPE_SECRET_KEY"] = "<your Stripe Secret key>"`
+* `os.environ["STRIPE_WH_SECRET"] = "<your Stripe Webhook Secret key>"`
+- Make sure to include the `STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY` in your `settings.py` file.
+- Install required package:
+* `pip3 install stripe==7.10.0`
+- Update the `requirements.txt` file by using `pip freeze > requirements.txt`
+
+**Step 7: Setting Environment Variables on Heroku**
+
+- On the Heroku Dashboard, select the app you created and then go to the "Settings" tab.
+- Click "Reveal Config Vars."
+- Add the following config vars:
+* `DATABASE_URL` (copy the database URL from ElephantSQL).
+* `SECRET_KEY` (copy your secret key).
+* `AWS_ACCESS_KEY_ID` (copy your secret key).
+* `AWS_SECRET_ACCESS_KEY` (copy your secret key).
+* `STRIPE_PUBLIC_KEY`(copy your key).
+* `STRIPE_SECRET_KEY`(copy your secret key).
+* `STRIPE_WH_SECRET` (copy your secret key).
+
+**Step 8: Connecting to GitHub and Deployment**
+
+- On the Heroku Dashboard, select your app and go to the "Deploy" tab.
+- Choose GitHub as the deployment method.
+- Search for your project repository and click "Connect."
+- If desired, enable automatic deploys.
+- Finally, select "Deploy Branch" to watch your app being built and deployed.
+
+### Forking the Repository
+
+- Log in to GitHub and find the repository you want to fork.
+- Above the "Settings" Tab, click the "Fork" button.
+- You now have a copy of the original repository in your GitHub account, allowing you to make changes while keeping the original safe.
+
+### Making a Local Clone
+
+- Log in to GitHub and locate the repository you want to clone.
+- Click the 'Code' dropdown above the file list.
+- Copy the URL for the repository.
+- Open Git Bash in your IDE.
+- Change the current working directory to where you want the cloned directory.
+- Type `git clone` in the CLI and then paste the URL you copied. It should look like this: `$ git clone https://github.com/yourusername/yourrepository`
+- Press Enter to create your local clone.
+- Don't forget to install all the required packages listed in the requirements.txt file using the command: `pip install -r requirements.txt`. This command will install them for you.
+
+**Link to:** [Bjorkhem Repository](https://github.com/cardan22/bjorkhem)
+
 ## Credits
 
 ### Media
 
+**Images:**
+
+* [Hero Image ](https://www.flickr.com/photos/147283126@N07/52960973427/in/album-72177720308927262/)
+
+* [404 Page Image](https://www.flickr.com/photos/147283126@N07/53383809279/in/album-72177720313229957/)
+
+<details>
+<summary>Facebook page:</summary>
+
+* [Facebook background](https://www.flickr.com/photos/147283126@N07/52401695601/in/album-72177720299753640/)
+* [Facebook Profile Picture](https://unsplash.com/photos/woman-in-black-long-sleeve-shirt-sitting-on-white-couch-n1B6ftPB5Eg)
+* [Mockup](https://www.figma.com/community/file/1136232663200778614)
+* [Facebook post](https://www.flickr.com/photos/147283126@N07/53234324170/in/album-72177720309082098/)
+
+</details>
+
+<details>
+<summary>Product Images:</summary>
+
+* [Angshult 2](https://www.storefactory.se/en/product/angshult-2/)
+* [Ektorp](https://www.storefactory.se/en/product/ektorp/)
+* [Elsa](https://www.storefactory.se/en/product/elsa/)
+* [Flora 12](https://www.storefactory.se/en/product/flora-12/)
+* [Lundby](https://www.storefactory.se/en/product/lundby/)
+* [Candle Holder](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-candle-holder-ernstaw2023.37-scaled.jpg)
+* [Apron](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-apron-dsc09925-scaled.jpg)
+* [Candle Holder](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-candle-holder-ernstaw2023.6-scaled.jpg)
+* [Textiles](https://ernstform.se/products/textiles/117430/)
+* [Pot](https://ernstform.se/wp-content/uploads/2019/08/ernstform.se-pot-ernsthost2019.32.jpg)
+* [Vases & Pots](https://ernstform.se/products/vases-pots/270751/)
+* [Candles & Candle Holders](https://ernstform.se/products/candles-candle-holders/350125/)
+* [Round Vase](https://ernstform.se/wp-content/uploads/2017/05/ErnstRoundVase.jpg)
+* [Candle Holders](https://ernstform.se/products/candles-candle-holders/ektl53/)
+* [Candle Holder](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-candle-holder-ernstaw2023.37-scaled.jpg)
+* [Cushions](https://ernstform.se/products/cushions/111731/)
+* [Cushion Cover](https://ernstform.se/wp-content/uploads/2021/12/ernstform.se-cushion-cover-ernstvar2022.18.1-scaled.jpg)
+* [Cushion Cover](https://ernstform.se/wp-content/uploads/2022/11/ernstform.se-cushion-cover-ernstss2023.16-scaled.jpg)
+* [Kitchen](https://ernstform.se/products/kitchen/245010/)
+* [Kitchen](https://ernstform.se/products/kitchen/246016/)
+* [Vase](https://ernstform.se/wp-content/uploads/2021/08/ernstform.se-vase-ernstaw2021.9-scaled.jpg)
+* [Inspiration](https://ernstform.se/wp-content/uploads/2022/02/ernstform.se-inspiration-te2-scaled.jpg)
+
+</details>
+
 ### Code
+
+I drew resources and inspiration from a few different places:
+- Reviewed Code Institute's 'I Think Therefore I Blog' and 'Boutique Ado' walkthrough project as references to start the coding process
+
+- Some previous projects were helpful:
+  - [earthalchemy-naturals](https://github.com/Lilla-Kavecsanszki/EarthAlchemyNaturals/tree/main) by Lilla Kavecsanszki
+  - [chirpy-chooks](https://github.com/Kay-ddggxh/chirpy_chooks) by Kay-ddggxh
+
+- During the project, I frequently visited the following websites for troubleshooting and assistance:
+  - [Stack Overflow](https://stackoverflow.com/)
+  - [W3 Schools](https://www.w3schools.com/)
+  - [Bootstrap](https://getbootstrap.com/)
 
 [Back to top](#björkhem)
