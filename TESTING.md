@@ -279,9 +279,12 @@ BDD, or Behaviour Driven Development, is the process used to test user stories i
 
 **Testing coverage:**
 
-A coverage report was generated to assess the code test coverage percentage:
+To achieve an even higher percentage, additional tests need to be conducted, particularly for the checkout app. A coverage report was generated to evaluate the code test coverage percentage.
 
-<img src="static/docs/coverage-report.png">
+<details>
+<summary>Coverage report</summary>
+<img src="static/docs/coverage-report.png" width="60%">
+</details>
 
 # Stripe Integration Testing
 
