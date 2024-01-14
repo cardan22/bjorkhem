@@ -210,10 +210,6 @@ input[name='q']::placeholder {
     border: 0;
 }
 
-/* Home page */
-
-
-
 /* Hero section with background image */
 
 .hero {
@@ -258,6 +254,11 @@ footer {
 
 .copyright {
     font-size: 0.6rem;
+}
+
+.list-inline-item > a,
+.copyright > a {
+    color: #fff;
 }
 
 /* Products */
@@ -441,9 +442,6 @@ input#mce-EMAIL {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0;
-
-    /* standard bootstrap btn transitions */
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .allauth-form-inner-content button:hover,
