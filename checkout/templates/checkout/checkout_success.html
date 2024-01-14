@@ -112,7 +112,7 @@
                             <div class="col-6">
                                 <!-- Display Bag Total, Discounts, Delivery, and Grand Total -->
                                 <p>Bag Total:</p>
-                                {% if total_discount > 0 %}
+                                {% if order.discount_total > 0 %}
                                     <p>Discounts:</p>
                                 {% endif %}
                                 <p>Delivery:</p>
@@ -122,14 +122,14 @@
                                 <!-- Display corresponding values dynamically -->
                                 <p>{{ order.order_total|floatformat:2 }} KR</p>
                                 <!-- Display discounts if available -->
-                                {% if total_discount > 0 %}
-                                    <p>-{{ total_discount|floatformat:2 }} KR</p>
+                                {% if order.discount_total > 0 %}
+                                    <p>-{{ order.discount_total|floatformat:2 }} KR</p>
                                 {% endif %}
                                 <!-- Check if free delivery is met -->
-                                {% if free_delivery_delta == 0 %}
+                                {% if order.free_delivery_delta == 0 %}
                                     <p>Free Delivery</p>
                                 {% else %}
-                                    <p>{{ delivery|floatformat:2 }} KR</p>
+                                    <p>{{ order.delivery_cost|floatformat:2 }} KR</p>
                                 {% endif %}
                                 <p class="pt-2"><b>{{ order.grand_total|floatformat:2 }} KR</b></p>
                             </div>
