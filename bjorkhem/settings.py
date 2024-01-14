@@ -234,5 +234,6 @@ else:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-cardan22-bjorkhem-iucyymraw32.ws-eu107.gitpod.io/*'
+    'https://8000-cardan22-bjorkhem-iucyymraw32.ws-eu107.gitpod.io/*',
+    'https://bjorkhem-8b5ef3ef81a6.herokuapp.com/*'
 ]
