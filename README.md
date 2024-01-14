@@ -156,7 +156,7 @@ Considering Emma's preferences, our platform is designed to cater to individuals
 
 2. **Product Pages:**
   - Organize products within relevant categories.
-  - Ensure each product page includes detailed information, pricing, and clear calls-to-action.
+  - Ensure each product page includes detailed information, pricing, and clear call-to-action.
 
 3. **User Account Section:**
   - Implement user registration, login, and logout functionalities.
@@ -181,26 +181,177 @@ Considering Emma's preferences, our platform is designed to cater to individuals
 I used Figma to design wireframes, which helped me to create a visual representation of the webshop.
 
 1. **Home page**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-home.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-home-mb.png">
+</details>
+
 2.	**Product page**
-3. **User account section**
-4. **Favorite product page**
-5. **Shopping cart**
-6. **Login/Sign up page**
-7. **Contact, about and FAQ**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-products.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-products-mb.png">
+</details>
+
+3.	**Product detail page**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-product.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-product-detail-mb.png">
+</details>
+
+4. **My profile**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-profile.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-product-profile-mb.png">
+</details>
+
+5. **Favorite product page**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-favorite.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-favorite-mb.png">
+</details>
+
+6. **Bag pag**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-bag.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-bag-mb.png">
+</details>
+
+7. **Checkout page**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-checkout.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-checkout-mb.png">
+</details>
+
+7. **Checkout success page**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-checkout-success.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-success-mb.png">
+</details>
+
+8. **Login page**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-login.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-login-mb.png">
+</details>
+
+9. **Sign up page**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/wireframe-signup.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile view</summary>
+<img src="static/docs/wireframe-signup-mb.png">
+</details>
+
+10. **Contact, about and FAQ**
+
+<details>
+<summary>Desktop</summary>
+<img src="static/docs/contact.png" width="60%">
+</details>
 
 ### Surface
 
 #### Data Base Design
 The Entity Relationship Diagram (ERD) shows how the database is organized at the heart of the site's features.
 
+![ERD Diagram](/static/docs/drawsql-bjorkhem.png)
+
+**User Model:** Django provides a User Model, which serves as the foundation for user accounts on the platform. Users can register and manage their profiles using this model.
+
+**User Profile Model:**
+The User Profile model extends the basic Django User model by adding extra details like full name, phone number, password, and address.
+
+**GDPR Consent Model:**
+The GDPR Consent model tracks user consent for GDPR compliance. It stores the user's profile, GDPR consent status, and a unique identifier.
+
+**Product Model:**
+The Product model holds key information about each product, such as SKU, name, category, color, size, description, image, price, and posting date. It also keeps track of product-related metrics like favorites and related products.
+
+**Category Model:**
+The Category model handles different product categories by storing their names and user-friendly identifiers.
+
+**Related Products Model:**
+The Related Products model establishes connections between different products. It includes references to the "from_product" and "to_product," indicating related products in the system.
+
+**Order Model:**
+The Order model contains details about user orders, including order number, user profile, contact details, delivery information, costs, and timestamps. It also saves the original bag content, payment details, and a unique order identifier.
+
+**Order Line Item Model:**
+The Order Line Item model represents individual items within an order, like the associated order, product, quantity, total cost, and purchased quantity. Note that the "purchased quantity" field is currently unused but is intended for future integration with stock management functionality.
+
+**Future Models:**
+The **Stock model** is a fundamental component designed to manage future product stock levels. It maintains crucial data, including the unique identifier of the product and the available quantity. This model serves as a foundation for tracking and controlling stock levels in the application's future functionalities.
+
 #### Colours
 I aimed to establish a warm and inviting ambiance, opting for earthy tones and subtly muted colors.
+
+![Colour palette](/static/docs/colours.png)
 
 #### Typography
 I selected the Jost font to improve the visual appeal and readability of the webshop. The aim was to create a text style that is both pleasant and easy to read, harmonizing seamlessly with the overall design.
 
 #### Logo
 I created a simple logo for Björhem to strengthen its visual identity. The logo is minimalistic and easy to understand, making it easier for users to recognize and associate with Björkhem.
+
+![Björkhem logo](/static/docs/bjorkhem-logo.png)
 
 ## SEO and Marketing
 The SEO and Marketing documentation can be found at [MARKETING.md](MARKETING.md).
@@ -217,7 +368,202 @@ The development of this project was managed through GitHub issues, milestones, a
 
 ### Existing Features
 
+#### Header and logo
+* The section displays a logo along with the header text.
+* Helps the user to quickly recognize and connect the website with its specific content and purpose.
+* Different links are shown to users depending on whether they are logged in or not. 
+* On smaller screens, the navigation links become a collapsible burger menu for a user-friendly experience.
+
+<details>
+<summary>Default navbar and header for unregistered user</summary>
+<img src="static/docs/nav-desc.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile - Navbar and header for unregistered user</summary>
+<img src="static/docs/nav-mobile.png">
+</details>
+
+<details>
+<summary>Navbar and header for registered user</summary>
+<img src="static/docs/user-nav-desc.png" width="60%">
+</details>
+
+<details>
+<summary>Mobile - Navbar and header for registered user</summary>
+<img src="static/docs/user-nav-mobile.png">
+</details>
+
+#### Footer section
+* The footer includes links to Instagram and Facebook, along with a copyright feature.
+
+<details>
+<summary>Footer</summary>
+<img src="static/docs/footer.png" width="60%">
+</details>
+
+#### Account Features
+
+##### Create an Account
+* Allows User Signup
+* Fields: Username, Email, Password, Password Confirmation
+
+<details>
+<summary>Sign up</summary>
+<img src="static/docs/signup.png" width="60%">
+</details>
+
+##### Login to an Account
+* Allows User Access to their profile page
+
+<details>
+<summary>Login</summary>
+<img src="static/docs/login.png" width="60%">
+</details>
+
+##### Log Out of an Account
+* Allows User to Log Out
+
+<details>
+<summary>Logout</summary>
+<img src="static/docs/logout.png" width="60%">
+</details>
+
+##### Password reset
+* Allows User to reset password
+
+<details>
+<summary>Password reset</summary>
+<img src="static/docs/password-reset.png" width="60%">
+</details>
+
+<details>
+<summary>Password reset confirmation</summary>
+<img src="static/docs/password-reset-confirmation.png" width="60%">
+</details>
+
+<details>
+<summary>Password changed</summary>
+<img src="static/docs/password-changed.png" width="60%">
+</details>
+
+### Main Views
+
+#### Home Page
+* Visitors are greeted with an attractive hero image and an enticing call-to-action prompting them to 'Shop now.'
+* The homepage showcases a paginated list of the four most recent news items.
+* Logged-in users can spot a heart icon in the navbar, where all products they have marked with a heart are gathered.
+* Users also have the option to sign up for the newsletter.
+
+<details>
+<summary>Home page</summary>
+<img src="static/docs/home.png" width="60%">
+</details>
+
+#### Products
+* Visitors can select a category in the navigation to view a list of products within that category.
+* The products are displayed with images, names, regular prices, and, if available, discounted prices.
+
+<details>
+<summary>Product page</summary>
+<img src="static/docs/product-category.png" width="60%">
+</details>
+
+#### Product detail
+* Clear product presentation with images, name, and description.
+* Convenient purchase options, including price details and "Add to Cart" button.
+* User-friendly features like quantity selection and favoriting for logged-in users.
+
+<details>
+<summary>Product detail page</summary>
+<img src="static/docs/product-detail.png" width="60%">
+</details>
+
+#### Bag
+
+<details>
+<summary>Bag page</summary>
+<img src="static/docs/bag.png" width="60%">
+</details>
+
+#### Checkout
+
+<details>
+<summary>Checkout page</summary>
+<img src="static/docs/checkout.png" width="60%">
+</details>
+
+#### Checkout Success 
+
+<details>
+<summary>Checkout success page</summary>
+<img src="static/docs/checkout-success.png" width="60%">
+</details>
+
+<details>
+<summary>Email confirmation mail</summary>
+<img src="static/docs/mail-confirmation.png" width="60%">
+</details>
+
+#### My profile
+
+<details>
+<summary>My profile</summary>
+<img src="static/docs/profile.png" width="60%">
+</details>
+
+#### Product Management
+
+<details>
+<summary>Product Management links</summary>
+<img src="static/docs/product-management.png" width="60%">
+</details>
+
+<details>
+<summary>Add product</summary>
+<img src="static/docs/add-product.png" width="60%">
+</details>
+
+<details>
+<summary>Edit product</summary>
+<img src="static/docs/edit-product.png" width="60%">
+</details>
+
+#### Newsletter
+
+<details>
+<summary>Newsletter form</summary>
+<img src="static/docs/newsletter.png" width="60%">
+</details>
+
+#### Searchfield
+
+<details>
+<summary>Searchfield</summary>
+<img src="static/docs/searchfield.png" width="60%">
+</details>
+
+#### Toast messages
+
+
+#### 404 view
+* The 404 view is designed to provide a user-friendly error page in case a requested page is not found on the website.
+* This page offers a visually appealing and informative 404 error message, helping users navigate back to the site's functional pages.
+
+<details>
+<summary>404 page</summary>
+<img src="static/docs/404.png" width="60%">
+</details>
+
 ## Future Features
+
+**Additional Product Images:**
+
+Improve user experience by adding more images for each product, giving customers a detailed view of the item.
+
+**Delete Account**
+
+User empowerment is a core principle at Bjorkhem. Therefore, a "Delete Account" option will be offered, allowing users to have control over their accounts. This feature will enable individuals to remove their profiles and associated data at any time, providing a flexible and secure user experience.
 
 ## Technologies Used
 
