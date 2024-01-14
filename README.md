@@ -228,19 +228,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-product-profile-mb.png">
 </details>
 
-5. **Favorite product page**
-
-<details>
-<summary>Desktop</summary>
-<img src="static/docs/wireframe-favorite.png" width="60%">
-</details>
-
-<details>
-<summary>Mobile view</summary>
-<img src="static/docs/wireframe-favorite-mb.png">
-</details>
-
-6. **Bag pag**
+5. **Bag pag**
 
 <details>
 <summary>Desktop</summary>
@@ -252,7 +240,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-bag-mb.png">
 </details>
 
-7. **Checkout page**
+6. **Checkout page**
 
 <details>
 <summary>Desktop</summary>
@@ -361,8 +349,31 @@ The development of this project was managed through GitHub issues, milestones, a
 [Link to Björkhem User Stories](https://github.com/users/cardan22/projects/5)
 
 ### Sprints
+The project adopted an Agile development approach, breaking down the development process into several sprints. Each sprint had a specific focus and objectives:
+
+**Sprint 1: Initial Project Setup and Core Features (Dec 1 - Dec 12, 2023)**
+
+The first sprint concentrated on setting up the initial structure of the Björkhem project. This involved foundational work such as configuring navigation, styling templates, and ensuring mobile responsiveness. Additionally, the core features of product display and details were implemented.
+
+**Sprint 2: E-commerce Functionality (Dec 13 - Dec 20, 2023)**
+
+During the second sprint, the focus shifted to implementing e-commerce functionality. This included the development of the checkout process, integration with Stripe for payment, and the addition of features like quantity adjustments and discounts.
+
+**Sprint 3: Cart Management, Search, and User Profiles (Dec 21 - Dec 28, 2023)**
+
+Sprint 3 delved into refining the shopping experience by introducing cart management functionalities, including bag previews and toasts for user notifications. The search feature and category filtering were implemented to enhance product discoverability. User profiles and GDPR-related features were also incorporated.
+
+**Sprint 4: Styling Refinements and Newsletter Features (Dec 29, 2023 - Jan 5, 2024)**
+
+The fourth sprint focused on refining the overall styling and user interface. This included improvements to CSS, buttons, and the newsletter form. Stylish updates were made to the checkout and bag templates for a more polished appearance.
+
+**Sprint 5: Testing, Final Code Revisions, and Documentation (Jan 6 - Jan 15, 2024)**
+
+The final sprint concentrated on comprehensive code testing and final revisions. The project documentation underwent finalization, and detailed adjustments were made to guarantee the overall quality and thoroughness of the project.
 
 ## Conclusion
+
+The systematic breakdown of the development process into sprints has been pivotal in achieving the goals of the Björkhem project. Each sprint contributed to the project's evolution, ensuring that it aligns with its main objectives. This organized approach has not only made development smoother but also ensured that every aspect of the project is well-crafted and in line with its overarching vision.
 
 ## Features
 
@@ -481,6 +492,11 @@ The development of this project was managed through GitHub issues, milestones, a
 
 #### Bag
 
+* Easily view, adjust, and remove items in the shopping bag.
+* Get a detailed cost summary, including product costs, discounts, shipping charges, and the total.
+* Receive notifications on free shipping eligibility progress or qualification.
+* Effortlessly proceed to checkout to complete the purchase.
+
 <details>
 <summary>Bag page</summary>
 <img src="static/docs/bag.png" width="60%">
@@ -488,12 +504,18 @@ The development of this project was managed through GitHub issues, milestones, a
 
 #### Checkout
 
+* Users view a detailed order summary, listing selected products and total cost.
+* Input contact and credit card details.
+* Finalize the order by clicking "Complete Order."
+
 <details>
 <summary>Checkout page</summary>
 <img src="static/docs/checkout.png" width="60%">
 </details>
 
-#### Checkout Success 
+#### Checkout Success
+
+* Receive a detailed order confirmation and a confirmation email with all relevant order information.
 
 <details>
 <summary>Checkout success page</summary>
@@ -507,12 +529,19 @@ The development of this project was managed through GitHub issues, milestones, a
 
 #### My profile
 
+* View order history, if available.
+* Access and update contact information, including GDPR-related fields.
+
 <details>
 <summary>My profile</summary>
 <img src="static/docs/profile.png" width="60%">
 </details>
 
 #### Product Management
+
+* Superusers have access to product management features.
+* Edit and delete buttons are visible on all products for superusers.
+* Superusers can add new products and edit existing ones.
 
 <details>
 <summary>Product Management links</summary>
@@ -531,6 +560,8 @@ The development of this project was managed through GitHub issues, milestones, a
 
 #### Newsletter
 
+* The newsletter form is strategically placed and visible on select pages for easy sign-up accessibility.
+
 <details>
 <summary>Newsletter form</summary>
 <img src="static/docs/newsletter.png" width="60%">
@@ -538,13 +569,45 @@ The development of this project was managed through GitHub issues, milestones, a
 
 #### Searchfield
 
+* The search field is conveniently integrated as a toggle button in the navbar, allowing users to easily search for products.
+
 <details>
 <summary>Searchfield</summary>
 <img src="static/docs/searchfield.png" width="60%">
 </details>
 
+#### Sorting
+
+* Users have the option to sort products on the product page based on price or name.
+
+<details>
+<summary>Filter</summary>
+<img src="static/docs/sorting.png" width="60%">
+</details>
+
 #### Toast messages
 
+* Users receive informative toast messages for various actions, such as adding a product, liking an item, attempting to access restricted pages, or encountering other relevant notifications.
+
+<details>
+<summary>Success message</summary>
+<img src="static/docs/toast-success.png">
+</details>
+
+<details>
+<summary>Success message - add to bag</summary>
+<img src="static/docs/toast-success-bag.png">
+</details>
+
+<details>
+<summary>Error message</summary>
+<img src="static/docs/toast-error.png">
+</details>
+
+<details>
+<summary>Alert message</summary>
+<img src="static/docs/toast-alert.png">
+</details>
 
 #### 404 view
 * The 404 view is designed to provide a user-friendly error page in case a requested page is not found on the website.
