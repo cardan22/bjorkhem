@@ -140,18 +140,18 @@ class favorite_products(LoginRequiredMixin, ListView):
     template_name = 'products/favorite_products.html'
     context_object_name = 'favorite_products'
 
-    def get_context_data(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        if not self.request.user.is_authenticated:
             messages.warning(
-                request, "Please log in to view your favorite products."
+                self.request, "Please log in to view your favorite products."
             )
             return HttpResponseRedirect(reverse_lazy('login'))
 
-        context = super().get_context_data(**kwargs)
-        if self.request.user.is_authenticated:
-            user = self.request.user
-            favorite_products = user.favorite_products.all()
-            context['favorite_products'] = favorite_products
+        user = self.request.user
+        favorite_products = user.favorite_products.all()
+        context['favorite_products'] = favorite_products
         return context
 
 
