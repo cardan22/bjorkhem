@@ -311,5 +311,6 @@ The Stripe integration underwent testing to ensure a seamless payment processing
 | Bug ID | Bug Description | Fix Description |
 | ------ | --------------- | --------------- |
 | #1     | Get 403 error when trying to login to admin. | Implemented the following solution in the settings: `CSRF_TRUSTED_ORIGINS = ['https://gitpod.io/*']` |
-| #2     | Can't delete `purchased_quantity` field in `OrderLineItem`. | Currently investigating the issue and working on a fix. |
+| #2     | The full name is not being saved to the profile from the checkout form. | Currently investigating the issue and working on a fix. |
 | #3     | Unable to see the link to the image in the form for uploading a product. | Investigation ongoing, fix not implemented yet. |
+| #4     | Unable to register or initiate "forgot password" | The issue was identified within the settings, particularly under AUTH_PASSWORD_VALIDATORS. There was an incorrect break in the lines. |
