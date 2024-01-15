@@ -70,14 +70,13 @@ The application was created with a focus on the Five Planes of User Experience.
 |                             | As a shopper, I want to receive an order confirmation so that I can have a record of my purchase.                | 4E         |
 | Admin and Store Management  | As an admin, I want an easy process to add a product to the webshop so that I can efficiently manage the product catalog. | 5A         |
 |                             | As an admin, I want the capability to edit or update product information so that I can easily keep the webshop content up to date. | 5B         | 
-|                             | As an admin, I want to delete items from the webshop so that I can keep track of inventory easily.  | 5C        | 
-|                             |
+|                             | As an admin, I want to delete items from the webshop so that I can keep track of inventory easily.  | 5C        |
 
-#### Target Audience
+### Target Audience
 
 The target audience includes individuals who appreciate Scandinavian country-style home decor, with a particular emphasis on those in Sweden. Catering to those who value the warmth and simplicity of rural Scandinavian design, the focus is on creating a welcoming space. The curated selection of home treasures captures the essence of cozy living, providing a diverse range of options for individuals seeking timeless pieces to enhance their homes. Whether you're setting up your first apartment or adding character to an existing space, embrace the beauty of Scandinavian country-style living, right here in Sweden.
 
-#### Personas
+### Personas
 
 **Persona: Sofia, 28**
 
@@ -104,9 +103,7 @@ The target audience includes individuals who appreciate Scandinavian country-sty
 
 Considering Emma's preferences, our platform is designed to cater to individuals like her who appreciate Scandinavian country-style living. We aim to provide a seamless and budget-friendly shopping experience, ensuring the discovery of charming home treasures.
 
-#### User Requirements and Expectations
-
-## User Experience Expectations
+## User Experience and Expectations
 
 * Easy-to-use website with simple navigation.
 * Access to all site functions without any hassle.
@@ -735,7 +732,7 @@ Before you start, you need two essential files: `requirements.txt` and `Procfile
 6. In the URL section, copy the database URL.
 7. Install necessary packages using:
 * `pip3 install 'django<4' gunicorn dj_database_url===0.5.0 psycopg2 psycopg2-binary`
-* Update the `requirements.txt` file if necessary.
+8.  Update the `requirements.txt` file if necessary.
 
 **Step 4: The env.py File**
 
@@ -767,7 +764,7 @@ Ensure that the environment variables are correctly imported into the `settings.
 * `AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')`
 * `AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'`
 
-Update the `MEDIA_URL` and `DEFAULT_FILE_STORAGE`:
+7. Update the `MEDIA_URL` and `DEFAULT_FILE_STORAGE`:
 * `MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'`
 * `DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`
 

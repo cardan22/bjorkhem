@@ -16,7 +16,7 @@
 1.	Rustic Home Decor
 2.  Scandinavian rustic interior 
 3.	Affordable Country Style
-4.	Vintage Home Accents
+4.	Nordic Home Accents
 5.	Traditional Charm
 6.	Budget-Friendly Elegance
 7.	Interior Gifts
@@ -25,16 +25,19 @@
 
 **Testing Keywords for volume and competition**
 
-I used [Wordtracker](https://www.wordtracker.com/) to see how important and authoritative certain words are. I checked as many as I could for free.
+I used [Wordtracker](https://www.wordtracker.com/) to see how important and authoritative certain words are. I checked as many as I could for free. If it were a real online store, more effort would be dedicated to researching and optimizing keywords.
 
 ## Research of similar businesses
 
-I found inspiration for Björkhem by exploring websites like [Country Interior](https://www.countryinterior.com/) and [Ängshem Inredning](https://www.angsheminrederi.se/). These platforms offered valuable insights, helping me refine Björkhem's unique identity and strategy.
+I found inspiration for Björkhem by exploring websites like [Country Interior](https://www.countryinterior.com/) and [Ängshem Inrederi](https://www.angsheminrederi.se/). These platforms offered valuable insights, helping me refine Björkhem's unique identity and strategy.
 
 # SEO Improvements
 
 **Meta tags**
 Implemented meta tags in the head section of base.html for improved SEO, including `<meta name="description"...` and `<meta name="keywords"...` tags.
+
+**Incorporated Keywords for Optimization**
+Implemented key terms within product descriptions and image alt texts to enhance search visibility and improve user experience. This strategic integration aligns content with relevant searches, ensuring our products are easily discoverable.
 
 **Creating a Sitemap**
 Generated a `sitemap.xml` file using XML Sitemaps to enhance site navigation for search engines and accelerate content discovery.
@@ -51,20 +54,20 @@ Before finalizing marketing strategies and outlining a business plan, I explored
 **1. What do your users need?**
 
 - A clear understanding of the website's theme.
-- Access to new interior products and designs.
+- A diverse range of products that is regularly updated.
 - Convenient ways to subscribe, connect on social media, and get in touch with the store.
 
 **2. What information and features can you provide to meet those needs?**
 
 - Present a clear description of the website's theme on the homepage. 
 - Include a section for news and a newsletter subscription option. 
-- Add links to social media profiles and a distinct contact section. 
+- Add links to social media profiles and a contact section. 
 - Provide a link to transparent policy information.
 
 **3. How can you make the information easy to understand?**
 - Use a clean and simple design.
 - Utilize clear headlines and concise, informative text sections.
-- Incorporate clear Call-to-Action buttons for subscription and contact.
+- Incorporate clear Call-to-Action buttons for subscription.
 
 **4. How can you demonstrate expertise, authoritativeness, and trustworthiness in your content?**
 - Include sections showcasing past achievements, customer reviews, and any industry expertise.
@@ -119,5 +122,3 @@ Björkhem is already engaging actively on Facebook, boasting a significant follo
 - Emphasizing genuine community engagement and interaction as a commitment to providing a welcoming space.
 
 In summary, the approach goes beyond product sales, aiming to establish a space where users can effortlessly discover, value, and incorporate rustic charm into their homes, emphasizing accessibility, quality, and community building.
-
-
