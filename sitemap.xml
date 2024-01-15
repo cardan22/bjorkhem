@@ -313,11 +313,6 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://bjorkhem-8b5ef3ef81a6.herokuapp.com/accounts/password/reset/</loc>
-  <lastmod>2024-01-12T10:10:18+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://bjorkhem-8b5ef3ef81a6.herokuapp.com/products/?sort=price&amp;direction=asc</loc>
   <lastmod>2024-01-12T10:10:18+00:00</lastmod>
   <priority>0.64</priority>
