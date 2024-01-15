@@ -32,17 +32,17 @@ Link to the website: [Björkhem](https://bjorkhem-8b5ef3ef81a6.herokuapp.com/)
 
 ## About
 
-Welcome to Björkhem, your haven for Scandinavian country-style home treasures. Our handpicked collection infuses your space with rustic charm and comfort, ensuring your home reflects the simplicity and warmth of the Swedish countryside. At Björkhem, we embrace a down-to-earth approach, making it easy for you to bring a touch of cozy Swedish living to your abode. Roam through our webshop and let your home bask in the serenity of country-style living.
+Welcome to Björkhem, explore our collection of cozy Scandinavian home decor for a warm and inviting ambiance. We specialize in countryside-style items to add an extra touch of comfort to your home. Our products are of high quality and come with affordable prices. Easily infuse your space with the charm of Swedish living.
 
-Björkhem is a B2C e-commerce platform that serves as your digital gateway to authentic Nordic living. Immerse yourself in a seamless shopping experience as you explore our curated product listings, discover exclusive discounts, bookmark your favorites, and stay updated with our delightful newsletter. At Björkhem, we're dedicated to bringing the heart of Scandinavian country-style living right to your doorstep.
+Björkhem is your online destination for genuine Nordic living. Enjoy a straightforward shopping experience, discover discounts, save your favorites, and stay informed with our friendly newsletter. We're passionate about bringing the heart of Scandinavian country-style living to your doorstep.
 
 ## Project goals
 
-The main goal of the webshop project is to create a super easy experience for customers to discover and purchase their favorite rustic Scandinavian country-style home decor. The platform provides a user-friendly space where people can effortlessly explore and acquire charming pieces that infuse the cozy vibes of the Swedish countryside into their homes.
+The webshop project has a primary goal: to offer customers an effortless experience in discovering and purchasing rustic Scandinavian home decor. Users can explore and acquire charming pieces that bring countryside vibes into their homes.
 
-Navigation through the webshop is designed to be straightforward, allowing users to enjoy exclusive discounts, bookmark their favorite items for future reference, and make purchases with ease. The focus is on simplicity and affordability, providing a welcoming space for everyone to easily bring a touch of comfy Swedish living into their spaces.
+The navigation is designed to be straightforward, featuring exclusive discounts and allowing users to bookmark favorites for seamless purchases. The focus is on simplicity and affordability, providing a welcoming space for everyone to add a touch of comfy living to their spaces.
 
-In essence, this project is more than just an online store; it's a digital destination where customers can easily find and purchase affordable and charming home treasures, capturing the essence of Scandinavian country-style living. The aim is to make it easy for individuals to shop and add that cozy Swedish feel to their homes.
+In essence, this project serves as a digital destination where customers can easily find and purchase affordable and charming home treasures, capturing the essence of Scandinavian country-style living. The goal is to make it easy for individuals to shop and enhance their homes with a cozy feel.
 
 ## User Experience – UX
 
@@ -69,8 +69,9 @@ The application was created with a focus on the Five Planes of User Experience.
 |                             | As a shopper, I want the option to review and edit my order details before confirming the purchase so that I can ensure my order is correct. | 4D         |
 |                             | As a shopper, I want to receive an order confirmation so that I can have a record of my purchase.                | 4E         |
 | Admin and Store Management  | As an admin, I want an easy process to add a product to the webshop so that I can efficiently manage the product catalog. | 5A         |
-|                             | As an admin, I want the capability to edit or update product information so
-
+|                             | As an admin, I want the capability to edit or update product information so that I can easily keep the webshop content up to date. | 5B         | 
+|                             | As an admin, I want to delete items from the webshop so that I can keep track of inventory easily.  | 5C        | 
+|                             |
 
 #### Target Audience
 
@@ -105,7 +106,7 @@ Considering Emma's preferences, our platform is designed to cater to individuals
 
 #### User Requirements and Expectations
 
-## User Experience Expectations## User Experience Expectations
+## User Experience Expectations
 
 * Easy-to-use website with simple navigation.
 * Access to all site functions without any hassle.
@@ -180,7 +181,7 @@ Considering Emma's preferences, our platform is designed to cater to individuals
 
 I used Figma to design wireframes, which helped me to create a visual representation of the webshop.
 
-1. **Home page**
+**Home page**
 
 <details>
 <summary>Desktop</summary>
@@ -192,7 +193,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-home-mb.png">
 </details>
 
-2.	**Product page**
+**Product page**
 
 <details>
 <summary>Desktop</summary>
@@ -204,7 +205,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-products-mb.png">
 </details>
 
-3.	**Product detail page**
+**Product detail page**
 
 <details>
 <summary>Desktop</summary>
@@ -216,7 +217,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-product-detail-mb.png">
 </details>
 
-4. **My profile**
+**My profile**
 
 <details>
 <summary>Desktop</summary>
@@ -225,10 +226,10 @@ I used Figma to design wireframes, which helped me to create a visual representa
 
 <details>
 <summary>Mobile view</summary>
-<img src="static/docs/wireframe-product-profile-mb.png">
+<img src="static/docs/wireframe-profile-mb.png">
 </details>
 
-5. **Bag pag**
+**Bag pag**
 
 <details>
 <summary>Desktop</summary>
@@ -240,7 +241,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-bag-mb.png">
 </details>
 
-6. **Checkout page**
+**Checkout page**
 
 <details>
 <summary>Desktop</summary>
@@ -252,7 +253,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-checkout-mb.png">
 </details>
 
-7. **Checkout success page**
+**Checkout success page**
 
 <details>
 <summary>Desktop</summary>
@@ -264,7 +265,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-success-mb.png">
 </details>
 
-8. **Login page**
+**Login page**
 
 <details>
 <summary>Desktop</summary>
@@ -276,7 +277,7 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-login-mb.png">
 </details>
 
-9. **Sign up page**
+**Sign up page**
 
 <details>
 <summary>Desktop</summary>
@@ -288,11 +289,11 @@ I used Figma to design wireframes, which helped me to create a visual representa
 <img src="static/docs/wireframe-signup-mb.png">
 </details>
 
-10. **Contact, about and FAQ**
+**Contact, about and FAQ**
 
 <details>
 <summary>Desktop</summary>
-<img src="static/docs/contact.png" width="60%">
+<img src="static/docs/wireframe-contact.png" width="60%">
 </details>
 
 ### Surface
@@ -302,33 +303,44 @@ The Entity Relationship Diagram (ERD) shows how the database is organized at the
 
 ![ERD Diagram](/static/docs/drawsql-bjorkhem.png)
 
-**User Model:** Django provides a User Model, which serves as the foundation for user accounts on the platform. Users can register and manage their profiles using this model.
+**User Model:** 
+
+Django provides a User Model, which serves as the foundation for user accounts on the platform. Users can register and manage their profiles using this model.
 
 **User Profile Model:**
+
 The User Profile model extends the basic Django User model by adding extra details like full name, phone number, password, and address.
 
 **GDPR Consent Model:**
-The GDPR Consent model tracks user consent for GDPR compliance. It stores the user's profile, GDPR consent status, and a unique identifier.
+
+The GDPR Consent model tracks user consent for GDPR compliance.
 
 **Product Model:**
+
 The Product model holds key information about each product, such as SKU, name, category, color, size, description, image, price, and posting date. It also keeps track of product-related metrics like favorites and related products.
 
 **Category Model:**
+
 The Category model handles different product categories by storing their names and user-friendly identifiers.
 
 **Related Products Model:**
+
 The Related Products model establishes connections between different products. It includes references to the "from_product" and "to_product," indicating related products in the system.
 
 **Order Model:**
+
 The Order model contains details about user orders, including order number, user profile, contact details, delivery information, costs, and timestamps. It also saves the original bag content, payment details, and a unique order identifier.
 
 **Order Line Item Model:**
+
 The Order Line Item model represents individual items within an order, like the associated order, product, quantity, total cost, and purchased quantity. Note that the "purchased quantity" field is currently unused but is intended for future integration with stock management functionality.
 
 **Future Models:**
+
 The **Stock model** is a fundamental component designed to manage future product stock levels. It maintains crucial data, including the unique identifier of the product and the available quantity. This model serves as a foundation for tracking and controlling stock levels in the application's future functionalities.
 
 #### Colours
+
 I aimed to establish a warm and inviting ambiance, opting for earthy tones and subtly muted colors.
 
 ![Colour palette](/static/docs/colours.png)
@@ -484,6 +496,7 @@ The systematic breakdown of the development process into sprints has been pivota
 * Clear product presentation with images, name, and description.
 * Convenient purchase options, including price details and "Add to Cart" button.
 * User-friendly features like quantity selection and favoriting for logged-in users.
+* Related products are displayed below to provide more inspiration if available.
 
 <details>
 <summary>Product detail page</summary>
@@ -537,16 +550,21 @@ The systematic breakdown of the development process into sprints has been pivota
 <img src="static/docs/profile.png" width="60%">
 </details>
 
+#### Favorite page
+
+* Logged-in users have the ability to save favorites by clicking on the heart icon in the products.
+* All favorites are gathered on the page; if a user has no favorites, a message encourages them to add items to their favorites.
+
+<details>
+<summary>Favorite page</summary>
+<img src="static/docs/favorite.png" width="60%">
+</details>
+
 #### Product Management
 
 * Superusers have access to product management features.
 * Edit and delete buttons are visible on all products for superusers.
 * Superusers can add new products and edit existing ones.
-
-<details>
-<summary>Product Management links</summary>
-<img src="static/docs/product-management.png" width="60%">
-</details>
 
 <details>
 <summary>Add product</summary>
@@ -556,6 +574,11 @@ The systematic breakdown of the development process into sprints has been pivota
 <details>
 <summary>Edit product</summary>
 <img src="static/docs/edit-product.png" width="60%">
+</details>
+
+<details>
+<summary>Product Management links - edit/delete</summary>
+<img src="static/docs/product-management.png" width="60%">
 </details>
 
 #### Newsletter
@@ -581,8 +604,8 @@ The systematic breakdown of the development process into sprints has been pivota
 * Users have the option to sort products on the product page based on price or name.
 
 <details>
-<summary>Filter</summary>
-<img src="static/docs/sorting.png" width="60%">
+<summary>Sorting</summary>
+<img src="static/docs/sorting.png">
 </details>
 
 #### Toast messages
@@ -628,6 +651,10 @@ Improve user experience by adding more images for each product, giving customers
 
 User empowerment is a core principle at Bjorkhem. Therefore, a "Delete Account" option will be offered, allowing users to have control over their accounts. This feature will enable individuals to remove their profiles and associated data at any time, providing a flexible and secure user experience.
 
+**Stock Management**
+
+In the future, superusers will be able to control stock, and regular users will also receive information if a product is running low or out of stock.
+
 ## Technologies Used
 
 ### Languages
@@ -639,28 +666,30 @@ User empowerment is a core principle at Bjorkhem. Therefore, a "Delete Account" 
 
 ### Python Modules/Packages used
 
-* **Django:** A high-level Python web framework that served as the foundation for building this application/site.
-* ***Psycopg2:**  This package acts as a PostgreSQL database adapter for Python, enabling seamless interaction with the database.
-* **boto3:** A Python library that provides an interface to Amazon Web Services (AWS), allowing seamless integration with AWS services.
-* **botocore:** A Python library that provides low-level, core functionality for AWS services.
-* **dj-database-url:** A Django utility for parsing database connection URLs.
-* **django-storages:** A Django library to manage storage backends like Amazon S3 and others.
-* **django-allauth:** It's a comprehensive suite of Django applications that addresses various aspects of user authentication, registration, account management, and third-party (social) account authentication.
-* **django-crispy-forms:** This package enhances the rendering of Django forms, offering more control and elegance in form presentation.
-* **crispy-bootstrap4:** It's a template pack for django-crispy-forms that is tailored for use with Bootstrap 4, further improving the presentation of forms.
-* **pillow:** A powerful Python imaging library that adds support for opening, manipulating, and saving many different image file formats.
-* **gunicorn:** A Python WSGI HTTP Server for UNIX, used to serve the Django application.
-* **asgiref:** ASGI specification reference implementation, used for handling asynchronous requests in Django.
-* **jmespath:** Used for querying JSON-like data structures.
-* **oauthlib:** Provides support for OAuth1 and OAuth2.
-* **PyJWT:** Enables working with JSON Web Tokens (JWT).
-* **python3-openid:** A set of Python packages to support the use of the OpenID decentralized identity system.
-* **requests-oauthlib:** A OAuthlib extension to work with requests.
-* **s3transfer:** Used for managing Amazon S3 transfers.
-* **sqlparse:** A non-validating SQL parser.
-* **stripe:** A Python library for interacting with the Stripe API.
-* **urllib3:** A powerful HTTP client for Python.
-* **coverage:** Measures code coverage during test execution.
+## Project Dependencies
+
+- **asgiref:** ASGI specification reference implementation, used for handling asynchronous requests in Django.
+- **boto3:** A Python library providing an interface to Amazon Web Services (AWS), allowing seamless integration with AWS services.
+- **botocore:** Low-level, core functionality for AWS services, often used in conjunction with boto3.
+- **coverage:** Measures code coverage during test execution.
+- **dj-database-url:** A Django utility for parsing database connection URLs.
+- **Django:** A high-level Python web framework for building web applications.
+- **django-allauth:** A comprehensive suite of Django applications addressing user authentication, registration, account management, and third-party (social) account authentication.
+- **django-bootstrap4:** Provides template tags and filters to integrate Bootstrap 4 components directly into Django templates.
+- **django-crispy-forms:** Enhances the rendering of Django forms, offering more control and elegance in form presentation.
+- **django-storages:** A Django library to manage storage backends like Amazon S3 and others.
+- **gunicorn:** A Python WSGI HTTP Server for UNIX, used to serve Django applications.
+- **jmespath:** Used for querying JSON-like data structures.
+- **oauthlib:** Provides support for OAuth1 and OAuth2.
+- **Pillow:** A powerful Python imaging library that adds support for opening, manipulating, and saving many different image file formats.
+- **psycopg2:** A PostgreSQL database adapter for Python, enabling seamless interaction with the database.
+- **PyJWT:** Enables working with JSON Web Tokens (JWT).
+- **python3-openid:** A set of Python packages to support the use of the OpenID decentralized identity system.
+- **requests-oauthlib:** An OAuthlib extension to work with requests.
+- **s3transfer:** Used for managing Amazon S3 transfers.
+- **sqlparse:** A non-validating SQL parser.
+- **stripe:** A Python library for interacting with the Stripe API.
+- **urllib3:** A powerful HTTP client for Python.
 
 ### Frameworks & Tools
 
@@ -687,54 +716,52 @@ The testing documentation can be found at [TESTING.md](TESTING.md)
 Before you start, you need two essential files: `requirements.txt` and `Procfile`.
 
 - Create `requirements.txt` by running this command in your terminal: `pip3 freeze --local > requirements.txt`. This file will list all the requirements.
-- Next, create a file named `Procfile` and add the line: `web: gunicorn pastryhub.wsgi` to it, without any empty lines. Make sure to push both these files to your repository.
+- Next, create a file named `Procfile` and add the line: `web: gunicorn bjorkhem.wsgi` to it, without any empty lines. Make sure to push both these files to your repository.
 
 **Step 2: Creating a Heroku App**
 
-- Log in to Heroku and go to the Dashboard.
-- Click "New" and select "Create new app."
-- Give your app a name and choose the region closest to you.
-- Click "Create app" to confirm.
+1. Log in to Heroku and go to the Dashboard.
+2. Click "New" and select "Create new app."
+3. Give your app a name and choose the region closest to you.
+4. Click "Create app" to confirm.
 
 **Step 3: Setting Up a Database**
 
-- Log in to ElephantSQL.com and access your dashboard.
-- Click "Create New Instance."
-- Choose a plan, give it a name, select the Tiny Turtel (Free) plan, and leave the Tags field blank.
-- Select a data center near you.
-- Click "Review" and confirm your details.
-- Return to the ElephantSQL dashboard and click on the database instance name for your project.
-- In the URL section, copy the database URL.
-- Ensure that Django and Gunicorn are installed in your workspace using `pip3 install 'django<4' gunicorn`.
-- Also, make sure the database infrastructure is installed by running `pip3 install dj_database_url===0.5.0 psycopg2`.
-- Ensure that the PostgreSQL adapter is installed by running `pip3 install psycopg2-binary`.
-- Update the `requirements.txt` file if necessary.
+1. Log in to ElephantSQL.com and access your dashboard.
+2. Click "Create New Instance."
+3. Choose a plan, give it a name, select the Tiny Turtel (Free) plan, and leave the Tags field blank.
+4. Select a data center near you and confirm your details.
+5. Return to the ElephantSQL dashboard, click on the database instance name for your project.
+6. In the URL section, copy the database URL.
+7. Install necessary packages using:
+* `pip3 install 'django<4' gunicorn dj_database_url===0.5.0 psycopg2 psycopg2-binary`
+* Update the `requirements.txt` file if necessary.
 
 **Step 4: The env.py File**
 
-- Create an `env.py` file if you don't already have one and make sure it's included in the .gitignore file.
-In the `env.py` file, add the following lines:
+1. Create an `env.py` file if you don't have one and include it in the `.gitignore` file.
+2. Add the following lines to env.py:
 
-`import os` <br>
-`os.environ["DATABASE_URL"] = "<copied URL from SQL database>"` <br>
-`os.environ["SECRET_KEY"] = "<create a secret key of your own>"` <br>
+* `import os` <br>
+* `os.environ["DATABASE_URL"] = "<copied URL from SQL database>"` <br>
+* `os.environ["SECRET_KEY"] = "<create a secret key of your own>"` <br>
 
 Ensure that the environment variables are correctly imported into the `settings.py` file.
 
 **Step 5: Configuring S3 Storage for Media Files**
 
-- If you haven't already, sign up for an Amazon S3 account.
-- Create a new S3 bucket for storing your media files.
-- Obtain your AWS access key and secret key.
-- In your `env.py` file, add the following lines:
+1. Sign up for an Amazon S3 account if you haven't.
+2. Create a new S3 bucket for storing media files.
+3. Obtain your AWS access key and secret key.
+4. Add the following lines to your `env.py` file:
 * `os.environ["AWS_ACCESS_KEY_ID"] = "<your AWS access key>"`
 * `os.environ["AWS_SECRET_ACCESS_KEY"] = "<your AWS secret key>"`
 
-- Update your `settings.py` file to use S3 storage for media files. Install the required package:
-- `pip install django-storages==1.14.2`
+5. Install the required package:
+* `pip install django-storages==1.14.2`
 
-- Add the following configuration to `settings.py`:
-* `AWS_STORAGE_BUCKET_NAME = '< bucket namne>'`
+6. Add the following configuration to `settings.py`:
+* `AWS_STORAGE_BUCKET_NAME = '<bucket name>'`
 * `AWS_S3_REGION_NAME = '<region name>'`
 * `AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')`
 * `AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')`
@@ -746,55 +773,56 @@ Update the `MEDIA_URL` and `DEFAULT_FILE_STORAGE`:
 
 **Step 6: Setting Up Stripe for Payment Processing**
 
-- Log in to your Stripe Dashboard or create an account if you don't have one.
-- In the dashboard, navigate to "Developers" > "API keys."
-- Copy the "Publishable key" and "Secret key."
-- Open your `env.py` file and add the following lines:
+1. Log in to your Stripe Dashboard or create an account.
+2. Navigate to "Developers" > "API keys."
+3. Copy the "Publishable key" and "Secret key."
+4. Add the following lines to your `env.py` file:
 * `os.environ["STRIPE_PUBLIC_KEY"] = "<your Stripe Publishable key>"`
 * `os.environ["STRIPE_SECRET_KEY"] = "<your Stripe Secret key>"`
 * `os.environ["STRIPE_WH_SECRET"] = "<your Stripe Webhook Secret key>"`
-- Make sure to include the `STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY` in your `settings.py` file.
-- Install required package:
+
+5. Make sure to include the `STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY` in your `settings.py` file.
+6. Install required package:
 * `pip3 install stripe==7.10.0`
-- Update the `requirements.txt` file by using `pip freeze > requirements.txt`
+7. Update the `requirements.txt` file by using `pip freeze > requirements.txt`
 
 **Step 7: Setting Environment Variables on Heroku**
 
-- On the Heroku Dashboard, select the app you created and then go to the "Settings" tab.
-- Click "Reveal Config Vars."
-- Add the following config vars:
+1. On the Heroku Dashboard, select the app you created and go to the "Settings" tab.
+2. Click "Reveal Config Vars."
+3. Add the following config vars:
 * `DATABASE_URL` (copy the database URL from ElephantSQL).
 * `SECRET_KEY` (copy your secret key).
 * `AWS_ACCESS_KEY_ID` (copy your secret key).
 * `AWS_SECRET_ACCESS_KEY` (copy your secret key).
 * `STRIPE_PUBLIC_KEY`(copy your key).
 * `STRIPE_SECRET_KEY`(copy your secret key).
-* `STRIPE_WH_SECRET` (copy your secret key).
+* `STRIPE_WH_SECRET` (copy your wh secret key).
 
 **Step 8: Connecting to GitHub and Deployment**
 
-- On the Heroku Dashboard, select your app and go to the "Deploy" tab.
-- Choose GitHub as the deployment method.
-- Search for your project repository and click "Connect."
-- If desired, enable automatic deploys.
-- Finally, select "Deploy Branch" to watch your app being built and deployed.
+1. On the Heroku Dashboard, select your app and go to the "Deploy" tab.
+2. Choose GitHub as the deployment method.
+3. Search for your project repository and click "Connect."
+4. If desired, enable automatic deploys.
+5. Finally, select "Deploy Branch" to watch your app being built and deployed.
 
 ### Forking the Repository
 
-- Log in to GitHub and find the repository you want to fork.
-- Above the "Settings" Tab, click the "Fork" button.
-- You now have a copy of the original repository in your GitHub account, allowing you to make changes while keeping the original safe.
+1. Log in to GitHub and find the repository you want to fork.
+2. Above the "Settings" Tab, click the "Fork" button.
+3. You now have a copy of the original repository in your GitHub account, allowing you to make changes while keeping the original safe.
 
 ### Making a Local Clone
 
-- Log in to GitHub and locate the repository you want to clone.
-- Click the 'Code' dropdown above the file list.
-- Copy the URL for the repository.
-- Open Git Bash in your IDE.
-- Change the current working directory to where you want the cloned directory.
-- Type `git clone` in the CLI and then paste the URL you copied. It should look like this: `$ git clone https://github.com/yourusername/yourrepository`
-- Press Enter to create your local clone.
-- Don't forget to install all the required packages listed in the requirements.txt file using the command: `pip install -r requirements.txt`. This command will install them for you.
+1. Log in to GitHub and locate the repository you want to clone.
+2. Click the 'Code' dropdown above the file list.
+3. Copy the URL for the repository.
+4. Open Git Bash in your IDE.
+5. Change the current working directory to where you want the cloned directory.
+6. Type `git clone` in the CLI and then paste the URL you copied. It should look like this: `$ git clone https://github.com/yourusername/yourrepository`
+7. Press Enter to create your local clone.
+8. Don't forget to install all the required packages listed in the `requirements.txt` file using the command: `pip install -r requirements.txt`.
 
 **Link to:** [Bjorkhem Repository](https://github.com/cardan22/bjorkhem)
 
@@ -804,15 +832,25 @@ Update the `MEDIA_URL` and `DEFAULT_FILE_STORAGE`:
 
 **Images:**
 
-* [Hero Image ](https://www.flickr.com/photos/147283126@N07/52960973427/in/album-72177720308927262/)
+<details>
+<summary>Hero image:</summary>
 
-* [404 Page Image](https://www.flickr.com/photos/147283126@N07/53383809279/in/album-72177720313229957/)
+* [Hero Image](https://www.flickr.com/photos/147283126@N07/52960973427/in/album-72177720308927262/)
+
+</details>
+
+<details>
+<summary>404 image:</summary>
+
+* [404 Page Image](https://www.flickr.com/photos/147283126@N07/52549266474/in/album-72177720304296538/)
+
+</details>
 
 <details>
 <summary>Facebook page:</summary>
 
-* [Facebook background](https://www.flickr.com/photos/147283126@N07/52401695601/in/album-72177720299753640/)
-* [Facebook Profile Picture](https://unsplash.com/photos/woman-in-black-long-sleeve-shirt-sitting-on-white-couch-n1B6ftPB5Eg)
+* [Facebook profile background](https://www.flickr.com/photos/147283126@N07/52401695601/in/album-72177720299753640/)
+* [Facebook profile picture](https://unsplash.com/photos/woman-in-black-long-sleeve-shirt-sitting-on-white-couch-n1B6ftPB5Eg)
 * [Mockup](https://www.figma.com/community/file/1136232663200778614)
 * [Facebook post](https://www.flickr.com/photos/147283126@N07/53234324170/in/album-72177720309082098/)
 
@@ -821,28 +859,26 @@ Update the `MEDIA_URL` and `DEFAULT_FILE_STORAGE`:
 <details>
 <summary>Product Images:</summary>
 
-* [Angshult 2](https://www.storefactory.se/en/product/angshult-2/)
+* [Angshult vase](https://www.storefactory.se/en/product/angshult-2/)
 * [Ektorp](https://www.storefactory.se/en/product/ektorp/)
 * [Elsa](https://www.storefactory.se/en/product/elsa/)
 * [Flora 12](https://www.storefactory.se/en/product/flora-12/)
 * [Lundby](https://www.storefactory.se/en/product/lundby/)
-* [Candle Holder](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-candle-holder-ernstaw2023.37-scaled.jpg)
-* [Apron](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-apron-dsc09925-scaled.jpg)
-* [Candle Holder](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-candle-holder-ernstaw2023.6-scaled.jpg)
+* [Candle Holder](https://ernstform.se/produkter/ljus-ljuslyktor/350125/)
+* [Apron](https://ernstform.se/produkter/kok/112025/)
+* [Candle Holder](https://ernstform.se/produkter/ljus-ljuslyktor/264415/)
 * [Textiles](https://ernstform.se/products/textiles/117430/)
-* [Pot](https://ernstform.se/wp-content/uploads/2019/08/ernstform.se-pot-ernsthost2019.32.jpg)
-* [Vases & Pots](https://ernstform.se/products/vases-pots/270751/)
+* [Baking dish](https://ernstform.se/produkter/kok/248205/)
+* [Vase](https://ernstform.se/products/vases-pots/270751/)
 * [Candles & Candle Holders](https://ernstform.se/products/candles-candle-holders/350125/)
-* [Round Vase](https://ernstform.se/wp-content/uploads/2017/05/ErnstRoundVase.jpg)
 * [Candle Holders](https://ernstform.se/products/candles-candle-holders/ektl53/)
-* [Candle Holder](https://ernstform.se/wp-content/uploads/2023/08/ernstform.se-candle-holder-ernstaw2023.37-scaled.jpg)
 * [Cushions](https://ernstform.se/products/cushions/111731/)
-* [Cushion Cover](https://ernstform.se/wp-content/uploads/2021/12/ernstform.se-cushion-cover-ernstvar2022.18.1-scaled.jpg)
-* [Cushion Cover](https://ernstform.se/wp-content/uploads/2022/11/ernstform.se-cushion-cover-ernstss2023.16-scaled.jpg)
-* [Kitchen](https://ernstform.se/products/kitchen/245010/)
-* [Kitchen](https://ernstform.se/products/kitchen/246016/)
-* [Vase](https://ernstform.se/wp-content/uploads/2021/08/ernstform.se-vase-ernstaw2021.9-scaled.jpg)
-* [Inspiration](https://ernstform.se/wp-content/uploads/2022/02/ernstform.se-inspiration-te2-scaled.jpg)
+* [Cushion Cover](https://ernstform.se/produkter/textilier/113344/)
+* [Cushions](https://ernstform.se/produkter/textilier/113313/)
+* [Glases](https://ernstform.se/produkter/kok/245010/)
+* [Bowl](https://ernstform.se/products/kitchen/246016/)
+* [Vase](https://ernstform.se/produkter/vaser-krukor/glasvas-3/)
+* [Tea](https://ernstform.se/produkter/ernst-skafferi/320303/)
 
 </details>
 
